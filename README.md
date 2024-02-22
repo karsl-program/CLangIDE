@@ -1,10 +1,14 @@
-# CLangIDE
-
-*A clean and beautiful native C/C++ integrated development environment (IDE).*
+<p align="center">
+ <img width="100px" src="https://blog.programapps.top/index/file/images/C-language.png" align="center" alt="CLangIDE" />
+ <h1 align="center">CLangIDE</h2>
+ <p align="center">A clean and beautiful native C/C++ integrated development environment (IDE)</p>
+</p>
 
 **Supported Releases:** `Windows/Win7+`
 
 CLangIDE is built using `PyQt` to create a pure native integrated development environment IDE based on `MinGW/GCC`.
+
+Due to the limitation of GCC compiler's suffix, the editor will recognize the file configuration `config/config.ini` for saving source code and determining source code type; for C, keep the default (write 'c'), and for C++, write 'cpp'.
 
 ## Python Deployment
 
