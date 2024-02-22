@@ -1,5 +1,5 @@
 <p align="center">
- <img width="100px" src="https://blog.programapps.top/index/file/images/C-language.png" align="center" alt="CLangIDE" />
+ <img width="100px" src="https://blog.programapps.top/file/images/C-language.png" align="center" alt="CLangIDE" />
  <h1 align="center">CLangIDE</h2>
  <p align="center">一个简洁、美观的原生C/C++集成开发环境（IDE）</p>
 </p>
