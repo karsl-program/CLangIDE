@@ -42,7 +42,7 @@ pip install pyinstaller
 ```
 
 ```shell
-pyinstaller (-F) -w main.py
+pyinstaller (-F) -w -i ./bin/window.ico main.py
 ```
 
 `-F`为可选参数，表示是否打包为文件。

@@ -42,7 +42,7 @@ pip install pyinstaller
 ```
 
 ```shell
-pyinstaller (-F) -w main.py
+pyinstaller (-F) -w -i ./bin/window.ico main.py
 ```
 
 `-F` is an optional parameter that indicates whether to package it as a single file.
