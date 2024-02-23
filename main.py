@@ -21,7 +21,7 @@ Copyright (c) CLangIDE 2024
 import sys
 import os
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget, QMessageBox, QAction, QStatusBar, QFileDialog, QInputDialog, QLineEdit
-from PyQt5.Qsci import QsciScintilla, QsciLexerCPP
+from PyQt5.Qsci import QsciScintilla, QsciLexerCPP, QsciAPIs
 from PyQt5.QtGui import QFont, QColor, QIcon, QPixmap
 
 with open('config/config.ini', 'r') as f:
@@ -68,6 +68,23 @@ class TextEditor(QMainWindow):
         self.setCentralWidget(self.editor)
         lexer = highlight(self)
         self.editor.setLexer(lexer)
+        self.__api = QsciAPIs(lexer)
+        autocode = ['if', 'else', 'while', 'signed', 'throw', 'union', 'this', 'int',
+                    'char', 'double', 'unsigned', 'const', 'goto', 'virtual', 'for', 'float',
+                    'break', 'continue', 'auto', 'class', 'operator', 'case', 'do', 'long',
+                    'typedef', 'static', 'friend', 'template', 'default', 'new', 'void', 'register',
+                    'extern', 'return', 'enum', 'inline', 'try', 'short', 'sizeof', 'switch', 'private',
+                    'protected', 'asm', 'catch', 'delete', 'public', 'volatile', 'struct', '#include',
+                    'string', 'bool', 'namespace', 'printf', 'using', '#ifndef', '#endif', 'std']
+        self.editor.setAutoCompletionThreshold(1)
+        for ac in autocode:
+            self.__api.add(ac)
+        self.__api.prepare()
+        self.editor.autoCompleteFromAll()
+        self.editor.setAutoCompletionSource(QsciScintilla.AcsAll)
+        self.editor.setAutoCompletionCaseSensitivity(True)
+        self.editor.setAutoCompletionReplaceWord(False)
+        self.editor.setAutoCompletionUseSingle(QsciScintilla.AcusExplicit)
         self.editor.setCaretLineVisible(True)
         self.editor.setCaretLineBackgroundColor(QColor('lightyellow'))
         self.editor.setIndentationsUseTabs(True)
@@ -94,6 +111,7 @@ class TextEditor(QMainWindow):
         self.FileOperator = self.menu.addMenu("文件")
         self.TextOperator = self.menu.addMenu("编辑")
         self.RunOperator = self.menu.addMenu("运行")
+        self.SettingOperator = self.menu.addMenu("设置")
         self.HelpOperator = self.menu.addMenu("帮助")
         # FileOperator
         self.NewAction = QAction("新建", self)
@@ -141,16 +159,11 @@ class TextEditor(QMainWindow):
         self.PAction.setStatusTip("把剪贴板里的文本拷贝到此处")
         self.PAction.setShortcut("Ctrl+V")
         self.PAction.triggered.connect(self.editor.paste)
-        self.AllAction = QAction("全选", self)
-        self.AllAction.setStatusTip("全选文本内容")
-        self.AllAction.setShortcut("Ctrl+A")
-        self.AllAction.triggered.connect(self.editor.selectAll)
         self.TextOperator.addAction(self.UndoAction)
         self.TextOperator.addAction(self.RedoAction)
         self.TextOperator.addAction(self.CutAction)
         self.TextOperator.addAction(self.CopyAction)
         self.TextOperator.addAction(self.PAction)
-        self.TextOperator.addAction(self.AllAction)
         # RunOperator
         self.CompileAction = QAction("编译", self)
         self.RunAction = QAction("运行", self)
@@ -167,6 +180,8 @@ class TextEditor(QMainWindow):
         self.RunOperator.addAction(self.CompileAction)
         self.RunOperator.addAction(self.RunAction)
         self.RunOperator.addAction(self.CompileAndRunAction)
+        # SettingOperator
+        self.CompileSettingAction = QAction("编译器选项", self)
         # HelpOperator
         self.AboutAction = QAction("关于CLangIDE", self)
         self.AboutAction.setStatusTip("关于CLangIDE的更多信息")
@@ -188,21 +203,27 @@ class TextEditor(QMainWindow):
         try:
             global filename
             self.savefile()
-            os.system(f"bin\\MinGW\\bin\\g++.exe -o {filename}.exe {filename}")
+            h = os.system(f"bin\\MinGW\\bin\\g++.exe -o {filename}.exe {filename} -static")
+            if h != 0:
+                os.system(f'start cmd /C "bin\\MinGW\\bin\\g++.exe -o {filename}.exe {filename} -static & pause"')
+                return 1
+            else:
+                return 0
         except Exception as e:
             QMessageBox.warning(self, "Error", f"Return error：\n{e}")
 
     def run_btn(self):
         try:
             global filename
-            os.system(f'start cmd /C "{filename}.exe & pause"')
+            os.system(f'start cmd /C "{filename}.exe & @echo. & @echo ------------------------------ & pause"')
         except Exception as e:
             QMessageBox.warning(self, "Error", f"Return error：\n{e}")
 
     def CompileAndRun_btn(self):
         try:
-            self.compile_btn()
-            self.run_btn()
+            ifok = self.compile_btn()
+            if ifok != 1:
+                self.run_btn()
         except Exception as e:
             QMessageBox.warning(self, "Error", f"Return error：\n{e}")
 
