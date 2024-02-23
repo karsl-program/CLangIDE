@@ -10,6 +10,21 @@ CLangIDE is built using `PyQt` to create a pure native integrated development en
 
 Due to the limitation of GCC compiler's suffix, the editor will recognize the file configuration `config/config.ini` for saving source code and determining source code type; for C, keep the default (write 'c'), and for C++, write 'cpp'.
 
+## Feature
+
+- [x] Basic Edit text
+- [x] Code completion (No release)
+- [x] Highlight edit
+- [x] Center edit
+- [x] Layout design
+- [x] Setting window (No release)
+- [x] Fonts setting (No release)
+- [x] Compile setting (No release)
+- [x] Error boolean and show (No release)
+- [x] Compilable and comes with a native compiler (Can be used without environment configuration)
+- [ ] Multi-file TAB
+- [ ] More...
+
 ## Python Deployment
 
 It is still recommended to use the `Release` version to avoid errors.
