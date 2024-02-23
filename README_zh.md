@@ -55,3 +55,8 @@ pyinstaller (-F) -w main.py
 ### ![关于信息](/bin/images/b.png)
 ### ![一个C语言程序](/bin/images/c.png)
 ### ![程序编译与运行](/bin/images/d.png)
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=program-zoubg/CLangIDE&type=Date)](https://star-history.com/#program-zoubg/CLangIDE&Date)
+

@@ -55,3 +55,8 @@ Once the packaging is complete, locate the `main.exe` executable file in the `di
 ### ![The About info](/bin/images/b.png)
 ### ![The Test C program](/bin/images/c.png)
 ### ![The Program compiled](/bin/images/d.png)
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=program-zoubg/CLangIDE&type=Date)](https://star-history.com/#program-zoubg/CLangIDE&Date)
+
