@@ -20,9 +20,11 @@ Copyright (c) CLangIDE 2024
 
 import sys
 import os
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget, QMessageBox, QAction, QStatusBar, QFileDialog, QInputDialog, QLineEdit
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QDesktopWidget, QMessageBox, QAction, QStatusBar, QFileDialog,
+                             QInputDialog, QLineEdit, QWidget, QComboBox, QPushButton, QGroupBox, QVBoxLayout,
+                             QHBoxLayout, QPlainTextEdit)
 from PyQt5.Qsci import QsciScintilla, QsciLexerCPP, QsciAPIs
-from PyQt5.QtGui import QFont, QColor, QIcon, QPixmap
+from PyQt5.QtGui import QFont, QColor, QIcon, QPixmap, QFontDatabase
 
 with open('config/config.ini', 'r') as f:
     if f.read() == 'cpp':
@@ -32,18 +34,107 @@ with open('config/config.ini', 'r') as f:
 filename = f"untitled.{codetype}"
 IsSave = False
 
+with open('config/font.ini', 'r') as f:
+    fontname = f.read()
+
+with open('config/addtext.ini', 'r') as f:
+    compile_add_text = f.read()
+
+with open('config/font_size.ini', 'r') as f:
+    try:
+        fontsize = int(f.read())
+    except Exception as e:
+        QMessageBox.warning(QWidget(), "Error", f"Return error：\n{e}")
+
 
 # Highlight of C/C++
 class highlight(QsciLexerCPP):
     def __init__(self, parent):
         QsciLexerCPP.__init__(self, parent)
+        global fontname, fontsize
         font = QFont()
-        font.setFamily('Consolas')
-        font.setPointSize(12)
+        font.setFamily(fontname)
+        font.setPointSize(fontsize)
         self.setFont(font)
-        self.setFont(QFont('Consolas', 12, italic=True), QsciLexerCPP.Comment)
-        self.setFont(QFont('Consolas', 12, italic=True), QsciLexerCPP.CommentLine)
-        self.setFont(QFont("Consolas", 12, weight=QFont.Bold), QsciLexerCPP.Keyword)
+        self.setFont(QFont(fontname, fontsize, italic=True), QsciLexerCPP.Comment)
+        self.setFont(QFont(fontname, fontsize, italic=True), QsciLexerCPP.CommentLine)
+        self.setFont(QFont(fontname, fontsize, weight=QFont.Bold), QsciLexerCPP.Keyword)
+
+
+# Class of Compile Setting window
+class CompileSetting(QWidget):
+    def __init__(self):
+        super().__init__()
+        try:
+            self.setWindowTitle('Compile Setting')
+            self.setGeometry(100, 100, 500, 500)
+
+            self.font_layout = QHBoxLayout()
+            self.compile_layout = QHBoxLayout()
+            self.font_group = QGroupBox("Fonts")
+            self.compile_group = QGroupBox("Compile")
+            self.boxlayout = QVBoxLayout()
+
+            self.center()
+
+            icon = QIcon()
+            icon.addPixmap(QPixmap("./bin/window.ico"), QIcon.Normal, QIcon.Off)
+            self.setWindowIcon(icon)
+
+            font = QFont()
+            font.setPointSize(10)
+            self.setFont(font)
+
+            fonts = QFontDatabase().families()
+
+            # Show Fonts family
+            self.combo = QComboBox(self)
+            self.font_layout.addWidget(self.combo)
+            for font in fonts:
+                self.combo.addItem(font)
+            global fontname, fontsize
+            self.combo.setCurrentText(fontname)
+            self.font_size_edit = QLineEdit(self)
+            self.font_size_edit.setText(str(fontsize))
+            self.font_layout.addWidget(self.font_size_edit)
+            push_button_ok = QPushButton('确定', self)
+            push_button_ok.clicked.connect(self.push_ok)
+
+            self.compile_text = QPlainTextEdit(self)
+            global compile_add_text
+            self.compile_text.setPlainText(compile_add_text)
+            self.compile_layout.addWidget(self.compile_text)
+
+            # create the central widget
+            self.setLayout(self.boxlayout)
+            self.font_group.setLayout(self.font_layout)
+            self.compile_group.setLayout(self.compile_layout)
+            self.boxlayout.addWidget(self.font_group)
+            self.boxlayout.addWidget(self.compile_group)
+            self.boxlayout.addWidget(push_button_ok)
+        except Exception as e:
+            QMessageBox.warning(self, "Error", f"Return error：\n{e}")
+
+    # Copy of Main window (x, y)
+    def center(self):
+        screen = QDesktopWidget().screenGeometry()
+        sizes = self.geometry()
+        WindowLeft, WindowTop = int((screen.width() - sizes.width()) / 2), int((screen.height() - sizes.height()) * (1 - 0.618))  # It's pure beauty. It's the golden ratio.
+        self.move(WindowLeft, WindowTop)
+
+    def push_ok(self):
+        global fontname, compile_add_text, fontsize
+        with open('config/font.ini', 'w') as f:
+            fontname = self.combo.currentText()
+            f.write(fontname)
+        with open('config/addtext.ini', 'w') as f:
+            compile_add_text = self.compile_text.toPlainText()
+            f.write(compile_add_text)
+        with open('config/font_size.ini', 'w') as f:
+            fontsize = self.font_size_edit.text()
+            f.write(fontsize)
+            fontsize = int(fontsize)
+        self.close()
 
 
 # Class of Main window
@@ -66,9 +157,9 @@ class TextEditor(QMainWindow):
         # Editor
         self.editor = QsciScintilla(self)
         self.setCentralWidget(self.editor)
-        lexer = highlight(self)
-        self.editor.setLexer(lexer)
-        self.__api = QsciAPIs(lexer)
+        self.lexer = highlight(self)
+        self.editor.setLexer(self.lexer)
+        self.__api = QsciAPIs(self.lexer)
         autocode = ['if', 'else', 'while', 'signed', 'throw', 'union', 'this', 'int',
                     'char', 'double', 'unsigned', 'const', 'goto', 'virtual', 'for', 'float',
                     'break', 'continue', 'auto', 'class', 'operator', 'case', 'do', 'long',
@@ -182,6 +273,10 @@ class TextEditor(QMainWindow):
         self.RunOperator.addAction(self.CompileAndRunAction)
         # SettingOperator
         self.CompileSettingAction = QAction("编译器选项", self)
+        self.CompileSettingAction.setShortcut("Ctrl+Alt+L")
+        self.CompileSettingAction.setStatusTip("对编译器进行详细配置")
+        self.CompileSettingAction.triggered.connect(self.compilesetshow)
+        self.SettingOperator.addAction(self.CompileSettingAction)
         # HelpOperator
         self.AboutAction = QAction("关于CLangIDE", self)
         self.AboutAction.setStatusTip("关于CLangIDE的更多信息")
@@ -192,20 +287,26 @@ class TextEditor(QMainWindow):
         global IsSave
         IsSave = False
         self.setWindowTitle("CLangIDE - " + filename + "*")
+        # Global Font name changed
+        global fontname
+        font = QFont()
+        font.setFamily(fontname)
+        font.setPointSize(fontsize)
+        self.lexer.setFont(font)
 
     def center(self):
         screen = QDesktopWidget().screenGeometry()
         sizes = self.geometry()
-        WindowLeft, WindowTop = int((screen.width() - sizes.width()) / 2), int((screen.height() - sizes.height()) * (1 - 0.618))  # It's purely a live job. It's the golden ratio.
+        WindowLeft, WindowTop = int((screen.width() - sizes.width()) / 2), int((screen.height() - sizes.height()) * (1 - 0.618))  # It's pure beauty. It's the golden ratio.
         self.move(WindowLeft, WindowTop)
 
     def compile_btn(self):
         try:
-            global filename
+            global filename, compile_add_text
             self.savefile()
-            h = os.system(f"bin\\MinGW\\bin\\g++.exe -o {filename}.exe {filename} -static")
+            h = os.system(f"bin\\MinGW\\bin\\g++.exe -o {filename}.exe {filename} {compile_add_text}")
             if h != 0:
-                os.system(f'start cmd /C "bin\\MinGW\\bin\\g++.exe -o {filename}.exe {filename} -static & pause"')
+                os.system(f'start cmd /C "bin\\MinGW\\bin\\g++.exe -o {filename}.exe {filename} {compile_add_text} & pause"')
                 return 1
             else:
                 return 0
@@ -278,9 +379,13 @@ class TextEditor(QMainWindow):
             QMessageBox.about(self, "错误", f"发生错误：\n{e}")
 
     def about(self):
-        ideversion = "1.0.0 2024.2 Release"
+        ideversion = "1.1.1 2024.2 Release"
         QMessageBox.about(self, "关于CLangIDE",
                                     f"Copyright (c) 2024 CLangIDE\n\nC/C++ Core: MinGW-w64\nCLangIDE version: {ideversion}\nCompile Core: GCC\nOpen Source: Github - Program-zoubg/CLangIDE\nOpen Source LICENSE: GPL v3\n\nThank you!")
+
+    def compilesetshow(self):
+        self.compile_window = CompileSetting()
+        self.compile_window.show()
 
 
 if __name__ == "__main__":
