@@ -42,9 +42,16 @@ pip install pyinstaller
 ```
 
 ```shell
-pyinstaller (-F) main.py window.py
+pyinstaller (-F) -w main.py
 ```
 
 `-F` is an optional parameter that indicates whether to package it as a single file.
 
 Once the packaging is complete, locate the `main.exe` executable file in the `dist` folder and open it.
+
+## Screen
+
+### ![The main window](/bin/images/a.png)
+### ![The About info](/bin/images/b.png)
+### ![The Test C program](/bin/images/c.png)
+### ![The Program compiled](/bin/images/d.png)

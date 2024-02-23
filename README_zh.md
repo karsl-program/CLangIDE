@@ -42,9 +42,16 @@ pip install pyinstaller
 ```
 
 ```shell
-pyinstaller (-F) main.py window.py
+pyinstaller (-F) -w main.py
 ```
 
 `-F`为可选参数，表示是否打包为文件。
 
 打包完成后，在`dist`文件夹内找到`main.exe`可执行文件打开即可。
+
+## 截图
+
+### ![主窗口](/bin/images/a.png)
+### ![关于信息](/bin/images/b.png)
+### ![一个C语言程序](/bin/images/c.png)
+### ![程序编译与运行](/bin/images/d.png)
