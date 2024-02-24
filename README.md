@@ -13,14 +13,14 @@ Due to the limitation of GCC compiler's suffix, the editor will recognize the fi
 ## Feature
 
 - [x] Basic Edit text
-- [x] Code completion (No release)
+- [x] Code completion
 - [x] Highlight edit
 - [x] Center edit
 - [x] Layout design
-- [x] Setting window (No release)
-- [x] Fonts setting (No release)
-- [x] Compile setting (No release)
-- [x] Error boolean and show (No release)
+- [x] Setting window
+- [x] Fonts setting
+- [x] Compile setting
+- [x] Error boolean and show
 - [x] Compilable and comes with a native compiler (Can be used without environment configuration)
 - [ ] Multi-file TAB
 - [ ] More...
