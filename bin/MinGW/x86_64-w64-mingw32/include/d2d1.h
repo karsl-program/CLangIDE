@@ -14,12 +14,8 @@
 
 #include <unknwn.h>
 #include <dcommon.h>
-
-#ifdef __MINGW_HAS_DXSDK
 #include <dxgiformat.h>
 #include <d3d10_1.h>
-#endif
-
 #include <d2dbasetypes.h>
 #include <d2derr.h>
 
@@ -48,123 +44,6 @@ typedef struct DWRITE_GLYPH_RUN DWRITE_GLYPH_RUN;
 #define D2D1_INVALID_TAG ULONGLONG_MAX
 #define D2D1_DEFAULT_FLATTENING_TOLERANCE (0.25f)
 
-/* enumerations */
-
-#ifndef __MINGW_HAS_DXSDK
-typedef enum D3D10_FEATURE_LEVEL1 {
-  D3D10_FEATURE_LEVEL_10_0   = 0xa000,
-  D3D10_FEATURE_LEVEL_10_1   = 0xa100,
-  D3D10_FEATURE_LEVEL_9_1    = 0x9100,
-  D3D10_FEATURE_LEVEL_9_2    = 0x9200,
-  D3D10_FEATURE_LEVEL_9_3    = 0x9300 
-} D3D10_FEATURE_LEVEL1;
-
-typedef enum DXGI_FORMAT {
-  DXGI_FORMAT_UNKNOWN                      = 0,
-  DXGI_FORMAT_R32G32B32A32_TYPELESS        = 1,
-  DXGI_FORMAT_R32G32B32A32_FLOAT           = 2,
-  DXGI_FORMAT_R32G32B32A32_UINT            = 3,
-  DXGI_FORMAT_R32G32B32A32_SINT            = 4,
-  DXGI_FORMAT_R32G32B32_TYPELESS           = 5,
-  DXGI_FORMAT_R32G32B32_FLOAT              = 6,
-  DXGI_FORMAT_R32G32B32_UINT               = 7,
-  DXGI_FORMAT_R32G32B32_SINT               = 8,
-  DXGI_FORMAT_R16G16B16A16_TYPELESS        = 9,
-  DXGI_FORMAT_R16G16B16A16_FLOAT           = 10,
-  DXGI_FORMAT_R16G16B16A16_UNORM           = 11,
-  DXGI_FORMAT_R16G16B16A16_UINT            = 12,
-  DXGI_FORMAT_R16G16B16A16_SNORM           = 13,
-  DXGI_FORMAT_R16G16B16A16_SINT            = 14,
-  DXGI_FORMAT_R32G32_TYPELESS              = 15,
-  DXGI_FORMAT_R32G32_FLOAT                 = 16,
-  DXGI_FORMAT_R32G32_UINT                  = 17,
-  DXGI_FORMAT_R32G32_SINT                  = 18,
-  DXGI_FORMAT_R32G8X24_TYPELESS            = 19,
-  DXGI_FORMAT_D32_FLOAT_S8X24_UINT         = 20,
-  DXGI_FORMAT_R32_FLOAT_X8X24_TYPELESS     = 21,
-  DXGI_FORMAT_X32_TYPELESS_G8X24_UINT      = 22,
-  DXGI_FORMAT_R10G10B10A2_TYPELESS         = 23,
-  DXGI_FORMAT_R10G10B10A2_UNORM            = 24,
-  DXGI_FORMAT_R10G10B10A2_UINT             = 25,
-  DXGI_FORMAT_R11G11B10_FLOAT              = 26,
-  DXGI_FORMAT_R8G8B8A8_TYPELESS            = 27,
-  DXGI_FORMAT_R8G8B8A8_UNORM               = 28,
-  DXGI_FORMAT_R8G8B8A8_UNORM_SRGB          = 29,
-  DXGI_FORMAT_R8G8B8A8_UINT                = 30,
-  DXGI_FORMAT_R8G8B8A8_SNORM               = 31,
-  DXGI_FORMAT_R8G8B8A8_SINT                = 32,
-  DXGI_FORMAT_R16G16_TYPELESS              = 33,
-  DXGI_FORMAT_R16G16_FLOAT                 = 34,
-  DXGI_FORMAT_R16G16_UNORM                 = 35,
-  DXGI_FORMAT_R16G16_UINT                  = 36,
-  DXGI_FORMAT_R16G16_SNORM                 = 37,
-  DXGI_FORMAT_R16G16_SINT                  = 38,
-  DXGI_FORMAT_R32_TYPELESS                 = 39,
-  DXGI_FORMAT_D32_FLOAT                    = 40,
-  DXGI_FORMAT_R32_FLOAT                    = 41,
-  DXGI_FORMAT_R32_UINT                     = 42,
-  DXGI_FORMAT_R32_SINT                     = 43,
-  DXGI_FORMAT_R24G8_TYPELESS               = 44,
-  DXGI_FORMAT_D24_UNORM_S8_UINT            = 45,
-  DXGI_FORMAT_R24_UNORM_X8_TYPELESS        = 46,
-  DXGI_FORMAT_X24_TYPELESS_G8_UINT         = 47,
-  DXGI_FORMAT_R8G8_TYPELESS                = 48,
-  DXGI_FORMAT_R8G8_UNORM                   = 49,
-  DXGI_FORMAT_R8G8_UINT                    = 50,
-  DXGI_FORMAT_R8G8_SNORM                   = 51,
-  DXGI_FORMAT_R8G8_SINT                    = 52,
-  DXGI_FORMAT_R16_TYPELESS                 = 53,
-  DXGI_FORMAT_R16_FLOAT                    = 54,
-  DXGI_FORMAT_D16_UNORM                    = 55,
-  DXGI_FORMAT_R16_UNORM                    = 56,
-  DXGI_FORMAT_R16_UINT                     = 57,
-  DXGI_FORMAT_R16_SNORM                    = 58,
-  DXGI_FORMAT_R16_SINT                     = 59,
-  DXGI_FORMAT_R8_TYPELESS                  = 60,
-  DXGI_FORMAT_R8_UNORM                     = 61,
-  DXGI_FORMAT_R8_UINT                      = 62,
-  DXGI_FORMAT_R8_SNORM                     = 63,
-  DXGI_FORMAT_R8_SINT                      = 64,
-  DXGI_FORMAT_A8_UNORM                     = 65,
-  DXGI_FORMAT_R1_UNORM                     = 66,
-  DXGI_FORMAT_R9G9B9E5_SHAREDEXP           = 67,
-  DXGI_FORMAT_R8G8_B8G8_UNORM              = 68,
-  DXGI_FORMAT_G8R8_G8B8_UNORM              = 69,
-  DXGI_FORMAT_BC1_TYPELESS                 = 70,
-  DXGI_FORMAT_BC1_UNORM                    = 71,
-  DXGI_FORMAT_BC1_UNORM_SRGB               = 72,
-  DXGI_FORMAT_BC2_TYPELESS                 = 73,
-  DXGI_FORMAT_BC2_UNORM                    = 74,
-  DXGI_FORMAT_BC2_UNORM_SRGB               = 75,
-  DXGI_FORMAT_BC3_TYPELESS                 = 76,
-  DXGI_FORMAT_BC3_UNORM                    = 77,
-  DXGI_FORMAT_BC3_UNORM_SRGB               = 78,
-  DXGI_FORMAT_BC4_TYPELESS                 = 79,
-  DXGI_FORMAT_BC4_UNORM                    = 80,
-  DXGI_FORMAT_BC4_SNORM                    = 81,
-  DXGI_FORMAT_BC5_TYPELESS                 = 82,
-  DXGI_FORMAT_BC5_UNORM                    = 83,
-  DXGI_FORMAT_BC5_SNORM                    = 84,
-  DXGI_FORMAT_B5G6R5_UNORM                 = 85,
-  DXGI_FORMAT_B5G5R5A1_UNORM               = 86,
-  DXGI_FORMAT_B8G8R8A8_UNORM               = 87,
-  DXGI_FORMAT_B8G8R8X8_UNORM               = 88,
-  DXGI_FORMAT_R10G10B10_XR_BIAS_A2_UNORM   = 89,
-  DXGI_FORMAT_B8G8R8A8_TYPELESS            = 90,
-  DXGI_FORMAT_B8G8R8A8_UNORM_SRGB          = 91,
-  DXGI_FORMAT_B8G8R8X8_TYPELESS            = 92,
-  DXGI_FORMAT_B8G8R8X8_UNORM_SRGB          = 93,
-  DXGI_FORMAT_BC6H_TYPELESS                = 94,
-  DXGI_FORMAT_BC6H_UF16                    = 95,
-  DXGI_FORMAT_BC6H_SF16                    = 96,
-  DXGI_FORMAT_BC7_TYPELESS                 = 97,
-  DXGI_FORMAT_BC7_UNORM                    = 98,
-  DXGI_FORMAT_BC7_UNORM_SRGB               = 99,
-  DXGI_FORMAT_FORCE_UINT                   = 0xffffffff
-} DXGI_FORMAT, *LPDXGI_FORMAT;
-
-#endif /*__MINGW_HAS_DXSDK*/
-
 #ifndef __IDWriteRenderingParams_FWD_DEFINED__
 #define __IDWriteRenderingParams_FWD_DEFINED__
 typedef struct IDWriteRenderingParams IDWriteRenderingParams;
@@ -190,21 +69,16 @@ typedef struct IDWriteTextLayout IDWriteTextLayout;
 typedef struct IDWriteFontFace IDWriteFontFace;
 #endif
 
-typedef enum _D2D1_ALPHA_MODE {
-  D2D1_ALPHA_MODE_UNKNOWN         = 0,
-  D2D1_ALPHA_MODE_PREMULTIPLIED   = 1,
-  D2D1_ALPHA_MODE_STRAIGHT        = 2,
-  D2D1_ALPHA_MODE_IGNORE          = 3 
-} D2D1_ALPHA_MODE;
-
-typedef enum _D2D1_ANTIALIAS_MODE {
+typedef enum D2D1_ANTIALIAS_MODE {
   D2D1_ANTIALIAS_MODE_PER_PRIMITIVE   = 0,
-  D2D1_ANTIALIAS_MODE_ALIASED         = 1 
+  D2D1_ANTIALIAS_MODE_ALIASED         = 1,
+  D2D1_ANTIALIAS_MODE_FORCE_DWORD     = 0xffffffff
 } D2D1_ANTIALIAS_MODE;
 
-typedef enum _D2D1_ARC_SIZE {
-  D2D1_ARC_SIZE_SMALL   = 0,
-  D2D1_ARC_SIZE_LARGE   = 1 
+typedef enum D2D1_ARC_SIZE {
+  D2D1_ARC_SIZE_SMALL       = 0,
+  D2D1_ARC_SIZE_LARGE       = 1,
+  D2D1_ARC_SIZE_FORCE_DWORD = 0xffffffff
 } D2D1_ARC_SIZE;
 
 enum {
@@ -218,164 +92,193 @@ enum {
     D2D1_INTERPOLATION_MODE_DEFINITION_MIPMAP_LINEAR       = 7
 };
 
-typedef enum _D2D1_BITMAP_INTERPOLATION_MODE {
+typedef enum D2D1_BITMAP_INTERPOLATION_MODE {
   D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR   = 0,
-  D2D1_BITMAP_INTERPOLATION_MODE_LINEAR             = 1 
+  D2D1_BITMAP_INTERPOLATION_MODE_LINEAR             = 1,
+  D2D1_BITMAP_INTERPOLATION_MODE_FORCE_DWORD        = 0xffffffff
 } D2D1_BITMAP_INTERPOLATION_MODE;
 
-typedef enum _D2D1_CAP_STYLE {
-  D2D1_CAP_STYLE_FLAT       = 0,
-  D2D1_CAP_STYLE_SQUARE     = 1,
-  D2D1_CAP_STYLE_ROUND      = 2,
-  D2D1_CAP_STYLE_TRIANGLE   = 3 
+typedef enum D2D1_CAP_STYLE {
+  D2D1_CAP_STYLE_FLAT        = 0,
+  D2D1_CAP_STYLE_SQUARE      = 1,
+  D2D1_CAP_STYLE_ROUND       = 2,
+  D2D1_CAP_STYLE_TRIANGLE    = 3,
+  D2D1_CAP_STYLE_FORCE_DWORD = 0xffffffff
 } D2D1_CAP_STYLE;
 
-typedef enum _D2D1_COMBINE_MODE {
+typedef enum D2D1_COMBINE_MODE {
   D2D1_COMBINE_MODE_UNION       = 0,
   D2D1_COMBINE_MODE_INTERSECT   = 1,
   D2D1_COMBINE_MODE_XOR         = 2,
-  D2D1_COMBINE_MODE_EXCLUDE     = 3 
+  D2D1_COMBINE_MODE_EXCLUDE     = 3,
+  D2D1_COMBINE_MODE_FORCE_DWORD = 0xffffffff
 } D2D1_COMBINE_MODE;
 
-typedef enum _D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS {
+typedef enum D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS {
   D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS_NONE             = 0x00000000,
-  D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS_GDI_COMPATIBLE   = 0x00000001 
+  D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS_GDI_COMPATIBLE   = 0x00000001,
+  D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS_FORCE_DWORD      = 0xffffffff
 } D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS;
 
-typedef enum _D2D1_DASH_STYLE {
+typedef enum D2D1_DASH_STYLE {
   D2D1_DASH_STYLE_SOLID          = 0,
   D2D1_DASH_STYLE_DASH           = 1,
   D2D1_DASH_STYLE_DOT            = 2,
   D2D1_DASH_STYLE_DASH_DOT       = 3,
   D2D1_DASH_STYLE_DASH_DOT_DOT   = 4,
-  D2D1_DASH_STYLE_CUSTOM         = 5 
+  D2D1_DASH_STYLE_CUSTOM         = 5,
+  D2D1_DASH_STYLE_FORCE_DWORD    = 0xffffffff
 } D2D1_DASH_STYLE;
 
-typedef enum _D2D1_DC_INITIALIZE_MODE {
-  D2D1_DC_INITIALIZE_MODE_COPY    = 0,
-  D2D1_DC_INITIALIZE_MODE_CLEAR   = 1 
+typedef enum D2D1_DC_INITIALIZE_MODE {
+  D2D1_DC_INITIALIZE_MODE_COPY        = 0,
+  D2D1_DC_INITIALIZE_MODE_CLEAR       = 1,
+  D2D1_DC_INITIALIZE_MODE_FORCE_DWORD = 0xffffffff
 } D2D1_DC_INITIALIZE_MODE;
 
-typedef enum _D2D1_DEBUG_LEVEL {
+typedef enum D2D1_DEBUG_LEVEL {
   D2D1_DEBUG_LEVEL_NONE          = 0,
   D2D1_DEBUG_LEVEL_ERROR         = 1,
   D2D1_DEBUG_LEVEL_WARNING       = 2,
-  D2D1_DEBUG_LEVEL_INFORMATION   = 3 
+  D2D1_DEBUG_LEVEL_INFORMATION   = 3,
+  D2D1_DEBUG_LEVEL_FORCE_DWORD   = 0xffffffff
 } D2D1_DEBUG_LEVEL;
 
-typedef enum _D2D1_DRAW_TEXT_OPTIONS {
-  D2D1_DRAW_TEXT_OPTIONS_NO_SNAP   = 0x00000001,
-  D2D1_DRAW_TEXT_OPTIONS_CLIP      = 0x00000002,
-  D2D1_DRAW_TEXT_OPTIONS_NONE      = 0x00000000 
+typedef enum D2D1_DRAW_TEXT_OPTIONS {
+  D2D1_DRAW_TEXT_OPTIONS_NO_SNAP                       = 0x00000001,
+  D2D1_DRAW_TEXT_OPTIONS_CLIP                          = 0x00000002,
+  D2D1_DRAW_TEXT_OPTIONS_ENABLE_COLOR_FONT             = 0x00000004,
+  D2D1_DRAW_TEXT_OPTIONS_DISABLE_COLOR_BITMAP_SNAPPING = 0x00000008,
+  D2D1_DRAW_TEXT_OPTIONS_NONE                          = 0x00000000,
+  D2D1_DRAW_TEXT_OPTIONS_FORCE_DWORD                   = 0xffffffff
 } D2D1_DRAW_TEXT_OPTIONS;
 
-typedef enum _D2D1_EXTEND_MODE {
-  D2D1_EXTEND_MODE_CLAMP    = 0,
-  D2D1_EXTEND_MODE_WRAP     = 1,
-  D2D1_EXTEND_MODE_MIRROR   = 2 
+typedef enum D2D1_EXTEND_MODE {
+  D2D1_EXTEND_MODE_CLAMP       = 0,
+  D2D1_EXTEND_MODE_WRAP        = 1,
+  D2D1_EXTEND_MODE_MIRROR      = 2,
+  D2D1_EXTEND_MODE_FORCE_DWORD = 0xffffffff
 } D2D1_EXTEND_MODE;
 
-typedef enum _D2D1_FACTORY_TYPE {
+typedef enum D2D1_FACTORY_TYPE {
   D2D1_FACTORY_TYPE_SINGLE_THREADED   = 0,
-  D2D1_FACTORY_TYPE_MULTI_THREADED    = 1 
+  D2D1_FACTORY_TYPE_MULTI_THREADED    = 1,
+  D2D1_FACTORY_TYPE_FORCE_DWORD       = 0xffffffff
 } D2D1_FACTORY_TYPE;
 
-typedef enum _D2D1_FEATURE_LEVEL {
-  D2D1_FEATURE_LEVEL_DEFAULT   = 0,
-  D2D1_FEATURE_LEVEL_9         = D3D10_FEATURE_LEVEL_9_1,
-  D2D1_FEATURE_LEVEL_10        = D3D10_FEATURE_LEVEL_10_0 
+typedef enum D2D1_FEATURE_LEVEL {
+  D2D1_FEATURE_LEVEL_DEFAULT     = 0,
+  D2D1_FEATURE_LEVEL_9           = D3D10_FEATURE_LEVEL_9_1,
+  D2D1_FEATURE_LEVEL_10          = D3D10_FEATURE_LEVEL_10_0,
+  D2D1_FEATURE_LEVEL_FORCE_DWORD = 0xffffffff
 } D2D1_FEATURE_LEVEL;
 
-typedef enum _D2D1_FIGURE_BEGIN {
-  D2D1_FIGURE_BEGIN_FILLED   = 0,
-  D2D1_FIGURE_BEGIN_HOLLOW   = 1 
+typedef enum D2D1_FIGURE_BEGIN {
+  D2D1_FIGURE_BEGIN_FILLED      = 0,
+  D2D1_FIGURE_BEGIN_HOLLOW      = 1,
+  D2D1_FIGURE_BEGIN_FORCE_DWORD = 0xffffffff
 } D2D1_FIGURE_BEGIN;
 
-typedef enum _D2D1_FIGURE_END {
-  D2D1_FIGURE_END_OPEN     = 0,
-  D2D1_FIGURE_END_CLOSED   = 1 
+typedef enum D2D1_FIGURE_END {
+  D2D1_FIGURE_END_OPEN        = 0,
+  D2D1_FIGURE_END_CLOSED      = 1,
+  D2D1_FIGURE_END_FORCE_DWORD = 0xffffffff
 } D2D1_FIGURE_END;
 
-typedef enum _D2D1_FILL_MODE {
+typedef enum D2D1_FILL_MODE {
   D2D1_FILL_MODE_ALTERNATE   = 0,
-  D2D1_FILL_MODE_WINDING     = 1 
+  D2D1_FILL_MODE_WINDING     = 1,
+  D2D1_FILL_MODE_FORCE_DWORD = 0xffffffff
 } D2D1_FILL_MODE;
 
-typedef enum _D2D1_GAMMA {
-  D2D1_GAMMA_2_2   = 0,
-  D2D1_GAMMA_1_0   = 1 
+typedef enum D2D1_GAMMA {
+  D2D1_GAMMA_2_2         = 0,
+  D2D1_GAMMA_1_0         = 1,
+  D2D1_GAMMA_FORCE_DWORD = 0xffffffff
 } D2D1_GAMMA;
 
-typedef enum _D2D1_GEOMETRY_RELATION {
+typedef enum D2D1_GEOMETRY_RELATION {
   D2D1_GEOMETRY_RELATION_UNKNOWN        = 0,
   D2D1_GEOMETRY_RELATION_DISJOINT       = 1,
   D2D1_GEOMETRY_RELATION_IS_CONTAINED   = 2,
   D2D1_GEOMETRY_RELATION_CONTAINS       = 3,
-  D2D1_GEOMETRY_RELATION_OVERLAP        = 4 
+  D2D1_GEOMETRY_RELATION_OVERLAP        = 4,
+  D2D1_GEOMETRY_RELATION_FORCE_DWORD    = 0xffffffff
 } D2D1_GEOMETRY_RELATION;
 
-typedef enum _D2D1_GEOMETRY_SIMPLIFICATION_OPTION {
+typedef enum D2D1_GEOMETRY_SIMPLIFICATION_OPTION {
   D2D1_GEOMETRY_SIMPLIFICATION_OPTION_CUBICS_AND_LINES   = 0,
-  D2D1_GEOMETRY_SIMPLIFICATION_OPTION_LINES              = 1 
+  D2D1_GEOMETRY_SIMPLIFICATION_OPTION_LINES              = 1,
+  D2D1_GEOMETRY_SIMPLIFICATION_OPTION_FORCE_DWORD        = 0xffffffff
 } D2D1_GEOMETRY_SIMPLIFICATION_OPTION;
 
-typedef enum _D2D1_LAYER_OPTIONS {
+typedef enum D2D1_LAYER_OPTIONS {
   D2D1_LAYER_OPTIONS_NONE                       = 0x00000000,
-  D2D1_LAYER_OPTIONS_INITIALIZE_FOR_CLEARTYPE   = 0x00000001 
+  D2D1_LAYER_OPTIONS_INITIALIZE_FOR_CLEARTYPE   = 0x00000001,
+  D2D1_LAYER_OPTIONS_FORCE_DWORD                = 0xffffffff
 } D2D1_LAYER_OPTIONS;
 
-typedef enum _D2D1_LINE_JOIN {
+typedef enum D2D1_LINE_JOIN {
   D2D1_LINE_JOIN_MITER            = 0,
   D2D1_LINE_JOIN_BEVEL            = 1,
   D2D1_LINE_JOIN_ROUND            = 2,
-  D2D1_LINE_JOIN_MITER_OR_BEVEL   = 3 
+  D2D1_LINE_JOIN_MITER_OR_BEVEL   = 3,
+  D2D1_LINE_JOIN_FORCE_DWORD      = 0xffffffff
 } D2D1_LINE_JOIN;
 
-typedef enum _D2D1_OPACITY_MASK_CONTENT {
+typedef enum D2D1_OPACITY_MASK_CONTENT {
   D2D1_OPACITY_MASK_CONTENT_GRAPHICS              = 0,
   D2D1_OPACITY_MASK_CONTENT_TEXT_NATURAL          = 1,
-  D2D1_OPACITY_MASK_CONTENT_TEXT_GDI_COMPATIBLE   = 2 
+  D2D1_OPACITY_MASK_CONTENT_TEXT_GDI_COMPATIBLE   = 2,
+  D2D1_OPACITY_MASK_CONTENT_FORCE_DWORD           = 0xffffffff
 } D2D1_OPACITY_MASK_CONTENT;
 
-typedef enum _D2D1_PATH_SEGMENT {
+typedef enum D2D1_PATH_SEGMENT {
   D2D1_PATH_SEGMENT_NONE                    = 0x00000000,
   D2D1_PATH_SEGMENT_FORCE_UNSTROKED         = 0x00000001,
-  D2D1_PATH_SEGMENT_FORCE_ROUND_LINE_JOIN   = 0x00000002 
+  D2D1_PATH_SEGMENT_FORCE_ROUND_LINE_JOIN   = 0x00000002,
+  D2D1_PATH_SEGMENT_FORCE_DWORD             = 0xffffffff
 } D2D1_PATH_SEGMENT;
 
-typedef enum _D2D1_PRESENT_OPTIONS {
+typedef enum D2D1_PRESENT_OPTIONS {
   D2D1_PRESENT_OPTIONS_NONE              = 0x00000000,
   D2D1_PRESENT_OPTIONS_RETAIN_CONTENTS   = 0x00000001,
-  D2D1_PRESENT_OPTIONS_IMMEDIATELY       = 0x00000002 
+  D2D1_PRESENT_OPTIONS_IMMEDIATELY       = 0x00000002,
+  D2D1_PRESENT_OPTIONS_FORCE_DWORD       = 0xffffffff
 } D2D1_PRESENT_OPTIONS;
 
-typedef enum _D2D1_RENDER_TARGET_TYPE {
+typedef enum D2D1_RENDER_TARGET_TYPE {
   D2D1_RENDER_TARGET_TYPE_DEFAULT     = 0,
   D2D1_RENDER_TARGET_TYPE_SOFTWARE    = 1,
-  D2D1_RENDER_TARGET_TYPE_HARDWARE    = 2 
+  D2D1_RENDER_TARGET_TYPE_HARDWARE    = 2,
+  D2D1_RENDER_TARGET_TYPE_FORCE_DWORD = 0xffffffff
 } D2D1_RENDER_TARGET_TYPE;
 
-typedef enum _D2D1_RENDER_TARGET_USAGE {
+typedef enum D2D1_RENDER_TARGET_USAGE {
   D2D1_RENDER_TARGET_USAGE_NONE                    = 0x00000000,
   D2D1_RENDER_TARGET_USAGE_FORCE_BITMAP_REMOTING   = 0x00000001,
-  D2D1_RENDER_TARGET_USAGE_GDI_COMPATIBLE          = 0x00000002 
+  D2D1_RENDER_TARGET_USAGE_GDI_COMPATIBLE          = 0x00000002,
+  D2D1_RENDER_TARGET_USAGE_FORCE_DWORD             = 0xffffffff
 } D2D1_RENDER_TARGET_USAGE;
 
-typedef enum _D2D1_SWEEP_DIRECTION {
+typedef enum D2D1_SWEEP_DIRECTION {
   D2D1_SWEEP_DIRECTION_COUNTER_CLOCKWISE   = 0,
-  D2D1_SWEEP_DIRECTION_CLOCKWISE           = 1 
+  D2D1_SWEEP_DIRECTION_CLOCKWISE           = 1,
+  D2D1_SWEEP_DIRECTION_FORCE_DWORD         = 0xffffffff
 } D2D1_SWEEP_DIRECTION;
 
-typedef enum _D2D1_TEXT_ANTIALIAS_MODE {
+typedef enum D2D1_TEXT_ANTIALIAS_MODE {
   D2D1_TEXT_ANTIALIAS_MODE_DEFAULT     = 0,
   D2D1_TEXT_ANTIALIAS_MODE_CLEARTYPE   = 1,
   D2D1_TEXT_ANTIALIAS_MODE_GRAYSCALE   = 2,
-  D2D1_TEXT_ANTIALIAS_MODE_ALIASED     = 3 
+  D2D1_TEXT_ANTIALIAS_MODE_ALIASED     = 3,
+  D2D1_TEXT_ANTIALIAS_MODE_FORCE_DWORD = 0xffffffff
 } D2D1_TEXT_ANTIALIAS_MODE;
 
-typedef enum _D2D1_WINDOW_STATE {
-  D2D1_WINDOW_STATE_NONE       = 0x0000000,
-  D2D1_WINDOW_STATE_OCCLUDED   = 0x0000001 
+typedef enum D2D1_WINDOW_STATE {
+  D2D1_WINDOW_STATE_NONE        = 0x00000000,
+  D2D1_WINDOW_STATE_OCCLUDED    = 0x00000001,
+  D2D1_WINDOW_STATE_FORCE_DWORD = 0xffffffff
 } D2D1_WINDOW_STATE;
 
 /* this is a hack so we can use forward declares in C (easier than reordering interfaces) */
@@ -431,13 +334,20 @@ typedef struct D2D1_GRADIENT_STOP D2D1_GRADIENT_STOP;
 typedef struct D2D1_HWND_RENDER_TARGET_PROPERTIES D2D1_HWND_RENDER_TARGET_PROPERTIES;
 typedef struct D2D1_LAYER_PARAMETERS D2D1_LAYER_PARAMETERS;
 typedef struct D2D1_LINEAR_GRADIENT_BRUSH_PROPERTIES D2D1_LINEAR_GRADIENT_BRUSH_PROPERTIES;
-typedef struct D2D1_PIXEL_FORMAT D2D1_PIXEL_FORMAT;
 typedef struct D2D1_QUADRATIC_BEZIER_SEGMENT D2D1_QUADRATIC_BEZIER_SEGMENT;
 typedef struct D2D1_RADIAL_GRADIENT_BRUSH_PROPERTIES D2D1_RADIAL_GRADIENT_BRUSH_PROPERTIES;
 typedef struct D2D1_RENDER_TARGET_PROPERTIES D2D1_RENDER_TARGET_PROPERTIES;
 typedef struct D2D1_ROUNDED_RECT D2D1_ROUNDED_RECT;
 typedef struct D2D1_STROKE_STYLE_PROPERTIES D2D1_STROKE_STYLE_PROPERTIES;
 typedef struct D2D1_TRIANGLE D2D1_TRIANGLE;
+
+typedef D2D_MATRIX_3X2_F D2D1_MATRIX_3X2_F;
+typedef D2D_RECT_F D2D1_RECT_F;
+typedef D2D_SIZE_F D2D1_SIZE_F;
+typedef UINT64 D2D1_TAG;
+typedef D2D_POINT_2U D2D1_POINT_2U;
+typedef D2D_RECT_U D2D1_RECT_U;
+typedef D2D_COLOR_F D2D1_COLOR_F;
 
 struct D2D1_ARC_SEGMENT {
   D2D1_POINT_2F        point;
@@ -457,11 +367,6 @@ struct D2D1_BITMAP_BRUSH_PROPERTIES {
   D2D1_EXTEND_MODE               extendModeX;
   D2D1_EXTEND_MODE               extendModeY;
   D2D1_BITMAP_INTERPOLATION_MODE interpolationMode;
-};
-
-struct D2D1_PIXEL_FORMAT {
-  DXGI_FORMAT     format;
-  D2D1_ALPHA_MODE alphaMode;
 };
 
 struct D2D1_BITMAP_PROPERTIES {
@@ -664,9 +569,39 @@ DEFINE_GUID(IID_ID2D1Bitmap, 0xa2296057,0xea42,0x4099,0x98,0x3b,0x53,0x9f,0xb6,0
 #ifndef D2D_USE_C_DEFINITIONS
 
 interface ID2D1Bitmap : public ID2D1Image {
+#ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
     STDMETHOD_(D2D1_SIZE_F, GetSize)(void) const PURE;
+#else
+    virtual D2D1_SIZE_F* STDMETHODCALLTYPE GetSize(D2D1_SIZE_F*) const = 0;
+    D2D1_SIZE_F STDMETHODCALLTYPE GetSize() const {
+        D2D1_SIZE_F __ret;
+        GetSize(&__ret);
+        return __ret;
+    }
+#endif
+
+#ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
     STDMETHOD_(D2D1_SIZE_U, GetPixelSize)(void) const PURE;
+#else
+    virtual D2D1_SIZE_U* STDMETHODCALLTYPE GetPixelSize(D2D1_SIZE_U*) const = 0;
+    D2D1_SIZE_U STDMETHODCALLTYPE GetPixelSize() const {
+        D2D1_SIZE_U __ret;
+        GetPixelSize(&__ret);
+        return __ret;
+    }
+#endif
+
+#ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
     STDMETHOD_(D2D1_PIXEL_FORMAT, GetPixelFormat)(void) const PURE;
+#else
+    virtual D2D1_PIXEL_FORMAT* STDMETHODCALLTYPE GetPixelFormat(D2D1_PIXEL_FORMAT*) const = 0;
+    D2D1_PIXEL_FORMAT STDMETHODCALLTYPE GetPixelFormat() const {
+        D2D1_PIXEL_FORMAT __ret;
+        GetPixelFormat(&__ret);
+        return __ret;
+    }
+#endif
+
     STDMETHOD_(void, GetDpi)(FLOAT *dpiX, FLOAT *dpiY) const PURE;
     STDMETHOD(CopyFromBitmap)(const D2D1_POINT_2U *destPoint, ID2D1Bitmap *bitmap, const D2D1_RECT_U *srcRect) PURE;
     STDMETHOD(CopyFromRenderTarget)(const D2D1_POINT_2U *destPoint, ID2D1RenderTarget *renderTarget, const D2D1_RECT_U *srcRect) PURE;
@@ -809,11 +744,43 @@ interface ID2D1RenderTarget : public ID2D1Resource {
     STDMETHOD_(void, Clear)(const D2D1_COLOR_F *clearColor = NULL) PURE;
     STDMETHOD_(void, BeginDraw)(void) PURE;
     STDMETHOD(EndDraw)(D2D1_TAG *tag1 = NULL, D2D1_TAG *tag2 = NULL) PURE;
+
+#ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
     STDMETHOD_(D2D1_PIXEL_FORMAT, GetPixelFormat)(void) const PURE;
+#else
+    virtual D2D1_PIXEL_FORMAT* STDMETHODCALLTYPE GetPixelFormat(D2D1_PIXEL_FORMAT*) const = 0;
+    D2D1_PIXEL_FORMAT STDMETHODCALLTYPE GetPixelFormat() const {
+        D2D1_PIXEL_FORMAT __ret;
+        GetPixelFormat(&__ret);
+        return __ret;
+    }
+#endif
+
     STDMETHOD_(void, SetDpi)(FLOAT dpiX, FLOAT dpiY) PURE;
     STDMETHOD_(void, GetDpi)(FLOAT *dpiX, FLOAT *dpiY) const PURE;
+
+#ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
     STDMETHOD_(D2D1_SIZE_F, GetSize)(void) const PURE;
+#else
+    virtual D2D1_SIZE_F* STDMETHODCALLTYPE GetSize(D2D1_SIZE_F*) const = 0;
+    D2D1_SIZE_F STDMETHODCALLTYPE GetSize() const {
+        D2D1_SIZE_F __ret;
+        GetSize(&__ret);
+        return __ret;
+    }
+#endif
+
+#ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
     STDMETHOD_(D2D1_SIZE_U, GetPixelSize)(void) const PURE;
+#else
+    virtual D2D1_SIZE_U* STDMETHODCALLTYPE GetPixelSize(D2D1_SIZE_U*) const = 0;
+    D2D1_SIZE_U STDMETHODCALLTYPE GetPixelSize() const {
+        D2D1_SIZE_U __ret;
+        GetPixelSize(&__ret);
+        return __ret;
+    }
+#endif
+
     STDMETHOD_(UINT32, GetMaximumBitmapSize)(void) const PURE;
     STDMETHOD_(BOOL, IsSupported)(const D2D1_RENDER_TARGET_PROPERTIES *renderTargetProperties) const PURE;
 
@@ -1962,7 +1929,16 @@ DEFINE_GUID(IID_ID2D1Layer, 0x2cd9069b,0x12e2,0x11dc,0x9f,0xed,0x00,0x11,0x43,0x
 #ifndef D2D_USE_C_DEFINITIONS
 
 interface ID2D1Layer : public ID2D1Resource {
+#ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
     STDMETHOD_(D2D1_SIZE_F, GetSize)(void) const PURE;
+#else
+    virtual D2D1_SIZE_F* STDMETHODCALLTYPE GetSize(D2D1_SIZE_F*) const = 0;
+    D2D1_SIZE_F STDMETHODCALLTYPE GetSize() const {
+        D2D1_SIZE_F __ret;
+        GetSize(&__ret);
+        return __ret;
+    }
+#endif
 };
 
 #else
@@ -1992,8 +1968,29 @@ DEFINE_GUID(IID_ID2D1LinearGradientBrush, 0x2cd906ab,0x12e2,0x11dc,0x9f,0xed,0x0
 interface ID2D1LinearGradientBrush : public ID2D1Brush {
     STDMETHOD_(void, SetStartPoint)(D2D1_POINT_2F startPoint) PURE;
     STDMETHOD_(void, SetEndPoint)(D2D1_POINT_2F endPoint) PURE;
+
+#ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
     STDMETHOD_(D2D1_POINT_2F, GetStartPoint)(void) const PURE;
+#else
+    virtual D2D1_POINT_2F* STDMETHODCALLTYPE GetStartPoint(D2D1_POINT_2F*) const = 0;
+    D2D1_POINT_2F STDMETHODCALLTYPE GetStartPoint() const {
+        D2D1_POINT_2F __ret;
+        GetStartPoint(&__ret);
+        return __ret;
+    }
+#endif
+
+#ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
     STDMETHOD_(D2D1_POINT_2F, GetEndPoint)(void) const PURE;
+#else
+    virtual D2D1_POINT_2F* STDMETHODCALLTYPE GetEndPoint(D2D1_POINT_2F*) const = 0;
+    D2D1_POINT_2F STDMETHODCALLTYPE GetEndPoint() const {
+        D2D1_POINT_2F __ret;
+        GetEndPoint(&__ret);
+        return __ret;
+    }
+#endif
+
     STDMETHOD_(void, GetGradientStopCollection)(ID2D1GradientStopCollection **gradientStopCollection) const PURE;
 };
 
@@ -2116,8 +2113,31 @@ interface ID2D1RadialGradientBrush : public ID2D1Brush {
     STDMETHOD_(void, SetGradientOriginOffset)(D2D1_POINT_2F gradientOriginOffset) PURE;
     STDMETHOD_(void, SetRadiusX)(FLOAT radiusX) PURE;
     STDMETHOD_(void, SetRadiusY)(FLOAT radiusY) PURE;
+
+#ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
     STDMETHOD_(D2D1_POINT_2F, GetCenter)(void) const PURE;
+#else
+    virtual D2D1_POINT_2F* STDMETHODCALLTYPE GetCenter(D2D1_POINT_2F *__ret) const = 0;
+    D2D1_POINT_2F STDMETHODCALLTYPE GetCenter() const
+    {
+        D2D1_POINT_2F __ret;
+        GetCenter(&__ret);
+        return __ret;
+    }
+#endif
+
+#ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
     STDMETHOD_(D2D1_POINT_2F, GetGradientOriginOffset)(void) const PURE;
+#else
+    virtual D2D1_POINT_2F* STDMETHODCALLTYPE GetGradientOriginOffset(D2D1_POINT_2F *__ret) const = 0;
+    D2D1_POINT_2F STDMETHODCALLTYPE GetGradientOriginOffset() const
+    {
+        D2D1_POINT_2F __ret;
+        GetGradientOriginOffset(&__ret);
+        return __ret;
+    }
+#endif
+
     STDMETHOD_(FLOAT, GetRadiusX)(void) const PURE;
     STDMETHOD_(FLOAT, GetRadiusY)(void) const PURE;
     STDMETHOD_(void, GetGradientStopCollection)(ID2D1GradientStopCollection **gradientStopCollection) const PURE;
@@ -2251,7 +2271,17 @@ DEFINE_GUID(IID_ID2D1SolidColorBrush, 0x2cd906a9,0x12e2,0x11dc,0x9f,0xed,0x00,0x
 
 interface ID2D1SolidColorBrush : public ID2D1Brush {
     STDMETHOD_(void, SetColor)(const D2D1_COLOR_F *color) PURE;
+
+#ifndef WIDL_EXPLICIT_AGGREGATE_RETURNS
     STDMETHOD_(D2D1_COLOR_F, GetColor)(void) const PURE;
+#else
+    virtual D2D1_COLOR_F* STDMETHODCALLTYPE GetColor(D2D1_COLOR_F*) const = 0;
+    D2D1_COLOR_F STDMETHODCALLTYPE GetColor() const {
+        D2D1_COLOR_F __ret;
+        GetColor(&__ret);
+        return __ret;
+    }
+#endif
 
     void SetColor(const D2D1_COLOR_F &color) {
         SetColor(&color);

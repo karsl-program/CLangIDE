@@ -45,7 +45,11 @@ enum AutomationIdentifierType
     AutomationIdentifierType_Pattern,
     AutomationIdentifierType_Event,
     AutomationIdentifierType_ControlType,
-    AutomationIdentifierType_TextAttribute
+    AutomationIdentifierType_TextAttribute,
+    AutomationIdentifierType_LandmarkType,
+    AutomationIdentifierType_Annotation,
+    AutomationIdentifierType_Changes,
+    AutomationIdentifierType_Style
 };
 
 HRESULT WINAPI UiaGetReservedMixedAttributeValue(IUnknown **value);
@@ -55,6 +59,7 @@ WINBOOL WINAPI UiaPatternRelease(HUIAPATTERNOBJECT hobj);
 HRESULT WINAPI UiaRaiseAutomationEvent(IRawElementProviderSimple *provider, EVENTID id);
 LRESULT WINAPI UiaReturnRawElementProvider(HWND hwnd, WPARAM wParam, LPARAM lParam, IRawElementProviderSimple *elprov);
 WINBOOL WINAPI UiaTextRangeRelease(HUIATEXTRANGE hobj);
+HRESULT WINAPI UiaHostProviderFromHwnd(HWND hwnd, IRawElementProviderSimple **elprov);
 
 #ifdef __cplusplus
 }

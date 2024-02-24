@@ -24,7 +24,7 @@
     || (defined(__clang__) && defined(__clang_major__))
 #if (__GNUC__ < 4  || (__GNUC__ == 4 && __GNUC_MINOR__ < 6)) \
     || (__clang_major__ >=3)
-#if !defined(_FLOAT_H___) && !defined(__FLOAT_H)
+#if !defined(_FLOAT_H___) && !defined(__FLOAT_H) && !defined(__CLANG_FLOAT_H)
 #include_next <float.h>
 #endif
 #elif !defined (_FLOAT_H___)
@@ -118,6 +118,13 @@
 	/* ??? This is supposed to change with calls to fesetround in <fenv.h>.  */
 	#undef FLT_ROUNDS
 	#define FLT_ROUNDS 1
+
+	#undef FLT_EPSILON
+	#undef DBL_EPSILON
+	#undef LDBL_EPSILON
+	#define FLT_EPSILON __FLT_EPSILON__
+	#define DBL_EPSILON __DBL_EPSILON__
+	#define LDBL_EPSILON __LDBL_EPSILON__
     
 	#define _FLOAT_H___
 #endif

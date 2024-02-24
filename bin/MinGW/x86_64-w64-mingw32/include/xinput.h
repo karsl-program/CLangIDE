@@ -110,14 +110,17 @@
  * which are being used.
  */
 
-#define XINPUT_DEVTYPE_GAMEPAD          0x01
-#define XINPUT_DEVSUBTYPE_GAMEPAD       0x01
-#define XINPUT_DEVSUBTYPE_WHEEL         0x02
-#define XINPUT_DEVSUBTYPE_ARCADE_STICK  0x03
-#define XINPUT_DEVSUBTYPE_FLIGHT_SICK   0x04
-#define XINPUT_DEVSUBTYPE_DANCE_PAD     0x05
-#define XINPUT_DEVSUBTYPE_GUITAR        0x06
-#define XINPUT_DEVSUBTYPE_DRUM_KIT      0x08
+#define XINPUT_DEVTYPE_GAMEPAD             0x01
+#define XINPUT_DEVSUBTYPE_GAMEPAD          0x01
+#define XINPUT_DEVSUBTYPE_WHEEL            0x02
+#define XINPUT_DEVSUBTYPE_ARCADE_STICK     0x03
+#define XINPUT_DEVSUBTYPE_FLIGHT_SICK      0x04
+#define XINPUT_DEVSUBTYPE_DANCE_PAD        0x05
+#define XINPUT_DEVSUBTYPE_GUITAR           0x06
+#define XINPUT_DEVSUBTYPE_GUITAR_ALTERNATE 0x07
+#define XINPUT_DEVSUBTYPE_DRUM_KIT         0x08
+#define XINPUT_DEVSUBTYPE_GUITAR_BASS      0x0b
+#define XINPUT_DEVSUBTYPE_ARCADE_PAD       0x13
 
 /*
  * These are used with the XInputGetCapabilities function to
@@ -157,6 +160,9 @@
 #define XUSER_INDEX_ANY                 0x000000FF
 
 #define XINPUT_CAPS_FFB_SUPPORTED       0x0001
+#define XINPUT_CAPS_WIRELESS            0x0002
+#define XINPUT_CAPS_PMD_SUPPORTED       0x0008
+#define XINPUT_CAPS_NO_NAVIGATION       0x0010
 
 /*
  * Defines the structure of an xbox 360 joystick.

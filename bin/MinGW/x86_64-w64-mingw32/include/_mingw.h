@@ -7,8 +7,6 @@
 #ifndef _INC__MINGW_H
 #define _INC__MINGW_H
 
-#define MINGW_HAS_SECURE_API 1
-
 #include "_mingw_mac.h"
 #include "_mingw_secapi.h"
 
@@ -88,8 +86,7 @@ limitations in handling dllimport attribute.  */
 #elif defined(_MSC_VER)
 # define __CRT_INLINE __inline
 #else
-# if ( __MINGW_GNUC_PREREQ(4, 3)  &&  __STDC_VERSION__ >= 199901L) \
-     || (defined (__clang__))
+# if ((__MINGW_GNUC_PREREQ(4, 3) || defined(__clang__)) && __STDC_VERSION__ >= 199901L)
 #  define __CRT_INLINE extern inline __attribute__((__gnu_inline__))
 # else
 #  define __CRT_INLINE extern __inline__
@@ -224,7 +221,11 @@ limitations in handling dllimport attribute.  */
 
 #ifndef __MSVCRT_VERSION__
 /*  High byte is the major version, low byte is the minor. */
-# define __MSVCRT_VERSION__ 0x700
+# ifndef _UCRT
+#  define __MSVCRT_VERSION__ 0x700
+# else
+#  define __MSVCRT_VERSION__ 0xE00
+# endif
 #endif
 
 
@@ -416,16 +417,26 @@ typedef int __int128 __attribute__ ((__mode__ (TI)));
 #endif
 
 /* We are activating __USE_MINGW_ANSI_STDIO for various define indicators.
-   Note that we enable it also for _GNU_SOURCE in C++, but not for C case. */
+ * printf ll modifier (unsupported by msvcrt.dll) is required by C99 and C++11 standards. */
 #if (defined (_POSIX) || defined (_POSIX_SOURCE) || defined (_POSIX_C_SOURCE) \
      || defined (_ISOC99_SOURCE) \
+     || (defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L && __MSVCRT_VERSION__ < 0xE00) \
+     || (defined (__cplusplus) && __cplusplus >= 201103L && __MSVCRT_VERSION__ < 0xE00) \
      || defined (_XOPEN_SOURCE) || defined (_XOPEN_SOURCE_EXTENDED) \
-     || (defined (_GNU_SOURCE) && defined (__cplusplus)) \
+     || defined (_GNU_SOURCE) \
      || defined (_SVID_SOURCE)) \
     && !defined(__USE_MINGW_ANSI_STDIO)
-/* Enable __USE_MINGW_ANSI_STDIO if _POSIX defined
- * and If user did _not_ specify it explicitly... */
+/* Enable __USE_MINGW_ANSI_STDIO if user did _not_ specify it explicitly... */
 #  define __USE_MINGW_ANSI_STDIO			1
+#endif
+
+/* We are defining __USE_MINGW_ANSI_STDIO as 0 or 1 */
+#if !defined(__USE_MINGW_ANSI_STDIO)
+#define __USE_MINGW_ANSI_STDIO 0      /* was not defined so it should be 0 */
+#elif (__USE_MINGW_ANSI_STDIO + 0) != 0 || (1 - __USE_MINGW_ANSI_STDIO - 1) == 2
+#define __USE_MINGW_ANSI_STDIO 1      /* was defined as nonzero or empty so it should be 1 */
+#else
+#define __USE_MINGW_ANSI_STDIO 0      /* was defined as (int)zero and non-empty so it should be 0 */
 #endif
 
 /* _dowildcard is an int that controls the globbing of the command line.
@@ -518,6 +529,22 @@ typedef int __int128 __attribute__ ((__mode__ (TI)));
 /* Macros for __uuidof template-based emulation */
 #if defined(__cplusplus) && (USE___UUIDOF == 0)
 
+#if __cpp_constexpr >= 200704l && __cpp_inline_variables >= 201606L
+#define __CRT_UUID_DECL(type,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8)    \
+    extern "C++" {                                               \
+    template<> struct __mingw_uuidof_s<type> {                   \
+        static constexpr IID __uuid_inst = {                     \
+            l,w1,w2, {b1,b2,b3,b4,b5,b6,b7,b8}                   \
+        };                                                       \
+    };                                                           \
+    template<> constexpr const GUID &__mingw_uuidof<type>() {    \
+        return __mingw_uuidof_s<type>::__uuid_inst;              \
+    }                                                            \
+    template<> constexpr const GUID &__mingw_uuidof<type*>() {   \
+        return  __mingw_uuidof_s<type>::__uuid_inst;             \
+    }                                                            \
+    }
+#else
 #define __CRT_UUID_DECL(type,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8)           \
     extern "C++" {                                                      \
     template<> inline const GUID &__mingw_uuidof<type>() {              \
@@ -528,6 +555,7 @@ typedef int __int128 __attribute__ ((__mode__ (TI)));
         return __mingw_uuidof<type>();                                  \
     }                                                                   \
     }
+#endif
 
 #define __uuidof(type) __mingw_uuidof<__typeof(type)>()
 
@@ -569,13 +597,15 @@ const char *__mingw_get_crt_info (void);
 #ifndef MINGW_SDK_INIT
 #define MINGW_SDK_INIT
 
-#ifdef MINGW_HAS_SECURE_API
-#define __STDC_SECURE_LIB__ 200411L
-#define __GOT_SECURE_LIB__ __STDC_SECURE_LIB__
+/* for backward compatibility */
+#ifndef MINGW_HAS_SECURE_API
+#define MINGW_HAS_SECURE_API 1
 #endif
 
+#define __STDC_SECURE_LIB__ 200411L
+#define __GOT_SECURE_LIB__ __STDC_SECURE_LIB__
+
 #ifndef __WIDL__
-#include "sdks/_mingw_directx.h"
 #include "sdks/_mingw_ddk.h"
 #endif
 

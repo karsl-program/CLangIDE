@@ -381,7 +381,7 @@ class TextEditor(QMainWindow):
     def about(self):
         ideversion = "1.1.1 2024.2 Release"
         QMessageBox.about(self, "关于CLangIDE",
-                                    f"Copyright (c) 2024 CLangIDE\n\nC/C++ Core: MinGW-w64\nCLangIDE version: {ideversion}\nCompile Core: GCC\nOpen Source: Github - Program-zoubg/CLangIDE\nOpen Source LICENSE: GPL v3\n\nThank you!")
+                                    f"Copyright (c) 2024 CLangIDE\n\nC/C++ Core: TDM-GCC 10.3.0\nCLangIDE version: {ideversion}\nCompile Core: GCC\nOpen Source: Github - Program-zoubg/CLangIDE\nOpen Source LICENSE: GPL v3\n\nThank you!")
 
     def compilesetshow(self):
         self.compile_window = CompileSetting()

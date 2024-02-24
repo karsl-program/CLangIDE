@@ -205,7 +205,9 @@ _CRTIMP char* __cdecl _getcwd (char*, int);
   _off64_t lseek64(int fd,_off64_t offset, int whence);
   _CRTIMP char *__cdecl _mktemp(char *_TemplateName) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
   _SECIMP errno_t __cdecl _mktemp_s (char *_TemplateName,size_t _Size);
+#ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
   _CRTIMP int __cdecl _pipe(int *_PtHandles,unsigned int _PipeSize,int _TextMode);
+#endif /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
   _CRTIMP int __cdecl _read(int _FileHandle,void *_DstBuf,unsigned int _MaxCharCount);
 
 #ifndef _CRT_DIRECTORY_DEFINED
@@ -256,8 +258,8 @@ _CRTIMP char* __cdecl _getcwd (char*, int);
   __CRT_INLINE int __cdecl _findnext64i32(intptr_t _FindHandle,struct _finddata64i32_t *_FindData)
   {
     struct __finddata64_t fd;
-    int ret = _findnext64(_FindHandle,&fd);
-    if (ret == -1) {
+    int __ret = _findnext64(_FindHandle,&fd);
+    if (__ret == -1) {
       memset(_FindData,0,sizeof(struct _finddata64i32_t));
       return -1;
     }
@@ -267,7 +269,7 @@ _CRTIMP char* __cdecl _getcwd (char*, int);
     _FindData->time_write=fd.time_write;
     _FindData->size=(_fsize_t) fd.size;
     strncpy(_FindData->name,fd.name,260);
-    return ret;
+    return __ret;
   }
 #endif /* __CRT__NO_INLINE */
   __MINGW_EXTENSION __int64 __cdecl _lseeki64(int _FileHandle,__int64 _Offset,int _Origin);
@@ -365,13 +367,122 @@ unsigned int alarm(unsigned int seconds);
 /*  Old versions of MSVCRT access() just ignored X_OK, while the version
     shipped with Vista, returns an error code.  This will restore the
     old behaviour  */
-static inline int __mingw_access (const char *__fname, int __mode) {
-  return  _access (__fname, __mode & ~X_OK);
-}
+int __cdecl __mingw_access (const char *__fname, int __mode);
 
 #define access(__f,__m)  __mingw_access (__f, __m)
 #endif
 
+#if __MINGW_FORTIFY_LEVEL > 0
+
+_CRTIMP int __cdecl __mingw_call__read(int, void *, unsigned int) __MINGW_ASM_CRT_CALL(_read);
+
+__mingw_bos_extern_ovr
+int _read(int __fh, void * __dst, unsigned int __n)
+{
+  __mingw_bos_ptr_chk_warn(__dst, __n, 0);
+  return __mingw_call__read(__fh, __dst, __n);
+}
+
+#ifndef NO_OLDNAMES
+__mingw_bos_extern_ovr
+int read(int __fh, void * __dst, unsigned int __n)
+{
+  return _read(__fh, __dst, __n);
+}
+#endif
+
+#if __MINGW_FORTIFY_VA_ARG
+
+#define _O_CREAT 0x0100
+
+_CRTIMP int __cdecl __mingw_call__open(const char *, int, ...) __MINGW_ASM_CRT_CALL(_open);
+_CRTIMP int __cdecl __mingw_call__open_warn_toomany(const char *, int, ...) __MINGW_ASM_CRT_CALL(_open)
+  __attribute__((__warning__("_open(): too many arguments")));
+_CRTIMP int __cdecl __mingw_call__open_warn_missing(const char *, int, ...) __MINGW_ASM_CRT_CALL(_open)
+  __attribute__((__warning__("_open(..._O_CREAT...): missing argument")));
+
+__mingw_bos_extern_ovr
+int _open(const char * __filename, int __flags, ...)
+{
+  if (__builtin_va_arg_pack_len() > 1)
+    return __mingw_call__open_warn_toomany(__filename, __flags, __builtin_va_arg_pack());
+  if (__builtin_va_arg_pack_len() < 1 && __builtin_constant_p(__flags) && (__flags & _O_CREAT))
+    return __mingw_call__open_warn_missing(__filename, __flags, 0);
+  if (__builtin_va_arg_pack_len() < 1)
+    return __mingw_call__open(__filename, __flags, 0);
+  return __mingw_call__open(__filename, __flags, __builtin_va_arg_pack());
+}
+
+_CRTIMP int __cdecl __mingw_call__sopen(const char *, int, int, ...) __MINGW_ASM_CRT_CALL(_sopen);
+_CRTIMP int __cdecl __mingw_call__sopen_warn_toomany(const char *, int, int, ...) __MINGW_ASM_CRT_CALL(_sopen)
+  __attribute__((__warning__("_sopen(): too many arguments")));
+_CRTIMP int __cdecl __mingw_call__sopen_warn_missing(const char *, int, int, ...) __MINGW_ASM_CRT_CALL(_sopen)
+  __attribute__((__warning__("_sopen(..._O_CREAT...): missing argument")));
+
+__mingw_bos_extern_ovr
+int _sopen(const char * __filename, int __flags, int __share, ...)
+{
+  if (__builtin_va_arg_pack_len() > 1)
+    return __mingw_call__sopen_warn_toomany(__filename, __flags, __share, __builtin_va_arg_pack());
+  if (__builtin_va_arg_pack_len() < 1 && __builtin_constant_p(__flags) && (__flags & _O_CREAT))
+    return __mingw_call__sopen_warn_missing(__filename, __flags, __share, 0);
+  if (__builtin_va_arg_pack_len() < 1)
+    return __mingw_call__sopen(__filename, __flags, __share, 0);
+  return __mingw_call__sopen(__filename, __flags, __share, __builtin_va_arg_pack());
+}
+
+_CRTIMP int __cdecl __mingw_call__wopen(const wchar_t *, int, ...) __MINGW_ASM_CRT_CALL(_wopen);
+_CRTIMP int __cdecl __mingw_call__wopen_warn_toomany(const wchar_t *, int, ...) __MINGW_ASM_CRT_CALL(_wopen)
+  __attribute__((__warning__("_wopen(): too many arguments")));
+_CRTIMP int __cdecl __mingw_call__wopen_warn_missing(const wchar_t *, int, ...) __MINGW_ASM_CRT_CALL(_wopen)
+  __attribute__((__warning__("_wopen(..._O_CREAT...): missing argument")));
+
+__mingw_bos_extern_ovr
+int _wopen(const wchar_t * __filename, int __flags, ...)
+{
+  if (__builtin_va_arg_pack_len() > 1)
+    return __mingw_call__wopen_warn_toomany(__filename, __flags, __builtin_va_arg_pack());
+  if (__builtin_va_arg_pack_len() < 1 && __builtin_constant_p(__flags) && (__flags & _O_CREAT))
+    return __mingw_call__wopen_warn_missing(__filename, __flags, 0);
+  if (__builtin_va_arg_pack_len() < 1)
+    return __mingw_call__wopen(__filename, __flags, 0);
+  return __mingw_call__wopen(__filename, __flags, __builtin_va_arg_pack());
+}
+
+_CRTIMP int __cdecl __mingw_call__wsopen(const wchar_t *, int, int, ...) __MINGW_ASM_CRT_CALL(_wsopen);
+_CRTIMP int __cdecl __mingw_call__wsopen_warn_toomany(const wchar_t *, int, int, ...) __MINGW_ASM_CRT_CALL(_wsopen)
+  __attribute__((__warning__("_wsopen(): too many arguments")));
+_CRTIMP int __cdecl __mingw_call__wsopen_warn_missing(const wchar_t *, int, int, ...) __MINGW_ASM_CRT_CALL(_wsopen)
+  __attribute__((__warning__("_wsopen(..._O_CREAT...): missing argument")));
+
+__mingw_bos_extern_ovr
+int _wsopen(const wchar_t * __filename, int __flags, int __share, ...)
+{
+  if (__builtin_va_arg_pack_len() > 1)
+    return __mingw_call__wsopen_warn_toomany(__filename, __flags, __share, __builtin_va_arg_pack());
+  if (__builtin_va_arg_pack_len() < 1 && __builtin_constant_p(__flags) && (__flags & _O_CREAT))
+    return __mingw_call__wsopen_warn_missing(__filename, __flags, __share, 0);
+  if (__builtin_va_arg_pack_len() < 1)
+    return __mingw_call__wsopen(__filename, __flags, __share, 0);
+  return __mingw_call__wsopen(__filename, __flags, __share, __builtin_va_arg_pack());
+}
+
+#ifndef NO_OLDNAMES
+__mingw_bos_extern_ovr
+int open(const char * __filename, int __flags, ...)
+{
+  return _open(__filename, __flags, __builtin_va_arg_pack());
+}
+
+__mingw_bos_extern_ovr
+int sopen(const char * __filename, int __flags, int __share, ...)
+{
+  return _sopen(__filename, __flags, __share, __builtin_va_arg_pack());
+}
+#endif
+
+#endif /* __MINGW_FORTIFY_VA_ARG */
+#endif /* __MINGW_FORTIFY_LEVEL > 0 */
 
 #ifdef __cplusplus
 }

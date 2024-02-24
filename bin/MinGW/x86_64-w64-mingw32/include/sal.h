@@ -7,6 +7,8 @@
 #ifndef SAL_HXX
 #define SAL_HXX
 
+#include <concurrencysal.h>
+
 #ifdef __GNUC__
 #  define __inner_checkReturn __attribute__((warn_unused_result))
 #elif defined(_MSC_VER)
@@ -17,94 +19,105 @@
 
 #define __checkReturn __inner_checkReturn
 
-/* Pointer parameters */
+/* Input parameters */
 #define _In_
-#define _Out_
-#define _Inout_
-#define _In_z_
-#define _Inout_z_
-#define _In_reads_(s)
-#define _In_reads_bytes_(s)
-#define _In_reads_z_(s)
-#define _In_reads_or_z_(s)
-#define _Out_writes_(s)
-#define _Out_writes_bytes_(s)
-#define _Out_writes_z_(s)
-#define _Inout_updates_(s)
-#define _Inout_updates_bytes_(s)
-#define _Inout_updates_z_(s)
-#define _Out_writes_to_(s,c)
-#define _Out_writes_bytes_to_(s, c)
-#define _Out_writes_all_(s)
-#define _Out_writes_bytes_all_(s)
-#define _Inout_updates_to_(s, c)
-#define _Inout_updates_bytes_to_(s, c)
-#define _Inout_updates_all_(s)
-#define _Inout_updates_bytes_all_(s)
-#define _In_reads_to_ptr_(p)
-#define _In_reads_to_ptr_z_(p)
-#define _Out_writes_to_ptr_(p)
-#define _Out_writes_to_ptr_z(p)
-
-/* Optional pointer parameters */
-#define __in_opt
-#define __out_opt
-#define __inout_opt
 #define _In_opt_
-#define _Out_opt_
-#define _Inout_opt_
+#define _In_z_
 #define _In_opt_z_
-#define _Inout_opt_z_
+#define _In_reads_(s)
 #define _In_reads_opt_(s)
+#define _In_reads_bytes_(s)
 #define _In_reads_bytes_opt_(s)
+#define _In_reads_z_(s)
 #define _In_reads_opt_z_(s)
-
-#define _Out_writes_opt_(s)
-#define _Out_writes_opt_z_(s)
-#define _Inout_updates_opt_(s)
-#define _Inout_updates_bytes_opt_(s)
-#define _Inout_updates_opt_z_(s)
-#define _Out_writes_to_opt_(s, c)
-#define _Out_writes_bytes_to_opt_(s, c)
-#define _Out_writes_all_opt_(s)
-#define _Out_writes_bytes_all_opt_(s)
-
-#define _Inout_updates_to_opt_(s, c)
-#define _Inout_updates_bytes_to_opt_(s, c)
-#define _Inout_updates_all_opt_(s)
-#define _Inout_updates_bytes_all_opt_(s)
+#define _In_reads_or_z_(s)
+#define _In_reads_or_z_opt_(s)
+#define _In_reads_to_ptr_(p)
 #define _In_reads_to_ptr_opt_(p)
+#define _In_reads_to_ptr_z_(p)
 #define _In_reads_to_ptr_opt_z_(p)
+
+/* Output parameters */
+#define _Out_
+#define _Out_opt_
+#define _Out_writes_(s)
+#define _Out_writes_opt_(s)
+#define _Out_writes_bytes_(s)
+#define _Out_writes_bytes_opt_(s)
+#define _Out_writes_z_(s)
+#define _Out_writes_opt_z_(s)
+#define _Out_writes_to_(s, c)
+#define _Out_writes_to_opt_(s, c)
+#define _Out_writes_all_(s)
+#define _Out_writes_all_opt_(s)
+#define _Out_writes_bytes_to_(s, c)
+#define _Out_writes_bytes_to_opt_(s, c)
+#define _Out_writes_bytes_all_(s)
+#define _Out_writes_bytes_all_opt_(s)
+#define _Out_writes_to_ptr_(p)
 #define _Out_writes_to_ptr_opt_(p)
+#define _Out_writes_to_ptr_z_(p)
 #define _Out_writes_to_ptr_opt_z_(p)
 
-/* Output pointer parameters */
+/* Inout parameters */
+#define _Inout_
+#define _Inout_opt_
+#define _Inout_z_
+#define _Inout_opt_z_
+#define _Inout_updates_(s)
+#define _Inout_updates_opt_(s)
+#define _Inout_updates_z_(s)
+#define _Inout_updates_opt_z_(s)
+#define _Inout_updates_to_(s, c)
+#define _Inout_updates_to_opt_(s, c)
+#define _Inout_updates_all_(s)
+#define _Inout_updates_all_opt_(s)
+#define _Inout_updates_bytes_(s)
+#define _Inout_updates_bytes_opt_(s)
+#define _Inout_updates_bytes_to_(s, c)
+#define _Inout_updates_bytes_to_opt_(s, c)
+#define _Inout_updates_bytes_all_(s)
+#define _Inout_updates_bytes_all_opt_(s)
+
+/* Pointer to pointer parameters */
 #define _Outptr_
-#define _Outptr_opt_
 #define _Outptr_result_maybenull_
+#define _Outptr_opt_
 #define _Outptr_opt_result_maybenull_
 #define _Outptr_result_z_
 #define _Outptr_opt_result_z_
 #define _Outptr_result_maybenull_z_
 #define _Outptr_opt_result_maybenull_z_
-#define _COM_Outptr_
-#define _COM_Outptr_opt_
-#define _COM_Outptr_result_maybenull_
-#define _COM_Outptr_opt_result_maybenull_
-#define _Outptr_result_buffer_(s)
-#define _Outptr_result_bytebuffer_(s)
-#define _Outptr_opt_result_buffer_(s)
-#define _Outptr_opt_result_bytebuffer_(s)
-#define _Outptr_result_buffer_to_(s, c)
-#define _Outptr_result_bytebuffer_to_(s, c)
-#define _Outptr_result_bytebuffer_maybenull_(s)
-#define _Outptr_opt_result_buffer_to_(s, c)
-#define _Outptr_opt_result_bytebuffer_to_(s, c)
-#define _Result_nullonfailure_
-#define _Result_zeroonfailure_
 #define _Outptr_result_nullonfailure_
 #define _Outptr_opt_result_nullonfailure_
-#define _Outref_result_nullonfailure_
+#define _COM_Outptr_
+#define _COM_Outptr_result_maybenull_
+#define _COM_Outptr_opt_
+#define _COM_Outptr_opt_result_maybenull_
+#define _Outptr_result_buffer_(s)
+#define _Outptr_opt_result_buffer_(s)
+#define _Outptr_result_buffer_to_(s, c)
+#define _Outptr_opt_result_buffer_to_(s, c)
+#define _Outptr_result_buffer_all_(s)
+#define _Outptr_opt_result_buffer_all_(s)
+#define _Outptr_result_buffer_maybenull_(s)
+#define _Outptr_opt_result_buffer_maybenull_(s)
+#define _Outptr_result_buffer_to_maybenull_(s, c)
+#define _Outptr_opt_result_buffer_to_maybenull_(s, c)
+#define _Outptr_result_buffer_all_maybenull_(s)
+#define _Outptr_opt_result_buffer_all_maybenull_(s)
+#define _Outptr_result_bytebuffer_(s)
+#define _Outptr_opt_result_bytebuffer_(s)
+#define _Outptr_result_bytebuffer_to_(s, c)
+#define _Outptr_opt_result_bytebuffer_to_(s, c)
+#define _Outptr_result_bytebuffer_all_(s)
+#define _Outptr_opt_result_bytebuffer_all_(s)
+#define _Outptr_result_bytebuffer_maybenull_(s)
+#define _Outptr_opt_result_bytebuffer_maybenull_(s)
+#define _Outptr_result_bytebuffer_to_maybenull_(s, c)
+#define _Outptr_opt_result_bytebuffer_to_maybenull_(s, c)
+#define _Outptr_result_bytebuffer_all_maybenull_(s)
+#define _Outptr_opt_result_bytebuffer_all_maybenull_(s)
 
 /* Output reference parameters */
 #define _Outref_
@@ -121,23 +134,37 @@
 #define _Outref_result_bytebuffer_to_maybenull_(s, c)
 #define _Outref_result_buffer_all_maybenull_(s)
 #define _Outref_result_bytebuffer_all_maybenull_(s)
+#define _Outref_result_nullonfailure_
+#define _Result_nullonfailure_
+#define _Result_zeroonfailure_
 
 /* Return values */
 #define _Ret_z_
-#define _Ret_writes_(s)
-#define _Ret_writes_bytes_(s)
-#define _Ret_writes_z_(s)
-#define _Ret_writes_bytes_to_(s, c)
-#define _Ret_writes_maybenull_(s)
-#define _Ret_writes_to_maybenull_(s, c)
-#define _Ret_writes_maybenull_z_(s)
-#define _Ret_maybenull_
 #define _Ret_maybenull_z_
-#define _Ret_null_
 #define _Ret_notnull_
-#define _Ret_writes_bytes_to_(s, c)
+#define _Ret_maybenull_
+#define _Ret_null_
+#define _Ret_valid_
+#define _Ret_writes_(s)
+#define _Ret_writes_z_(s)
+#define _Ret_writes_bytes_(s)
+#define _Ret_writes_maybenull_(s)
+#define _Ret_writes_maybenull_z_(s)
 #define _Ret_writes_bytes_maybenull_(s)
+#define _Ret_writes_to_(s, c)
+#define _Ret_writes_bytes_to_(s, c)
+#define _Ret_writes_to_maybenull_(s, c)
 #define _Ret_writes_bytes_to_maybenull_(s, c)
+#define _Points_to_data_
+#define _Literal_
+#define _Notliteral_
+#define _Deref_ret_range_(l,u)
+#define _Unchanged_(e)
+
+/* Optional pointer parameters */
+#define __in_opt
+#define __out_opt
+#define __inout_opt
 
 /* Other common annotations */
 #define _In_range_(low, hi)
@@ -146,8 +173,6 @@
 #define _Deref_in_range_(low, hi)
 #define _Deref_out_range_(low, hi)
 #define _Deref_inout_range_(low, hi)
-#define _Pre_equal_to_(expr)
-#define _Post_equal_to_(expr)
 #define _Struct_size_bytes_(size)
 
 /* Function annotations */
@@ -175,14 +200,6 @@
 #define _Writable_elements_(s)
 #define _Null_terminated_
 #define _NullNull_terminated_
-#define _Pre_readable_size_(s)
-#define _Pre_writable_size_(s)
-#define _Pre_readable_byte_size_(s)
-#define _Pre_writable_byte_size_(s)
-#define _Post_readable_size_(s)
-#define _Post_writable_size_(s)
-#define _Post_readable_byte_size_(s)
-#define _Post_writable_byte_size_(s)
 
 /* Field properties */
 #define _Field_size_(s)
@@ -216,8 +233,27 @@
 #define _Scanf_s_format_string_params_(x)
 
 /* Analysis */
+#define _Analysis_mode_(x)
 #define _Analysis_assume_(expr)
 #define _Analysis_assume_nullterminated_(expr)
+
+#define _Post_
+#define _Post_equal_to_(expr)
+#define _Post_readable_byte_size_(s)
+#define _Post_readable_size_(s)
+#define _Post_satisfies_(c)
+#define _Post_writable_byte_size_(s)
+#define _Post_writable_size_(s)
+
+#define _Pre_equal_to_(expr)
+#define _Pre_notnull_
+#define _Pre_readable_byte_size_(s)
+#define _Pre_readable_size_(s)
+#define _Pre_satisfies_(c)
+#define _Pre_writable_byte_size_(s)
+#define _Pre_writable_size_(s)
+
+#define _Strict_type_match_
 
 /* FIXME: __in macro conflicts with argument names in libstdc++. For this reason,
  * we disable it for C++. This should be fixed in libstdc++ so we can uncomment
@@ -227,16 +263,51 @@
 #define __out
 #endif
 
+#define __bcount(size)
+#define __ecount(size)
+
 #define __in_bcount(size)
+#define __in_bcount_nz(size)
+#define __in_bcount_z(size)
 #define __in_ecount(size)
+#define __in_ecount_nz(size)
+#define __in_ecount_z(size)
 
 #define __out_bcount(size)
+#define __out_bcount_nz(size)
+#define __out_bcount_z(size)
+#define __out_bcount_full(size)
+#define __out_bcount_full_z(size)
 #define __out_bcount_part(size, length)
+#define __out_bcount_part_z(size, length)
 #define __out_ecount(size)
+#define __out_ecount_nz(size)
+#define __out_ecount_z(size)
+#define __out_ecount_full(size)
+#define __out_ecount_full_z(size)
+#define __out_ecount_part(size, length)
+#define __out_ecount_part_z(size, length)
 
 #define __inout
+#define __inout_bcount(size)
+#define __inout_bcount_nz(size)
+#define __inout_bcount_z(size)
+#define __inout_bcount_full(size)
+#define __inout_bcount_part(size, length)
+#define __inout_ecount(size)
+#define __inout_ecount_nz(size)
+#define __inout_ecount_z(size)
+#define __inout_ecount_full(size)
+#define __inout_ecount_part(size, length)
 
+#define __deref
+#define __deref_opt_out
+#define __deref_opt_out_bcount(x)
+#define __deref_out
 #define __deref_out_ecount(size)
+#define __deref_out_opt
+
+#define __range(x,y)
 
 #endif
 

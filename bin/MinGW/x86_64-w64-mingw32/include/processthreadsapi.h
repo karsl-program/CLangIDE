@@ -20,18 +20,34 @@ extern "C" {
 
 #define TLS_OUT_OF_INDEXES ((DWORD)0xffffffff)
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || defined(WINSTORECOMPAT)
-WINBASEAPI WINBOOL WINAPI TerminateProcess (HANDLE hProcess, UINT uExitCode);
+#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP) || _WIN32_WINNT >= _WIN32_WINNT_WIN10
+  WINBASEAPI HANDLE WINAPI OpenProcess (DWORD dwDesiredAccess, WINBOOL bInheritHandle, DWORD dwProcessId);
+
+  WINBASEAPI DWORD WINAPI QueueUserAPC (PAPCFUNC pfnAPC, HANDLE hThread, ULONG_PTR dwData);
+  WINBASEAPI WINBOOL WINAPI GetProcessTimes (HANDLE hProcess, LPFILETIME lpCreationTime, LPFILETIME lpExitTime, LPFILETIME lpKernelTime, LPFILETIME lpUserTime);
+  WINBASEAPI DECLSPEC_NORETURN VOID WINAPI ExitProcess (UINT uExitCode);
+  WINBASEAPI WINBOOL WINAPI GetExitCodeProcess (HANDLE hProcess, LPDWORD lpExitCode);
+  WINBASEAPI WINBOOL WINAPI SwitchToThread (VOID);
+  WINBASEAPI HANDLE WINAPI OpenThread (DWORD dwDesiredAccess, WINBOOL bInheritHandle, DWORD dwThreadId);
+  WINBASEAPI WINBOOL WINAPI SetThreadPriorityBoost (HANDLE hThread, WINBOOL bDisablePriorityBoost);
+  WINBASEAPI WINBOOL WINAPI GetThreadPriorityBoost (HANDLE hThread, PBOOL pDisablePriorityBoost);
+  WINADVAPI WINBOOL APIENTRY SetThreadToken (PHANDLE Thread, HANDLE Token);
+  WINADVAPI WINBOOL WINAPI OpenProcessToken (HANDLE ProcessHandle, DWORD DesiredAccess, PHANDLE TokenHandle);
+  WINADVAPI WINBOOL WINAPI OpenThreadToken (HANDLE ThreadHandle, DWORD DesiredAccess, WINBOOL OpenAsSelf, PHANDLE TokenHandle);
+  WINBASEAPI WINBOOL WINAPI SetPriorityClass (HANDLE hProcess, DWORD dwPriorityClass);
+  WINBASEAPI DWORD WINAPI GetPriorityClass (HANDLE hProcess);
+  WINBASEAPI DWORD WINAPI GetProcessId (HANDLE Process);
+  WINBASEAPI DWORD WINAPI GetThreadId (HANDLE Thread);
+  WINBASEAPI WINBOOL WINAPI GetThreadContext (HANDLE hThread, LPCONTEXT lpContext);
+  WINBASEAPI WINBOOL WINAPI FlushInstructionCache (HANDLE hProcess, LPCVOID lpBaseAddress, SIZE_T dwSize);
+  WINBASEAPI WINBOOL WINAPI GetThreadTimes (HANDLE hThread, LPFILETIME lpCreationTime, LPFILETIME lpExitTime, LPFILETIME lpKernelTime, LPFILETIME lpUserTime);
+  WINBASEAPI DWORD WINAPI GetCurrentProcessorNumber (VOID);
+
 #endif
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
 
-  typedef struct _PROCESS_INFORMATION {
-    HANDLE hProcess;
-    HANDLE hThread;
-    DWORD dwProcessId;
-    DWORD dwThreadId;
-  } PROCESS_INFORMATION, *PPROCESS_INFORMATION, *LPPROCESS_INFORMATION;
-
+#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP)
+  WINBASEAPI WINBOOL WINAPI TerminateProcess (HANDLE hProcess, UINT uExitCode);
+  
   typedef struct _STARTUPINFOA {
     DWORD cb;
     LPSTR lpReserved;
@@ -77,47 +93,31 @@ WINBASEAPI WINBOOL WINAPI TerminateProcess (HANDLE hProcess, UINT uExitCode);
   __MINGW_TYPEDEF_AW(STARTUPINFO)
   __MINGW_TYPEDEF_AW(LPSTARTUPINFO)
 
+  typedef struct _PROCESS_INFORMATION {
+    HANDLE hProcess;
+    HANDLE hThread;
+    DWORD dwProcessId;
+    DWORD dwThreadId;
+  } PROCESS_INFORMATION, *PPROCESS_INFORMATION, *LPPROCESS_INFORMATION;
+#endif
+
+#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
+
   typedef struct _PROC_THREAD_ATTRIBUTE_LIST *PPROC_THREAD_ATTRIBUTE_LIST, *LPPROC_THREAD_ATTRIBUTE_LIST;
 
-  WINBASEAPI DWORD WINAPI QueueUserAPC (PAPCFUNC pfnAPC, HANDLE hThread, ULONG_PTR dwData);
-  WINBASEAPI WINBOOL WINAPI GetProcessTimes (HANDLE hProcess, LPFILETIME lpCreationTime, LPFILETIME lpExitTime, LPFILETIME lpKernelTime, LPFILETIME lpUserTime);
-  WINBASEAPI DECLSPEC_NORETURN VOID WINAPI ExitProcess (UINT uExitCode);
-  WINBASEAPI WINBOOL WINAPI GetExitCodeProcess (HANDLE hProcess, LPDWORD lpExitCode);
-  WINBASEAPI WINBOOL WINAPI SwitchToThread (VOID);
   WINBASEAPI HANDLE WINAPI CreateRemoteThread (HANDLE hProcess, LPSECURITY_ATTRIBUTES lpThreadAttributes, SIZE_T dwStackSize, LPTHREAD_START_ROUTINE lpStartAddress, LPVOID lpParameter, DWORD dwCreationFlags, LPDWORD lpThreadId);
-  WINBASEAPI HANDLE WINAPI OpenThread (DWORD dwDesiredAccess, WINBOOL bInheritHandle, DWORD dwThreadId);
-  WINBASEAPI WINBOOL WINAPI SetThreadPriorityBoost (HANDLE hThread, WINBOOL bDisablePriorityBoost);
-  WINBASEAPI WINBOOL WINAPI GetThreadPriorityBoost (HANDLE hThread, PBOOL pDisablePriorityBoost);
   WINBASEAPI WINBOOL WINAPI TerminateThread (HANDLE hThread, DWORD dwExitCode);
   WINBASEAPI WINBOOL WINAPI SetProcessShutdownParameters (DWORD dwLevel, DWORD dwFlags);
   WINBASEAPI DWORD WINAPI GetProcessVersion (DWORD ProcessId);
   WINBASEAPI VOID WINAPI GetStartupInfoW (LPSTARTUPINFOW lpStartupInfo);
-  WINADVAPI WINBOOL APIENTRY SetThreadToken (PHANDLE Thread, HANDLE Token);
-  WINADVAPI WINBOOL WINAPI OpenProcessToken (HANDLE ProcessHandle, DWORD DesiredAccess, PHANDLE TokenHandle);
-  WINADVAPI WINBOOL WINAPI OpenThreadToken (HANDLE ThreadHandle, DWORD DesiredAccess, WINBOOL OpenAsSelf, PHANDLE TokenHandle);
-  WINBASEAPI WINBOOL WINAPI SetPriorityClass (HANDLE hProcess, DWORD dwPriorityClass);
   WINBASEAPI WINBOOL WINAPI SetThreadStackGuarantee (PULONG StackSizeInBytes);
-  WINBASEAPI DWORD WINAPI GetPriorityClass (HANDLE hProcess);
   WINBASEAPI WINBOOL WINAPI ProcessIdToSessionId (DWORD dwProcessId, DWORD *pSessionId);
-  WINBASEAPI DWORD WINAPI GetProcessId (HANDLE Process);
-  WINBASEAPI DWORD WINAPI GetThreadId (HANDLE Thread);
   WINBASEAPI HANDLE WINAPI CreateRemoteThreadEx (HANDLE hProcess, LPSECURITY_ATTRIBUTES lpThreadAttributes, SIZE_T dwStackSize, LPTHREAD_START_ROUTINE lpStartAddress, LPVOID lpParameter, DWORD dwCreationFlags, LPPROC_THREAD_ATTRIBUTE_LIST lpAttributeList, LPDWORD lpThreadId);
-  WINBASEAPI WINBOOL WINAPI GetThreadContext (HANDLE hThread, LPCONTEXT lpContext);
   WINBASEAPI WINBOOL WINAPI SetThreadContext (HANDLE hThread, CONST CONTEXT *lpContext);
-  WINBASEAPI WINBOOL WINAPI FlushInstructionCache (HANDLE hProcess, LPCVOID lpBaseAddress, SIZE_T dwSize);
-  WINBASEAPI WINBOOL WINAPI GetThreadTimes (HANDLE hThread, LPFILETIME lpCreationTime, LPFILETIME lpExitTime, LPFILETIME lpKernelTime, LPFILETIME lpUserTime);
-  WINBASEAPI HANDLE WINAPI OpenProcess (DWORD dwDesiredAccess, WINBOOL bInheritHandle, DWORD dwProcessId);
   WINBASEAPI WINBOOL WINAPI GetProcessHandleCount (HANDLE hProcess, PDWORD pdwHandleCount);
-  WINBASEAPI DWORD WINAPI GetCurrentProcessorNumber (VOID);
 
 #ifdef UNICODE
 #define GetStartupInfo GetStartupInfoW
-#endif
-
-#ifndef _APISET_EXPORTS_FILTER
-  WINBASEAPI WINBOOL WINAPI CreateProcessA (LPCSTR lpApplicationName, LPSTR lpCommandLine, LPSECURITY_ATTRIBUTES lpProcessAttributes, LPSECURITY_ATTRIBUTES lpThreadAttributes, WINBOOL bInheritHandles, DWORD dwCreationFlags, LPVOID lpEnvironment, LPCSTR lpCurrentDirectory, LPSTARTUPINFOA lpStartupInfo, LPPROCESS_INFORMATION lpProcessInformation);
-  WINBASEAPI WINBOOL WINAPI CreateProcessW (LPCWSTR lpApplicationName, LPWSTR lpCommandLine, LPSECURITY_ATTRIBUTES lpProcessAttributes, LPSECURITY_ATTRIBUTES lpThreadAttributes, WINBOOL bInheritHandles, DWORD dwCreationFlags, LPVOID lpEnvironment, LPCWSTR lpCurrentDirectory, LPSTARTUPINFOW lpStartupInfo, LPPROCESS_INFORMATION lpProcessInformation);
-#define CreateProcess __MINGW_NAME_AW(CreateProcess)
 #endif
 
 #ifndef _APISET_EXPORTS_FILTER
@@ -139,19 +139,51 @@ WINBASEAPI WINBOOL WINAPI TerminateProcess (HANDLE hProcess, UINT uExitCode);
   WINBASEAPI WINBOOL WINAPI QueryProcessAffinityUpdateMode (HANDLE hProcess, LPDWORD lpdwFlags);
   WINBASEAPI WINBOOL WINAPI UpdateProcThreadAttribute (LPPROC_THREAD_ATTRIBUTE_LIST lpAttributeList, DWORD dwFlags, DWORD_PTR Attribute, PVOID lpValue, SIZE_T cbSize, PVOID lpPreviousValue, PSIZE_T lpReturnSize);
 #endif
-#if _WIN32_WINNT >= 0x0601
+#if _WIN32_WINNT >= 0x0602
+  WINBASEAPI WINBOOL WINAPI SetProcessMitigationPolicy (PROCESS_MITIGATION_POLICY MitigationPolicy, PVOID lpBuffer, SIZE_T dwLength);
+
+  FORCEINLINE HANDLE GetCurrentProcessToken (VOID)
+  {
+    return (HANDLE)(LONG_PTR) (-4);
+  }
+  FORCEINLINE HANDLE GetCurrentThreadToken (VOID)
+  {
+    return (HANDLE)(LONG_PTR) (-5);
+  }
+  FORCEINLINE HANDLE GetCurrentThreadEffectiveToken (VOID)
+  {
+    return (HANDLE)(LONG_PTR) (-6);
+  }
+
+  typedef struct _MEMORY_PRIORITY_INFORMATION {
+    ULONG MemoryPriority;
+  } MEMORY_PRIORITY_INFORMATION, *PMEMORY_PRIORITY_INFORMATION;
+#endif
+
+#define MEMORY_PRIORITY_VERY_LOW      1
+#define MEMORY_PRIORITY_LOW           2
+#define MEMORY_PRIORITY_MEDIUM        3
+#define MEMORY_PRIORITY_BELOW_NORMAL  4
+#define MEMORY_PRIORITY_NORMAL        5
+
+#endif
+
+#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP)
+#ifndef _APISET_EXPORTS_FILTER
+  WINBASEAPI WINBOOL WINAPI CreateProcessA (LPCSTR lpApplicationName, LPSTR lpCommandLine, LPSECURITY_ATTRIBUTES lpProcessAttributes, LPSECURITY_ATTRIBUTES lpThreadAttributes, WINBOOL bInheritHandles, DWORD dwCreationFlags, LPVOID lpEnvironment, LPCSTR lpCurrentDirectory, LPSTARTUPINFOA lpStartupInfo, LPPROCESS_INFORMATION lpProcessInformation);
+  WINBASEAPI WINBOOL WINAPI CreateProcessW (LPCWSTR lpApplicationName, LPWSTR lpCommandLine, LPSECURITY_ATTRIBUTES lpProcessAttributes, LPSECURITY_ATTRIBUTES lpThreadAttributes, WINBOOL bInheritHandles, DWORD dwCreationFlags, LPVOID lpEnvironment, LPCWSTR lpCurrentDirectory, LPSTARTUPINFOW lpStartupInfo, LPPROCESS_INFORMATION lpProcessInformation);
+#define CreateProcess __MINGW_NAME_AW(CreateProcess)
+
+  #if _WIN32_WINNT >= 0x0601
   WINBASEAPI WINBOOL WINAPI GetThreadIdealProcessorEx (HANDLE hThread, PPROCESSOR_NUMBER lpIdealProcessor);
   WINBASEAPI VOID WINAPI GetCurrentProcessorNumberEx (PPROCESSOR_NUMBER ProcNumber);
 #endif
 #if _WIN32_WINNT >= 0x0602
   WINBASEAPI VOID WINAPI GetCurrentThreadStackLimits (PULONG_PTR LowLimit, PULONG_PTR HighLimit);
-  WINBASEAPI WINBOOL WINAPI SetProcessMitigationPolicy (PROCESS_MITIGATION_POLICY MitigationPolicy, PVOID lpBuffer, SIZE_T dwLength);
   WINBASEAPI WINBOOL WINAPI GetProcessMitigationPolicy (HANDLE hProcess, PROCESS_MITIGATION_POLICY MitigationPolicy, PVOID lpBuffer, SIZE_T dwLength);
 #endif
-
 #endif
 
-#if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP)
   WINBASEAPI HANDLE WINAPI GetCurrentProcess (VOID);
   WINBASEAPI DWORD WINAPI GetCurrentProcessId (VOID);
   WINBASEAPI HANDLE WINAPI GetCurrentThread (VOID);

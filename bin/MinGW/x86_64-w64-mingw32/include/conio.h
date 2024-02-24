@@ -7,29 +7,8 @@
 #define _INC_CONIO
 
 #include <crtdefs.h>
-
-#if !defined(_UCRTBASE_STDIO_DEFINED) && __MSVCRT_VERSION__ >= 0x1400
-#define _UCRTBASE_STDIO_DEFINED
-
-#define UCRTBASE_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION (0x0001)
-#define UCRTBASE_PRINTF_STANDARD_SNPRINTF_BEHAVIOUR      (0x0002)
-#define UCRTBASE_PRINTF_LEGACY_WIDE_SPECIFIERS           (0x0004)
-#define UCRTBASE_PRINTF_LEGACY_MSVCRT_COMPATIBILITY      (0x0008)
-#define UCRTBASE_PRINTF_LEGACY_THREE_DIGIT_EXPONENTS     (0x0010)
-
-#define UCRTBASE_SCANF_SECURECRT                         (0x0001)
-#define UCRTBASE_SCANF_LEGACY_WIDE_SPECIFIERS            (0x0002)
-#define UCRTBASE_SCANF_LEGACY_MSVCRT_COMPATIBILITY       (0x0004)
-
-// Default wide printfs and scanfs to the standard mode
-#ifndef UCRTBASE_PRINTF_DEFAULT_WIDE
-#define UCRTBASE_PRINTF_DEFAULT_WIDE 0
-#endif
-#ifndef UCRTBASE_SCANF_DEFAULT_WIDE
-#define UCRTBASE_SCANF_DEFAULT_WIDE 0
-#endif
-#endif
-
+#include <corecrt_stdio_config.h>
+#include <stddef.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -41,7 +20,7 @@ extern "C" {
   _CRTIMP int __cdecl _getche(void);
   _CRTIMP int __cdecl _kbhit(void);
 
-#if __MSVCRT_VERSION__ >= 0x1400
+#ifdef _UCRT
   int __cdecl __conio_common_vcprintf(unsigned __int64 _Options, const char *_Format, _locale_t _Locale, va_list _ArgList);
   int __cdecl __conio_common_vcprintf_p(unsigned __int64 _Options, const char *_Format, _locale_t _Locale, va_list _ArgList);
   int __cdecl __conio_common_vcprintf_s(unsigned __int64 _Options, const char *_Format, _locale_t _Locale, va_list _ArgList);
@@ -161,7 +140,7 @@ extern "C" {
   _CRTIMP wint_t __cdecl _putwch(wchar_t _WCh);
   _CRTIMP wint_t __cdecl _ungetwch(wint_t _WCh);
   _CRTIMP int __cdecl _cputws(const wchar_t *_String);
-#if __MSVCRT_VERSION__ >= 0x1400
+#ifdef _UCRT
   int __cdecl __conio_common_vcwprintf(unsigned __int64 _Options, const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
   int __cdecl __conio_common_vcwprintf_p(unsigned __int64 _Options, const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
   int __cdecl __conio_common_vcwprintf_s(unsigned __int64 _Options, const wchar_t *_Format, _locale_t _Locale, va_list _ArgList);
@@ -169,7 +148,7 @@ extern "C" {
 
   __mingw_ovr int __cdecl _vcwprintf(const wchar_t * __restrict__ _Format,va_list _ArgList)
   {
-    return __conio_common_vcwprintf(UCRTBASE_PRINTF_DEFAULT_WIDE, _Format, NULL, _ArgList);
+    return __conio_common_vcwprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Format, NULL, _ArgList);
   }
   __mingw_ovr int __cdecl _cwprintf(const wchar_t * __restrict__ _Format,...)
   {
@@ -185,7 +164,7 @@ extern "C" {
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Format);
-    _Ret = __conio_common_vcwscanf(UCRTBASE_SCANF_DEFAULT_WIDE, _Format, NULL, _ArgList);
+    _Ret = __conio_common_vcwscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Format, NULL, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
@@ -194,13 +173,13 @@ extern "C" {
     __builtin_va_list _ArgList;
     int _Ret;
     __builtin_va_start(_ArgList, _Locale);
-    _Ret = __conio_common_vcwscanf(UCRTBASE_SCANF_DEFAULT_WIDE, _Format, _Locale, _ArgList);
+    _Ret = __conio_common_vcwscanf(_CRT_INTERNAL_LOCAL_SCANF_OPTIONS, _Format, _Locale, _ArgList);
     __builtin_va_end(_ArgList);
     return _Ret;
   }
   __mingw_ovr int __cdecl _vcwprintf_p(const wchar_t * __restrict__ _Format,va_list _ArgList)
   {
-    return __conio_common_vcwprintf_p(UCRTBASE_PRINTF_DEFAULT_WIDE, _Format, NULL, _ArgList);
+    return __conio_common_vcwprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Format, NULL, _ArgList);
   }
   __mingw_ovr int __cdecl _cwprintf_p(const wchar_t * __restrict__ _Format,...)
   {
@@ -213,7 +192,7 @@ extern "C" {
   }
   __mingw_ovr int __cdecl _vcwprintf_l(const wchar_t * __restrict__ _Format,_locale_t _Locale,va_list _ArgList)
   {
-    return __conio_common_vcwprintf(UCRTBASE_PRINTF_DEFAULT_WIDE, _Format, _Locale, _ArgList);
+    return __conio_common_vcwprintf(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Format, _Locale, _ArgList);
   }
   __mingw_ovr int __cdecl _cwprintf_l(const wchar_t * __restrict__ _Format,_locale_t _Locale,...)
   {
@@ -226,7 +205,7 @@ extern "C" {
   }
   __mingw_ovr int __cdecl _vcwprintf_p_l(const wchar_t * __restrict__ _Format,_locale_t _Locale,va_list _ArgList)
   {
-    return __conio_common_vcwprintf_p(UCRTBASE_PRINTF_DEFAULT_WIDE, _Format, _Locale, _ArgList);
+    return __conio_common_vcwprintf_p(_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS, _Format, _Locale, _ArgList);
   }
   __mingw_ovr int __cdecl _cwprintf_p_l(const wchar_t * __restrict__ _Format,_locale_t _Locale,...)
   {
@@ -258,7 +237,7 @@ extern "C" {
 #ifndef	NO_OLDNAMES
   char *__cdecl cgets(char *_Buffer) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
 
-#if __MSVCRT_VERSION__ >= 0x1400
+#ifdef _UCRT
   __mingw_ovr int __cdecl cprintf(const char * __restrict__ _Format,...) __MINGW_ATTRIB_DEPRECATED_MSVC2005
   {
     __builtin_va_list _ArgList;

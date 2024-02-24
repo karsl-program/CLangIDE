@@ -60,6 +60,7 @@
 #define WIN_PTHREADS_H
 
 #include <stddef.h>
+#include <stdint.h>
 #include <errno.h>
 #include <sys/types.h>
 
@@ -82,7 +83,7 @@ extern "C" {
 /* MSB 8-bit major version, 8-bit minor version, 16-bit patch level.  */
 #define __WINPTHREADS_VERSION 0x00050000
 
-#if defined DLL_EXPORT
+#if defined DLL_EXPORT && !defined WINPTHREAD_STATIC
 #ifdef IN_WINPTHREAD
 #define WINPTHREAD_API __declspec(dllexport)
 #else
@@ -158,6 +159,7 @@ extern "C" {
 #define PTHREAD_MUTEX_RECURSIVE_NP	PTHREAD_MUTEX_RECURSIVE
 
 void * WINPTHREAD_API pthread_timechange_handler_np(void * dummy);
+struct timespec;
 int    WINPTHREAD_API pthread_delay_np (const struct timespec *interval);
 int    WINPTHREAD_API pthread_num_processors_np(void);
 int    WINPTHREAD_API pthread_set_num_processors_np(int n);
@@ -217,11 +219,16 @@ struct _pthread_cleanup
 /* Windows doesn't have this, so declare it ourselves. */
 #ifndef _TIMESPEC_DEFINED
 #define _TIMESPEC_DEFINED
+/* MinGW.org defines a compatible struct timespec, guarded by
+ * __struct_timespec_defined, but doesn't define struct itimerspec.
+ */
+#if ! __struct_timespec_defined
+#define __struct_timespec_defined 1
 struct timespec {
   time_t  tv_sec;   /* Seconds */
   long    tv_nsec;  /* Nanoseconds */
 };
-
+#endif /* ! __struct_timespec_defined */
 struct itimerspec {
   struct timespec  it_interval;  /* Timer period */
   struct timespec  it_value;     /* Timer expiration */
@@ -265,20 +272,20 @@ int WINPTHREAD_API pthread_attr_setschedpolicy (pthread_attr_t *attr, int pol);
 int WINPTHREAD_API pthread_attr_getschedpolicy (const pthread_attr_t *attr, int *pol);
 
 /* synchronization objects */
-typedef void	*pthread_spinlock_t;
-typedef void	*pthread_mutex_t;
-typedef void	*pthread_cond_t;
-typedef void	*pthread_rwlock_t;
+typedef intptr_t pthread_spinlock_t;
+typedef intptr_t pthread_mutex_t;
+typedef intptr_t pthread_cond_t;
+typedef intptr_t pthread_rwlock_t;
 typedef void	*pthread_barrier_t;
 
 #define PTHREAD_MUTEX_NORMAL 0
 #define PTHREAD_MUTEX_ERRORCHECK 1
 #define PTHREAD_MUTEX_RECURSIVE 2
 
-#define GENERIC_INITIALIZER				((void *) (size_t) -1)
-#define GENERIC_ERRORCHECK_INITIALIZER			((void *) (size_t) -2)
-#define GENERIC_RECURSIVE_INITIALIZER			((void *) (size_t) -3)
-#define GENERIC_NORMAL_INITIALIZER			((void *) (size_t) -1)
+#define GENERIC_INITIALIZER				-1
+#define GENERIC_ERRORCHECK_INITIALIZER			-2
+#define GENERIC_RECURSIVE_INITIALIZER			-3
+#define GENERIC_NORMAL_INITIALIZER			-1
 #define PTHREAD_MUTEX_INITIALIZER			(pthread_mutex_t)GENERIC_INITIALIZER
 #define PTHREAD_RECURSIVE_MUTEX_INITIALIZER		(pthread_mutex_t)GENERIC_RECURSIVE_INITIALIZER
 #define PTHREAD_ERRORCHECK_MUTEX_INITIALIZER		(pthread_mutex_t)GENERIC_ERRORCHECK_INITIALIZER
@@ -385,16 +392,21 @@ int WINPTHREAD_API pthread_condattr_init(pthread_condattr_t *a);
 int WINPTHREAD_API pthread_condattr_getpshared(const pthread_condattr_t *a, int *s);
 int WINPTHREAD_API pthread_condattr_setpshared(pthread_condattr_t *a, int s);
 
-#ifndef __clockid_t_defined
+#ifndef ____winpthreads_clockid_t_defined
+typedef int __winpthreads_clockid_t;
+#define ____winpthreads_clockid_t_defined 1
+#endif  /* ____winpthreads_clockid_t_defined */
+
+#if defined(__MINGW64__) && !defined(__clockid_t_defined)
 typedef int clockid_t;
 #define __clockid_t_defined 1
-#endif  /* __clockid_t_defined */
+#endif
 
 int WINPTHREAD_API pthread_condattr_getclock (const pthread_condattr_t *attr,
-       clockid_t *clock_id);
+       __winpthreads_clockid_t *clock_id);
 int WINPTHREAD_API pthread_condattr_setclock(pthread_condattr_t *attr,
-       clockid_t clock_id);
-int WINPTHREAD_API __pthread_clock_nanosleep(clockid_t clock_id, int flags, const struct timespec *rqtp, struct timespec *rmtp);
+       __winpthreads_clockid_t clock_id);
+int WINPTHREAD_API __pthread_clock_nanosleep(__winpthreads_clockid_t clock_id, int flags, const struct timespec *rqtp, struct timespec *rmtp);
 
 int WINPTHREAD_API pthread_barrierattr_init(void **attr);
 int WINPTHREAD_API pthread_barrierattr_destroy(void **attr);

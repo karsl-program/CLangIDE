@@ -25,7 +25,7 @@ extern "C" {
 #ifdef _MSVCRT_
 #define __pctype_func()	(_pctype)
 #else
-#if __MSVCRT_VERSION__ >= 0x1400
+#ifdef _UCRT
   _CRTIMP unsigned short* __pctype_func(void);
 #else
 #define __pctype_func()	(* __MINGW_IMP_SYMBOL(_pctype))
@@ -37,7 +37,7 @@ extern "C" {
 #ifdef _MSVCRT_
   extern unsigned short *_pctype;
 #else
-#if __MSVCRT_VERSION__ >= 0x1400
+#ifdef _UCRT
 #define _pctype (__pctype_func())
 #else
   extern unsigned short ** __MINGW_IMP_SYMBOL(_pctype);
@@ -52,7 +52,7 @@ extern "C" {
 #ifndef _CRT_WCTYPEDATA_DEFINED
 #define _CRT_WCTYPEDATA_DEFINED
 #ifndef _CTYPE_DISABLE_MACROS
-#ifndef _wctype
+#if !defined(_wctype) && defined(_CRT_USE_WINAPI_FAMILY_DESKTOP_APP)
 #ifdef _MSVCRT_
   extern unsigned short *_wctype;
 #else
@@ -171,8 +171,10 @@ int __cdecl isblank(int _C);
   int __cdecl iswcntrl(wint_t _C);
   _CRTIMP int __cdecl _iswcntrl_l(wint_t _C,_locale_t _Locale);
   int __cdecl iswascii(wint_t _C);
+#ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
   int __cdecl isleadbyte(int _C);
   _CRTIMP int __cdecl _isleadbyte_l(int _C,_locale_t _Locale);
+#endif /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
   wint_t __cdecl towupper(wint_t _C);
   _CRTIMP wint_t __cdecl _towupper_l(wint_t _C,_locale_t _Locale);
   wint_t __cdecl towlower(wint_t _C);
@@ -183,7 +185,9 @@ int __cdecl isblank(int _C);
   _CRTIMP int __cdecl _iswcsymf_l(wint_t _C,_locale_t _Locale);
   _CRTIMP int __cdecl __iswcsym(wint_t _C);
   _CRTIMP int __cdecl _iswcsym_l(wint_t _C,_locale_t _Locale);
+#ifdef _CRT_USE_WINAPI_FAMILY_DESKTOP_APP
   int __cdecl is_wctype(wint_t _C,wctype_t _Type);
+#endif /* _CRT_USE_WINAPI_FAMILY_DESKTOP_APP */
 
 #if (defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || !defined (NO_OLDNAMES)
 int __cdecl iswblank(wint_t _C);
@@ -199,7 +203,7 @@ int __cdecl iswblank(wint_t _C);
   extern int __mb_cur_max;
 #define __mb_cur_max	__mb_cur_max
 #else
-#if __MSVCRT_VERSION__ < 0x1400
+#ifndef _UCRT
   extern int * __MINGW_IMP_SYMBOL(__mb_cur_max);
 #endif
 #define __mb_cur_max	(___mb_cur_max_func())
@@ -209,8 +213,13 @@ _CRTIMP int __cdecl ___mb_cur_max_func(void);
 #endif
 
 #define __chvalidchk(a,b) (__PCTYPE_FUNC[(unsigned char)(a)] & (b))
+#ifdef _UCRT
+#define _chvalidchk_l(_Char,_Flag,_Locale) (!_Locale ? __chvalidchk(_Char,_Flag) : ((_locale_t)_Locale)->locinfo->_locale_pctype[(unsigned char)(_Char)] & (_Flag))
+#define _ischartype_l(_Char,_Flag,_Locale) (((_Locale)!=NULL && (((_locale_t)(_Locale))->locinfo->_locale_mb_cur_max) > 1) ? _isctype_l(_Char,(_Flag),_Locale) : _chvalidchk_l(_Char,_Flag,_Locale))
+#else
 #define _chvalidchk_l(_Char,_Flag,_Locale) (!_Locale ? __chvalidchk(_Char,_Flag) : ((_locale_t)_Locale)->locinfo->pctype[(unsigned char)(_Char)] & (_Flag))
 #define _ischartype_l(_Char,_Flag,_Locale) (((_Locale)!=NULL && (((_locale_t)(_Locale))->locinfo->mb_cur_max) > 1) ? _isctype_l(_Char,(_Flag),_Locale) : _chvalidchk_l(_Char,_Flag,_Locale))
+#endif
 #define _isalpha_l(_Char,_Locale) _ischartype_l(_Char,_ALPHA,_Locale)
 #define _isupper_l(_Char,_Locale) _ischartype_l(_Char,_UPPER,_Locale)
 #define _islower_l(_Char,_Locale) _ischartype_l(_Char,_LOWER,_Locale)
