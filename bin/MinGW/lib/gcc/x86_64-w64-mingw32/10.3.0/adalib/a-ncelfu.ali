@@ -1,0 +1,128 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_STANDARD_STORAGE_POOLS
+RV SPARK_05
+
+U ada.numerics.complex_elementary_functions%b  a-ncelfu.ads  e0ab0f61 NE OL PU PK
+W ada%s			ada.ads			ada.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+Z ada.numerics.aux%s	a-numaux.adb		a-numaux.ali
+W ada.numerics.complex_types%s  a-nucoty.ads	a-nucoty.ali
+W ada.numerics.generic_complex_elementary_functions%s
+Z ada.numerics.generic_complex_types%s
+Z ada.numerics.generic_elementary_functions%s
+Z system.exn_llf%s	s-exnllf.adb		s-exnllf.ali
+Z system.fat_flt%s	s-fatflt.ads		s-fatflt.ali
+
+U ada.numerics.complex_elementary_functions%s  a-ncelfu.ads  c1b1f21c EB NE OL PU PK
+W ada%s			ada.ads			ada.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.complex_types%s  a-nucoty.ads	a-nucoty.ali
+W ada.numerics.generic_complex_elementary_functions%s
+Z ada.numerics.generic_complex_types%s
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-except.ads		20210510020126 a7106115 ada.exceptions%s
+D a-numeri.ads		20210510020126 bb51c45a ada.numerics%s
+D a-numaux.ads		20210510020126 243fe0b7 ada.numerics.aux%s
+D a-ncelfu.ads		20210408115628 e0ab0f61 ada.numerics.complex_elementary_functions%s
+D a-ncelfu.ads		20210408115628 e0ab0f61 ada.numerics.complex_elementary_functions%b
+D a-nucoty.ads		20210408115628 b8c59445 ada.numerics.complex_types%s
+D a-ngcefu.ads		20210408115628 228ead62 ada.numerics.generic_complex_elementary_functions%s
+D a-ngcefu.adb		20210510020126 b9026901 ada.numerics.generic_complex_elementary_functions%b
+D a-ngcoty.ads		20210510020126 e7845fd0 ada.numerics.generic_complex_types%s
+D a-ngelfu.ads		20210510020126 55716239 ada.numerics.generic_elementary_functions%s
+D a-ngelfu.adb		20210510020126 a9022048 ada.numerics.generic_elementary_functions%b
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D system.ads		20210510020128 32a08138 system%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-exnllf.ads		20210510020126 bc7ebbdc system.exn_llf%s
+D s-fatflt.ads		20210510020126 11beb392 system.fat_flt%s
+D s-fatgen.ads		20210510020126 49cbaf86 system.fat_gen%s
+D s-parame.ads		20210510020128 48ec542b system.parameters%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+D s-traent.ads		20210510020128 005bf670 system.traceback_entries%s
+G a e
+G c Z s s [sqrt ada__numerics__complex_elementary_functions 24 13 19_1]
+G c Z s s [log ada__numerics__complex_elementary_functions 26 13 19_1]
+G c Z s s [exp ada__numerics__complex_elementary_functions 28 13 19_1]
+G c Z s s [exp ada__numerics__complex_elementary_functions 29 13 19_1]
+G c Z s s [Oexpon ada__numerics__complex_elementary_functions 31 13 19_1]
+G c Z s s [Oexpon ada__numerics__complex_elementary_functions 32 13 19_1]
+G c Z s s [Oexpon ada__numerics__complex_elementary_functions 33 13 19_1]
+G c Z s s [sin ada__numerics__complex_elementary_functions 35 13 19_1]
+G c Z s s [cos ada__numerics__complex_elementary_functions 36 13 19_1]
+G c Z s s [tan ada__numerics__complex_elementary_functions 37 13 19_1]
+G c Z s s [cot ada__numerics__complex_elementary_functions 38 13 19_1]
+G c Z s s [arcsin ada__numerics__complex_elementary_functions 40 13 19_1]
+G c Z s s [arccos ada__numerics__complex_elementary_functions 41 13 19_1]
+G c Z s s [arctan ada__numerics__complex_elementary_functions 42 13 19_1]
+G c Z s s [arccot ada__numerics__complex_elementary_functions 43 13 19_1]
+G c Z s s [sinh ada__numerics__complex_elementary_functions 45 13 19_1]
+G c Z s s [cosh ada__numerics__complex_elementary_functions 46 13 19_1]
+G c Z s s [tanh ada__numerics__complex_elementary_functions 47 13 19_1]
+G c Z s s [coth ada__numerics__complex_elementary_functions 48 13 19_1]
+G c Z s s [arcsinh ada__numerics__complex_elementary_functions 50 13 19_1]
+G c Z s s [arccosh ada__numerics__complex_elementary_functions 51 13 19_1]
+G c Z s s [arctanh ada__numerics__complex_elementary_functions 52 13 19_1]
+G c Z s s [arccoth ada__numerics__complex_elementary_functions 53 13 19_1]
+G c Z s s [sqrt ada__numerics__complex_elementary_functions__elementary_functions 52 13 36_4_19_1]
+G c Z s s [log ada__numerics__complex_elementary_functions__elementary_functions 75 13 36_4_19_1]
+G c Z s s [log ada__numerics__complex_elementary_functions__elementary_functions 79 13 36_4_19_1]
+G c Z s s [exp ada__numerics__complex_elementary_functions__elementary_functions 83 13 36_4_19_1]
+G c Z s s [Oexpon ada__numerics__complex_elementary_functions__elementary_functions 86 13 36_4_19_1]
+G c Z s s [sin ada__numerics__complex_elementary_functions__elementary_functions 94 13 36_4_19_1]
+G c Z s s [sin ada__numerics__complex_elementary_functions__elementary_functions 98 13 36_4_19_1]
+G c Z s s [cos ada__numerics__complex_elementary_functions__elementary_functions 103 13 36_4_19_1]
+G c Z s s [cos ada__numerics__complex_elementary_functions__elementary_functions 107 13 36_4_19_1]
+G c Z s s [tan ada__numerics__complex_elementary_functions__elementary_functions 112 13 36_4_19_1]
+G c Z s s [tan ada__numerics__complex_elementary_functions__elementary_functions 115 13 36_4_19_1]
+G c Z s s [cot ada__numerics__complex_elementary_functions__elementary_functions 120 13 36_4_19_1]
+G c Z s s [cot ada__numerics__complex_elementary_functions__elementary_functions 123 13 36_4_19_1]
+G c Z s s [arcsin ada__numerics__complex_elementary_functions__elementary_functions 129 13 36_4_19_1]
+G c Z s s [arcsin ada__numerics__complex_elementary_functions__elementary_functions 133 13 36_4_19_1]
+G c Z s s [arccos ada__numerics__complex_elementary_functions__elementary_functions 137 13 36_4_19_1]
+G c Z s s [arccos ada__numerics__complex_elementary_functions__elementary_functions 141 13 36_4_19_1]
+G c Z s s [arctan ada__numerics__complex_elementary_functions__elementary_functions 145 13 36_4_19_1]
+G c Z s s [arctan ada__numerics__complex_elementary_functions__elementary_functions 152 13 36_4_19_1]
+G c Z s s [arccot ada__numerics__complex_elementary_functions__elementary_functions 160 13 36_4_19_1]
+G c Z s s [arccot ada__numerics__complex_elementary_functions__elementary_functions 167 13 36_4_19_1]
+G c Z s s [sinh ada__numerics__complex_elementary_functions__elementary_functions 175 13 36_4_19_1]
+G c Z s s [cosh ada__numerics__complex_elementary_functions__elementary_functions 178 13 36_4_19_1]
+G c Z s s [tanh ada__numerics__complex_elementary_functions__elementary_functions 182 13 36_4_19_1]
+G c Z s s [coth ada__numerics__complex_elementary_functions__elementary_functions 186 13 36_4_19_1]
+G c Z s s [arcsinh ada__numerics__complex_elementary_functions__elementary_functions 190 13 36_4_19_1]
+G c Z s s [arccosh ada__numerics__complex_elementary_functions__elementary_functions 193 13 36_4_19_1]
+G c Z s s [arctanh ada__numerics__complex_elementary_functions__elementary_functions 198 13 36_4_19_1]
+G c Z s s [arccoth ada__numerics__complex_elementary_functions__elementary_functions 202 13 36_4_19_1]
+G c Z s s [exp_strict ada__numerics__complex_elementary_functions__elementary_functions 66 13 36_4_19_1]
+G c Z s s [local_atan ada__numerics__complex_elementary_functions__elementary_functions 70 13 36_4_19_1]
+X 1 ada.ads
+16K9*Ada 20e8 6|16r6 17r6 19r9 20r7 21r46 23r14
+X 3 a-numeri.ads
+16K13*Numerics 1|16k9 3|32e17 6|16r10 17r10 19r13 20r11 21r50 23r18
+X 6 a-ncelfu.ads
+19K22*Complex_Elementary_Functions[8|21] 3|16k13 6|23r27
+X 7 a-nucoty.ads
+18K22*Complex_Types[10|39] 6|16w19 21r59
+X 8 a-ngcefu.ads
+21k22*Generic_Complex_Elementary_Functions 6|17w19 20r20 8|55e54
+

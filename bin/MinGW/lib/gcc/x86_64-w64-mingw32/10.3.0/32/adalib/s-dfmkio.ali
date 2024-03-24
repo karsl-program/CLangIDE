@@ -1,0 +1,112 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -m32
+A -mtune=generic
+A -march=x86-64
+P SS ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_ASPECT_SPECIFICATIONS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U system.dim.float_mks_io%b  s-dfmkio.ads	b64033ee NE OL PK
+W ada%s			ada.ads			ada.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.text_io.float_aux%s  a-tiflau.adb		a-tiflau.ali
+Z ada.text_io.float_io%s
+W system%s		system.ads		system.ali
+W system.dim%s		s-dim.ads		s-dim.ali
+W system.dim.float_io%s
+W system.dim.float_mks%s  s-diflmk.ads		s-diflmk.ali
+Z system.fat_flt%s	s-fatflt.ads		s-fatflt.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+
+U system.dim.float_mks_io%s  s-dfmkio.ads	799a4477 EB NE OL PK
+W ada%s			ada.ads			ada.ali
+Z ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.text_io.float_io%s
+W system%s		system.ads		system.ali
+W system.dim%s		s-dim.ads		s-dim.ali
+W system.dim.float_io%s
+W system.dim.float_mks%s  s-diflmk.ads		s-diflmk.ali
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-except.ads		20210510020126 a7106115 ada.exceptions%s
+D a-ioexce.ads		20210408115628 e4a01f64 ada.io_exceptions%s
+D a-numeri.ads		20210510020126 bb51c45a ada.numerics%s
+D a-stream.ads		20210510020126 119b8fb3 ada.streams%s
+D a-tags.ads		20210510020126 491b781d ada.tags%s
+D a-textio.ads		20210510020126 aef4d56d ada.text_io%s
+D a-tiflau.ads		20210510020126 c0393f21 ada.text_io.float_aux%s
+D a-tiflio.ads		20210510020126 bf196650 ada.text_io.float_io%s
+D a-tiflio.adb		20210510020126 fd9b1cfc ada.text_io.float_io%b
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20210510020126 5ab55268 interfaces%s
+D i-cstrea.ads		20210510020126 e53d8b8e interfaces.c_streams%s
+D system.ads		20210510020128 32a08138 system%s
+D s-crtl.ads		20210510020126 0ebbdb71 system.crtl%s
+D s-dim.ads		20210510020126 ec3077cc system.dim%s
+D s-diflio.ads		20210510020126 8cb04bc1 system.dim.float_io%s
+D s-diflio.adb		20210510020126 04b36c01 system.dim.float_io%b
+D s-diflmk.ads		20210510020126 af5a4b94 system.dim.float_mks%s
+D s-dfmkio.ads		20210510020126 b64033ee system.dim.float_mks_io%s
+D s-dfmkio.ads		20210510020126 b64033ee system.dim.float_mks_io%b
+D s-digemk.ads		20210510020126 d6ab2b3c system.dim.generic_mks%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-fatflt.ads		20210510020126 11beb392 system.fat_flt%s
+D s-fatgen.ads		20210510020126 49cbaf86 system.fat_gen%s
+D s-ficobl.ads		20210510020126 078245e4 system.file_control_block%s
+D s-parame.ads		20210510020128 48ec542b system.parameters%s
+D s-secsta.ads		20210510020128 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20210510020128 a7318a92 system.soft_links%s
+D s-stache.ads		20210510020128 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+D s-stoele.ads		20210510020128 2dc34a04 system.storage_elements%s
+D s-traent.ads		20210510020128 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20210510020128 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20210510020128 1b7d22d2 system.wch_con%s
+G a e
+G c Z s s [put system__dim__float_mks_io 139 14 38_1]
+G c Z s s [put system__dim__float_mks_io 147 14 38_1]
+G c Z s s [put system__dim__float_mks_io 154 14 38_1]
+G c Z s s [put_dim_of system__dim__float_mks_io 161 14 38_1]
+G c Z s s [put_dim_of system__dim__float_mks_io 166 14 38_1]
+G c Z s s [put_dim_of system__dim__float_mks_io 170 14 38_1]
+G c Z s s [image system__dim__float_mks_io 178 13 38_1]
+G c Z s s [get system__dim__float_mks_io__num_dim_float_io 52 14 34_4_38_1]
+G c Z s s [get system__dim__float_mks_io__num_dim_float_io 60 14 34_4_38_1]
+G c Z s s [put system__dim__float_mks_io__num_dim_float_io 69 14 34_4_38_1]
+G c Z s s [put system__dim__float_mks_io__num_dim_float_io 82 14 34_4_38_1]
+G c Z s s [get system__dim__float_mks_io__num_dim_float_io 93 14 34_4_38_1]
+G c Z s s [put system__dim__float_mks_io__num_dim_float_io 100 14 34_4_38_1]
+X 14 system.ads
+37K9*System 200e11 21|35r6 35r32 36r6 38r9 38r40
+X 16 s-dim.ads
+65K16*Dim 14|37k9 16|68e15 21|35r13 35r39 36r13 38r16 38r47
+X 17 s-diflio.ads
+133k20*Float_IO 184e24 21|36w17 38r51
+X 19 s-diflmk.ads
+34K20*Float_Mks[22|45] 21|35w17 35r43
+X 21 s-dfmkio.ads
+38K20*Float_Mks_IO[17|133] 16|65k16
+X 22 s-digemk.ads
+52F9*Mks_Type<float> 21|38r61[19|34]
+

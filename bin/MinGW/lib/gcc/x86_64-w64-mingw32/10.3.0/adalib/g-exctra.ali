@@ -1,0 +1,40 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+
+U gnat.exception_traces%s  g-exctra.ads		a55269e4 NE OL
+W gnat%s		gnat.ads		gnat.ali
+W system%s		system.ads		system.ali
+W system.exception_traces%s  s-exctra.adb	s-exctra.ali
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D gnat.ads		20210510020126 b5988c27 gnat%s
+D g-exctra.ads		20210510020126 344e3329 gnat.exception_traces%s
+D system.ads		20210510020128 32a08138 system%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-exctra.ads		20210510020126 2484d6ea system.exception_traces%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+D s-traent.ads		20210510020128 005bf670 system.traceback_entries%s
+G a e
+X 3 gnat.ads
+34K9*GNAT 57e9 4|39r9
+X 4 g-exctra.ads
+39K14*Exception_Traces=39:46
+X 5 system.ads
+37K9*System 4|38r6 39r39 5|200e11
+X 7 s-exctra.ads
+57K16*Exception_Traces 4|38w13 39r46 7|107e28
+

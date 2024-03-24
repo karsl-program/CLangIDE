@@ -1,0 +1,150 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -mtune=generic
+A -march=x86-64
+P SS ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_DISPATCHING_CALLS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_LOCAL_ALLOCATORS
+RV NO_NESTED_FINALIZATION
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U gnat.wide_string_split%b  g-wistsp.ads	1c3e04f4 NE OL PK
+W ada%s			ada.ads			ada.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.finalization%s	a-finali.ads		a-finali.ali
+Z ada.streams%s		a-stream.adb		a-stream.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.wide_maps%s  a-stwima.adb		a-stwima.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+Z ada.unchecked_deallocation%s
+W gnat%s		gnat.ads		gnat.ali
+W gnat.array_split%s
+Z system%s		system.ads		system.ali
+Z system.exception_table%s  s-exctab.adb	s-exctab.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+Z system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
+Z system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+
+U gnat.wide_string_split%s  g-wistsp.ads	1b5547d6 EB EE OL PK
+W ada%s			ada.ads			ada.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.finalization%s	a-finali.ads		a-finali.ali
+Z ada.streams%s		a-stream.adb		a-stream.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.wide_maps%s  a-stwima.adb		a-stwima.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W gnat%s		gnat.ads		gnat.ali
+W gnat.array_split%s
+Z system%s		system.ads		system.ali
+Z system.exception_table%s  s-exctab.adb	s-exctab.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+Z system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
+Z system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-except.ads		20210510020126 a7106115 ada.exceptions%s
+D a-finali.ads		20210510020126 bf4f806b ada.finalization%s
+D a-stream.ads		20210510020126 119b8fb3 ada.streams%s
+D a-string.ads		20210408115628 90ac6797 ada.strings%s
+D a-stwima.ads		20210510020126 09a6f5ac ada.strings.wide_maps%s
+D a-tags.ads		20210510020126 491b781d ada.tags%s
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D a-uncdea.ads		20210408115628 eff36322 ada.unchecked_deallocation%s
+D gnat.ads		20210510020126 b5988c27 gnat%s
+D g-arrspl.ads		20210510020126 bb553aa9 gnat.array_split%s
+D g-arrspl.adb		20210510020126 d5c20566 gnat.array_split%b
+D g-wistsp.ads		20210510020126 1c3e04f4 gnat.wide_string_split%s
+D g-wistsp.ads		20210510020126 1c3e04f4 gnat.wide_string_split%b
+D system.ads		20210510020128 32a08138 system%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-finmas.ads		20210510020126 7811a767 system.finalization_masters%s
+D s-finroo.ads		20210510020126 4ff27390 system.finalization_root%s
+D s-memory.ads		20210510020128 597d6634 system.memory%s
+D s-parame.ads		20210510020128 48ec542b system.parameters%s
+D s-secsta.ads		20210510020128 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20210510020128 a7318a92 system.soft_links%s
+D s-stache.ads		20210510020128 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+D s-stalib.adb		20210510020128 f2fe2716 system.standard_library%b
+D s-stoele.ads		20210510020128 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20210510020128 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20210510020128 b16154c2 system.storage_pools%s
+D s-stposu.ads		20210510020128 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20210510020128 aedef97e system.stream_attributes%s
+D s-traent.ads		20210510020128 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20210510020128 34867c83 system.unsigned_types%s
+G a e
+G c Z s s [create gnat__wide_string_split 83 14 39_1]
+G c Z s s [create gnat__wide_string_split 97 14 39_1]
+G c Z s s [set gnat__wide_string_split 104 14 39_1]
+G c Z s s [set gnat__wide_string_split 111 14 39_1]
+G c Z s s [slice_count gnat__wide_string_split 120 13 39_1]
+G c Z s s [slice gnat__wide_string_split 124 13 39_1]
+G c Z s s [separators gnat__wide_string_split 141 13 39_1]
+G c Z s s [separators gnat__wide_string_split 152 13 39_1]
+G c Z s s [initialize gnat__wide_string_split 187 14 39_1]
+G c Z s s [adjust gnat__wide_string_split 188 14 39_1]
+G c Z s s [finalize gnat__wide_string_split 189 14 39_1]
+G c Z s s [slice_setDA gnat__wide_string_split 183 9 39_1]
+G c Z s s [slice_setDF gnat__wide_string_split 183 9 39_1]
+G c Z s s [slice_setIP gnat__wide_string_split 183 9 39_1]
+G c Z s s [Tslice_separatorsBIP gnat__wide_string_split 135 4 39_1]
+G c Z s s [separators_indexesIP gnat__wide_string_split 150 9 39_1]
+G c Z s s [slice_infoIP gnat__wide_string_split 163 9 39_1]
+G c Z s s [slices_indexesIP gnat__wide_string_split 169 9 39_1]
+G c Z s s [dataIP gnat__wide_string_split 174 9 39_1]
+G c Z s s [free gnat__wide_string_split 36 14 39_1]
+G c Z s s [free gnat__wide_string_split 39 14 39_1]
+G c Z s s [count gnat__wide_string_split 42 13 39_1]
+X 1 ada.ads
+16K9*Ada 20e8 14|36r6 36r33
+X 5 a-string.ads
+16K13*Strings 35e16 14|36r10 36r37
+X 6 a-stwima.ads
+38K21*Wide_Maps 240e26 14|36w18 42r24 43r24 44r24
+45R9*Wide_Character_Set<3|43R9> 173e14 14|42r34
+94V13*Is_In{boolean} 14|44r34
+110V13*To_Set{45R9} 14|43r34
+X 10 gnat.ads
+34K9*GNAT 57e9 14|37r6 39r9 39r39
+X 11 g-arrspl.ads
+39E9 Element 14|40r4
+42A9 Element_Sequence(39E9)<integer> 14|41r4
+45+9 Element_Set 14|42r4
+51V18 To_Set{45+9} 14|43r4
+55V18 Is_In{boolean} 14|44r4
+58k14*Array_Split 191e21 14|37w11 39r44
+X 14 g-wistsp.ads
+39K14*Wide_String_Split[11|58] 10|34k9
+X 15 system.ads
+67M9*Address
+X 19 s-memory.ads
+53V13*Alloc{15|67M9} 103i<c,__gnat_malloc>22
+68U14*Free 104i<c,__gnat_free>22
+76V13*Realloc{15|67M9} 105i<c,__gnat_realloc>22
+X 25 s-stalib.adb
+93U14 Break_Start 94i<c,__gnat_break_start>22
+

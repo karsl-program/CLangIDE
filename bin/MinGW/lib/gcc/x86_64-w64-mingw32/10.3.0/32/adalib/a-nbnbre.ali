@@ -1,0 +1,333 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -m32
+A -mtune=generic
+A -march=x86-64
+P SS ZX
+
+RN
+RV NO_DISPATCH
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTION_PROPAGATION
+RV NO_EXCEPTIONS
+RV NO_FIXED_POINT
+RV NO_FLOATING_POINT
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_LOCAL_ALLOCATORS
+RV NO_NESTED_FINALIZATION
+RV NO_RECURSION
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_STREAMS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLICIT_LOOPS
+RV SPARK_05
+
+U ada.numerics.big_numbers.big_reals%b  a-nbnbre.adb  7999054c NE OL PK
+W ada%s			ada.ads			ada.ali
+W ada.characters%s	a-charac.ads		a-charac.ali
+W ada.characters.conversions%s  a-chacon.adb	a-chacon.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+W ada.numerics.big_numbers%s  a-nubinu.ads	a-nubinu.ali
+Z ada.streams%s		a-stream.adb		a-stream.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+Z system%s		system.ads		system.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+Z system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
+Z system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+Z system.val_int%s	s-valint.adb		s-valint.ali
+
+U ada.numerics.big_numbers.big_reals%s  a-nbnbre.ads  77239fa5 BN NE OL PR PK
+W ada%s			ada.ads			ada.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.big_numbers%s  a-nubinu.ads	a-nubinu.ali
+W ada.numerics.big_numbers.big_integers%s  a-nbnbin.adb  a-nbnbin.ali
+W ada.streams%s		a-stream.adb		a-stream.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+Z system%s		system.ads		system.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-charac.ads		20210408115628 2d3ec45b ada.characters%s
+D a-chacon.ads		20210510020126 5b23f5eb ada.characters.conversions%s
+D a-except.ads		20210510020126 a7106115 ada.exceptions%s
+D a-finali.ads		20210510020126 bf4f806b ada.finalization%s
+D a-numeri.ads		20210510020126 bb51c45a ada.numerics%s
+D a-nubinu.ads		20210510020126 93f1f3d1 ada.numerics.big_numbers%s
+D a-nbnbin.ads		20210510020126 e737c10b ada.numerics.big_numbers.big_integers%s
+D a-nbnbre.ads		20210510020126 127e22cc ada.numerics.big_numbers.big_reals%s
+D a-nbnbre.adb		20210510020126 30c4d26b ada.numerics.big_numbers.big_reals%b
+D a-stream.ads		20210510020126 119b8fb3 ada.streams%s
+D a-tags.ads		20210510020126 491b781d ada.tags%s
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D system.ads		20210510020128 32a08138 system%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-finmas.ads		20210510020126 7811a767 system.finalization_masters%s
+D s-finroo.ads		20210510020126 4ff27390 system.finalization_root%s
+D s-imgint.ads		20210510020128 02dbe0c2 system.img_int%s
+D s-memory.ads		20210510020128 597d6634 system.memory%s
+D s-parame.ads		20210510020128 48ec542b system.parameters%s
+D s-secsta.ads		20210510020128 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20210510020128 a7318a92 system.soft_links%s
+D s-stache.ads		20210510020128 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+D s-stalib.adb		20210510020128 f2fe2716 system.standard_library%b
+D s-stoele.ads		20210510020128 2dc34a04 system.storage_elements%s
+D s-stopoo.ads		20210510020128 b16154c2 system.storage_pools%s
+D s-stposu.ads		20210510020128 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20210510020128 aedef97e system.stream_attributes%s
+D s-traent.ads		20210510020128 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20210510020128 34867c83 system.unsigned_types%s
+D s-valint.ads		20210510020128 b5ff6963 system.val_int%s
+G a e
+G c Z s b [is_valid ada__numerics__big_numbers__big_reals 30 13 none]
+G c Z s b [Odivide ada__numerics__big_numbers__big_reals 32 13 none]
+G c Z s b [numerator ada__numerics__big_numbers__big_reals 36 13 none]
+G c Z s b [denominator ada__numerics__big_numbers__big_reals 38 13 none]
+G c Z s s [to_big_real ada__numerics__big_numbers__big_reals 46 13 none]
+G c Z s s [to_real ada__numerics__big_numbers__big_reals 50 13 none]
+G c Z s b [Oeq ada__numerics__big_numbers__big_reals 53 13 none]
+G c Z s b [Olt ada__numerics__big_numbers__big_reals 55 13 none]
+G c Z s b [Ole ada__numerics__big_numbers__big_reals 57 13 none]
+G c Z s b [Ogt ada__numerics__big_numbers__big_reals 59 13 none]
+G c Z s b [Oge ada__numerics__big_numbers__big_reals 61 13 none]
+G c Z s s [in_range ada__numerics__big_numbers__big_reals 63 13 none]
+G c Z s b [to_string ada__numerics__big_numbers__big_reals 94 13 none]
+G c Z s b [from_string ada__numerics__big_numbers__big_reals 100 13 none]
+G c Z s s [to_quotient_string ada__numerics__big_numbers__big_reals 102 13 none]
+G c Z s b [from_quotient_string ada__numerics__big_numbers__big_reals 106 13 none]
+G c Z s b [put_image ada__numerics__big_numbers__big_reals 108 14 none]
+G c Z s b [Oadd ada__numerics__big_numbers__big_reals 112 13 none]
+G c Z s b [Osubtract ada__numerics__big_numbers__big_reals 114 13 none]
+G c Z s b [Oabs ada__numerics__big_numbers__big_reals 116 13 none]
+G c Z s b [Oadd ada__numerics__big_numbers__big_reals 118 13 none]
+G c Z s b [Osubtract ada__numerics__big_numbers__big_reals 120 13 none]
+G c Z s b [Omultiply ada__numerics__big_numbers__big_reals 122 13 none]
+G c Z s b [Odivide ada__numerics__big_numbers__big_reals 124 13 none]
+G c Z s b [Oexpon ada__numerics__big_numbers__big_reals 126 13 none]
+G c Z s b [min ada__numerics__big_numbers__big_reals 128 13 none]
+G c Z s b [max ada__numerics__big_numbers__big_reals 130 13 none]
+G c Z s s [big_realDI ada__numerics__big_numbers__big_reals 134 9 none]
+G c Z s s [big_realDA ada__numerics__big_numbers__big_reals 134 9 none]
+G c Z s s [big_realDF ada__numerics__big_numbers__big_reals 134 9 none]
+G c Z s s [big_realIP ada__numerics__big_numbers__big_reals 134 9 none]
+G c Z b b [normalize ada__numerics__big_numbers__big_reals 40 14 none]
+X 1 ada.ads
+16K9*Ada 20e8 9|16r6 17r6 22r9 109r32 138r5 10|34r6 34r38 36r14 399r32 540r5
+X 2 a-charac.ads
+16K13*Characters 18e19 10|34r10 34r42
+X 3 a-chacon.ads
+36K24*Conversions 86e31 10|34w21 34r53
+53V13*To_Wide_Wide_String{wide_wide_string} 10|402s39
+X 6 a-numeri.ads
+16K13*Numerics 1|16k9 6|32e17 9|16r10 22r13 138r9 10|36r18 540r9
+X 7 a-nubinu.ads
+19K22*Big_Numbers 6|16k13 7|25e29 9|16r19 22r22 138r18 10|36r27 540r18
+23I12*Field{integer} 9|95r31 96r31 97r31 10|169r30 169r48 169r66 177r23 184r19
+. 215r23 232r19
+X 8 a-nbnbin.ads
+24K34*Big_Integers 145e42 9|16w31 32r29 36r47 38r49 41r9 42r11 44r11 47r13
+. 48r32 51r7 51r43 103r7 104r9 135r18 10|38r8 390r14 391r9
+28R9*Big_Integer 143e14 9|32r42 36r60 47r26 135r31 10|55r29 72r47 172r23
+. 173r23 194r18 258r18 318r24 319r15 532r25
+32V13*Is_Valid{boolean} 10|49s7 49s35
+35V14*"="{boolean} 9|41s23 10|58s14 85s17 85s44
+37V14*"<"{boolean} 10|92s25 287s18 355s24 526s18
+45V13*To_Big_Integer{28R9} 9|44s24 48s45 51s20 51s56 10|58s16 172s38 173s38
+. 318s39 355s26 491s24 492s24 526s20
+47R12*Big_Positive{28R9} 9|38r62 10|78r49
+92V13*To_String{string} 9|103s20 104s22 10|261s37
+97V13*From_String{28R9} 10|352s24 353s18 390s27 391s22
+105V14*"-"{28R9} 10|422s14 527s21 528s21
+107V14*"abs"{28R9} 10|85s7 85s19 92s7 92s27 429s14
+109V14*"+"{28R9} 10|358s38 438s35
+111V14*"-"{28R9} 10|356s38 451s35
+113V14*"*"{28R9} 10|92s17 92s37 309s22 352s63 362s38 364s38 438s27 438s43
+. 439s27 451s27 451s43 452s27 464s27 465s27 477s27 478s27
+115V14*"/"{28R9} 10|309s36 535s29 536s29
+121V14*"**"{28R9} 10|309s28 351s28 362s44 364s44 495s33 496s33 498s33 499s33
+127V13*Greatest_Common_Divisor{47R12} 9|42s24 10|533s12
+X 9 a-nbnbre.ads
+22K34*Big_Reals 7|19k22 9|134E9 138l30 138e39 10|36b39 540l30 540t39
+26R9*Big_Real 30r29 32r62 36r30 38r32 48r13 50r44 53r25 55r25 57r26 59r25
+. 61r26 63r40 70r47 72r37 84r47 86r37 94r31 100r47 102r39 106r56 110r16 112r22
+. 112r39 114r22 114r39 116r24 116r41 118r25 118r42 120r25 120r42 122r25 122r42
+. 124r25 124r42 126r23 126r53 128r25 128r42 130r25 130r42 134c9 136e14 10|40r38
+. 48r29 55r49 56r16 72r30 78r32 84r25 91r25 98r26 104r25 110r26 122r47 131r37
+. 148r47 157r37 169r13 317r47 349r19 376r56 400r16 409r22 409r39 410r16 421r22
+. 421r39 428r24 428r41 435r25 435r42 436r16 448r25 448r42 449r16 461r25 461r42
+. 462r16 474r25 474r42 475r16 487r23 487r53 488r16 512r25 512r42 518r25 518r42
+. 524r38
+30V13*Is_Valid{boolean} 30>23 10|48b13
+30r23 Arg{26R9} 10|49r17 49r45
+32V14*"/"{26R9} 32>18 32>23 48s30 51s41 10|55b14 66l9 66t11 390s70
+32r18 Num{8|28R9} 10|55b18 62r21
+32r23 Den{8|28R9} 10|55b23 58r10 63r21
+36V13*Numerator{8|28R9} 36>24 43s13 103s31 10|72b13
+36r24 Arg{26R9} 10|72r63
+38V13*Denominator{8|47R12} 38>26 43r30 104s33 10|78b13
+38r26 Arg{26R9} 40r9 43r24 10|78r66
+46V13*To_Big_Real{26R9} 47>7
+47r7 Arg{8|28R9} 48r26
+50V13*To_Real{26R9} 40s15 50>22
+50i22 Arg{integer} 51r36
+53V14*"="{boolean} 40s13 53>18 53>21 10|84b14
+53r18 L{26R9} 10|85r11 85r38
+53r21 R{26R9} 10|85r23 85r46
+55V14*"<"{boolean} 55>18 55>21 10|91b14 98s62 104s56 110s62 512s60
+55r18 L{26R9} 10|92r11 92r39
+55r21 R{26R9} 10|92r19 92r31
+57V14*"<="{boolean} 57>19 57>22 64s11 64s31 10|98b14
+57r19 L{26R9} 10|98r64
+57r22 R{26R9} 10|98r60
+59V14*">"{boolean} 59>18 59>21 10|104b14 518s60
+59r18 L{26R9} 10|104r58
+59r21 R{26R9} 10|104r54
+61V14*">="{boolean} 61>19 61>22 10|110b14
+61r19 L{26R9} 10|110r60
+61r22 R{26R9} 10|110r64
+63V13*In_Range{boolean} 63>23 63>28 63>33 73s21 87s21
+63r23 Arg{26R9} 64r14 64r27
+63r28 Low{26R9} 64r7 74r31 88r31
+63r33 High{26R9} 64r34 75r31 89r31
+67F12 Num 70r35 72r54 74r52 75r52 10|122r35 131r54 133r17
+68k12*Float_Conversions 67z12 78l8 78e25 10|116b17 136l8 136t25
+70V16*To_Big_Real{26R9} 70>29 74s39 75s39 10|122b16 125l11 125t22
+70*29 Arg{67F12} 10|122b29 124r30
+72V16*From_Big_Real{67F12} 72>31 10|131b16 134l11 134t24
+72r31 Arg{26R9} 73r31 10|131b31 133r39
+81O12 Num 84r35 86r54 88r52 89r52 10|148r35 157r54 159r17
+82k12*Fixed_Conversions 81z12 92l8 92e25 10|142b17 162l8 162t25
+84V16*To_Big_Real{26R9} 84>29 88s39 89s39 10|148b16 151l11 151t22
+84*29 Arg{81O12} 10|148b29 150r30
+86V16*From_Big_Real{81O12} 86>31 10|157b16 160l11 160t24
+86r31 Arg{26R9} 87r31 10|157b31 159r39
+94V13*To_String{string} 94>24 95>24 96>24 97>24 98r20 10|133s28 159s28 168b13
+. 289s29 311l8 311t17 402s60
+94r24 Arg{26R9} 10|169b7 287r10 289r41 309r14 309r38
+95i24 Fore{7|23I12} 10|169b23 267r42 273r45 278r66 289r46
+96i24 Aft{7|23I12} 10|169b42 268r45 275r66 280r67 289r52 309r31 309r62
+97i24 Exp{7|23I12} 10|169b60 276r24 276r68 281r24 281r68 289r57 309r56
+100V13*From_String{26R9} 100>26 10|124s17 150s17 317b13 370l8 370t19
+100a26 Arg{string} 10|317b26 323r26 326r24 327r13 328r24 333r35 333r49 336r16
+. 352r37 352r42 353r31
+102V13*To_Quotient_String{string} 102>33
+102r33 Arg{26R9} 103r42 104r46
+106V13*From_Quotient_String{26R9} 106>35 10|376b13 392l8 392t28
+106a35 Arg{string} 10|376b35 379r16 379r33 380r13 390r40 390r45 391r35 391r53
+108U14*Put_Image 109^7 110>7 10|398b14 403l8 403t17
+109p7 Stream(11|39R9) 10|399b7 402r31
+110r7 Arg{26R9} 10|400b7 402r71
+112V14*"+"{26R9} 112>18 10|409b14 415l9 415t11
+112r18 L{26R9} 10|409b18 412r21 413r21
+114V14*"-"{26R9} 114>18 10|289s40 421b14
+114r18 L{26R9} 10|422r15 422r29
+116V14*"abs"{26R9} 116>20 10|428b14
+116r20 L{26R9} 10|429r18 429r32
+118V14*"+"{26R9} 118>18 118>21 10|435b14 442l9 442t11
+118r18 L{26R9} 10|435b18 438r21 438r45 439r21
+118r21 R{26R9} 10|435b21 438r29 438r37 439r29
+120V14*"-"{26R9} 120>18 120>21 10|448b14 455l9 455t11
+120r18 L{26R9} 10|448b18 451r21 451r45 452r21
+120r21 R{26R9} 10|448b21 451r29 451r37 452r29
+122V14*"*"{26R9} 122>18 122>21 10|461b14 468l9 468t11
+122r18 L{26R9} 10|461b18 464r21 465r21
+122r21 R{26R9} 10|461b21 464r29 465r29
+124V14*"/"{26R9} 124>18 124>21 10|474b14 481l9 481t11
+124r18 L{26R9} 10|474b18 477r21 478r21
+124r21 R{26R9} 10|474b21 477r29 478r29
+126V14*"**"{26R9} 126>19 126>33 10|487b14 506l9 506t12
+126r19 L{26R9} 10|487b19 495r27 496r27 498r27 499r27
+126i33 R{integer} 10|487b33 490r10 494r13 495r38 496r38 498r36 499r36
+128V13*Min{26R9} 128>18 128>21 10|512b13
+128r18 L{26R9} 10|512r58 512r69
+128r21 R{26R9} 10|512r62 512r76
+130V13*Max{26R9} 130>18 130>21 10|518b13
+130r18 L{26R9} 10|518r58 518r69
+130r21 R{26R9} 10|518r62 518r76
+135r7*Num{8|28R9} 10|49r21 62m14 72r67 85r13 85r25 92r13 92r33 287r14 309r18
+. 352m17 355r20 356m20 356r34 358m20 358r34 362m20 362r34 412m14 412r23 422m7
+. 422r17 429m7 429r20 438m14 438r23 438r39 451m14 451r23 451r39 464m14 464r23
+. 464r31 477m14 477r23 478r31 491m17 495m20 496r29 498m20 498r29 527m14 527r26
+. 533r41 535m14 535r25
+135r12*Den{8|28R9} 10|49r49 63m14 78r70 85r40 85r48 92r21 92r41 309r42 351m17
+. 352r72 364m20 364r34 413m14 413r23 422m22 422r31 429m25 429r34 438r31 438r47
+. 439m14 439r23 439r31 451r31 451r47 452m14 452r23 452r31 465m14 465r23 465r31
+. 477r31 478m14 478r23 492m17 495r29 496m20 499m20 499r29 526r14 528m14 528r26
+. 533r50 536m14 536r25
+X 10 a-nbnbre.adb
+40U14 Normalize 40=25 64s7 367s10 440s7 453s7 466s7 479s7 502s10 524b14 538l8
+. 538t17
+40r25 Arg{9|26R9} 524b25 526r10 527m10 527r22 528m10 528r22 533r37 533r46
+. 535m10 535r21 536m10 536r21
+56r7 Result{9|26R9} 62m7 63m7 64m18 64r18 65r14
+172r7 Zero{8|28R9} 287r20
+173r7 Ten{8|28R9} 309r24
+175V16 Leading_Padding{string} 176>10 177>10 178>10 213b16 219s20 224l11
+. 224t26 267s20 273s23 278s23
+176a10 Str{string} 214b10 218r13 221r62 222r39
+177i10 Min_Length{7|23I12} 215b10 219r42 221r48
+178e10 Char{character} 216b10 219r54 222r31
+182V16 Trailing_Padding{string} 183>10 184>10 185>10 230b16 238s26 251l11
+. 251t27 268s22 275s20 280s20
+183a10 Str{string} 231b10 235r13 235r37 235r42 236r30 237r19 239r22 239r27
+. 244r13 245r20 245r25 245r38 247r20 248r53
+184i10 Length{7|23I12} 232b10 239r44 244r27 245r50 248r43
+185e10 Char{character} 233b10 235r54 239r52 249r26
+190V16 Image{string} 190>23 203b16 207l11 207t16 276s52 281s52
+190i23 N{natural} 203b23 204r48
+193V16 Numerator_Image{string} 194>10 195>10 257b16 284l11 284t26 308s17
+194r10 Num{8|28R9} 258b10 261r48
+195i10 After{natural} 259b10 266r13 270r33 309r47
+204a10 S{string} 206r17 206r25
+236i17 J{integer} 237r24 239r40
+261a10 Tmp{string} 262r40 262r57 262r67
+262a10 Str{string} 267r37 270r22 275r61 278r40 278r45 280r38 280r56
+263i10 Index{integer} 270m13 272r16 275r45 278r58 280r43
+289a13 Str{string} 291r16 292r30 293r22 294r22 299r23 301r29
+292i20 J{integer} 293r27 294r27
+318r7 Ten{8|28R9} 351r24 362r40 364r40
+319r7 Frac{8|28R9} 353m10 353r10 356r40 358r40
+320i7 Exp{integer} 333m13 361r13 362r47 363r16 364r49
+321i7 Pow{natural} 334m13 340m13 340r20 351r31
+322i7 Index{natural} 337m13 344r10 352r55 353r36
+323i7 Last{natural} 328r16 332m13 353r49
+326i11 J{integer} 327r18 332r21 333r40 336r21 337r22
+349r10 Result{9|26R9} 351m10 352m10 352r65 355r13 356m13 356r27 358m13 358r27
+. 362m13 362r27 364m13 364r27 367m21 367r21 368r17
+377i7 Index{natural} 381m13 386r10 390r58 391r40
+379i11 J{integer} 380r18 381r22
+410r7 Result{9|26R9} 412m7 413m7 414r14
+436r7 Result{9|26R9} 438m7 439m7 440m18 440r18 441r14
+449r7 Result{9|26R9} 451m7 452m7 453m18 453r18 454r14
+462r7 Result{9|26R9} 464m7 465m7 466m18 466r18 467r14
+475r7 Result{9|26R9} 477m7 478m7 479m18 479r18 480r14
+488r7 Result{9|26R9} 491m10 492m10 495m13 496m13 498m13 499m13 502m21 502r21
+. 505r14
+532r10 GCD{8|28R9} 535r31 536r31
+X 11 a-stream.ads
+36K13*Streams 9|17w10 109r36 10|399r36 11|87e16
+39H9*Root_Stream_Type 9|109r44 10|399r44 11|70e64
+X 14 system.ads
+67M9*Address
+X 19 s-memory.ads
+53V13*Alloc{14|67M9} 103i<c,__gnat_malloc>22
+68U14*Free 104i<c,__gnat_free>22
+76V13*Realloc{14|67M9} 105i<c,__gnat_realloc>22
+X 25 s-stalib.adb
+93U14 Break_Start 94i<c,__gnat_break_start>22
+

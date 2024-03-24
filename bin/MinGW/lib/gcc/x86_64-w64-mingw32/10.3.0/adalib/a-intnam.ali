@@ -1,0 +1,86 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U ada.interrupts.names%s  a-intnam.ads		9b90c954 NE OL PK
+W ada.interrupts%s	a-interr.adb		a-interr.ali
+W system%s		system.ads		system.ali
+W system.os_interface%s	s-osinte.ads		s-osinte.ali
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-except.ads		20210510020126 a7106115 ada.exceptions%s
+D a-finali.ads		20210510020126 bf4f806b ada.finalization%s
+D a-interr.ads		20210510020126 bdf68b51 ada.interrupts%s
+D a-intnam.ads		20210510020126 b1360ffd ada.interrupts.names%s
+D a-stream.ads		20210510020126 119b8fb3 ada.streams%s
+D a-tags.ads		20210510020126 491b781d ada.tags%s
+D a-taside.ads		20210510020126 00e3a3f6 ada.task_identification%s
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20210510020126 5ab55268 interfaces%s
+D i-c.ads		20210510020126 5421119b interfaces.c%s
+D i-cstrin.ads		20210510020126 341d0ddf interfaces.c.strings%s
+D system.ads		20210510020128 32a08138 system%s
+D s-atacco.ads		20210510020126 4c36d12f system.address_to_access_conversions%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-finroo.ads		20210510020126 4ff27390 system.finalization_root%s
+D s-interr.ads		20210510020126 269c22db system.interrupts%s
+D s-multip.ads		20210408115628 38ac9f73 system.multiprocessors%s
+D s-osinte.ads		20210510020126 97504df8 system.os_interface%s
+D s-parame.ads		20210510020128 48ec542b system.parameters%s
+D s-secsta.ads		20210510020128 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20210510020128 a7318a92 system.soft_links%s
+D s-stache.ads		20210510020128 a37c21ec system.stack_checking%s
+D s-stausa.ads		20210510020128 017a0a05 system.stack_usage%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+D s-stoele.ads		20210510020128 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20210510020126 601f6b72 system.task_info%s
+D s-taspri.ads		20210510020126 6c1d93d4 system.task_primitives%s
+D s-taskin.ads		20210510020126 b9d612e2 system.tasking%s
+D s-taprob.ads		20210510020126 acd6094d system.tasking.protected_objects%s
+D s-tpoben.ads		20210510020126 60ad3dae system.tasking.protected_objects.entries%s
+D s-traent.ads		20210510020128 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20210510020128 34867c83 system.unsigned_types%s
+D s-win32.ads		20210510020128 15ac53fb system.win32%s
+G a e
+X 1 ada.ads
+16K9*Ada 20e8 5|39r9 67r5
+X 4 a-interr.ads
+40K13*Interrupts 1|16k9 4|100e19 5|39r13 67r9
+42I9*Interrupt_ID<17|64I9> 5|49r23 52r23 55r23 58r23 61r23 64r23
+X 5 a-intnam.ads
+39K24*Names 4|40k13 5|67l20 67e25
+49i4*SIGINT{4|42I9}
+52i4*SIGILL{4|42I9}
+55i4*SIGABRT{4|42I9}
+58i4*SIGFPE{4|42I9}
+61i4*SIGSEGV{4|42I9}
+64i4*SIGTERM{4|42I9}
+X 13 system.ads
+37K9*System 5|37r6 50r16 53r16 56r16 59r16 62r16 65r16 13|200e11
+X 17 s-interr.ads
+64I9*Ada_Interrupt_ID<short_short_integer>
+X 19 s-osinte.ads
+48K16*OS_Interface 5|37w13 50r23 53r23 56r23 59r23 62r23 65r23 19|375e24
+87N4*SIGINT 5|50r36
+88N4*SIGILL 5|53r36
+89N4*SIGFPE 5|59r36
+90N4*SIGSEGV 5|62r36
+91N4*SIGTERM 5|65r36
+93N4*SIGABRT 5|56r36
+X 24 s-stausa.ads
+208U14*Initialize 209i<c,__gnat_stack_usage_initialize>22
+273U14*Output_Results 277i<c,__gnat_stack_usage_output_results>22
+

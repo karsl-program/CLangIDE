@@ -1,0 +1,36 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+
+U ada.numerics.big_numbers%s  a-nubinu.ads	28a0378b NE OL PU PK
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-numeri.ads		20210510020126 bb51c45a ada.numerics%s
+D a-nubinu.ads		20210510020126 93f1f3d1 ada.numerics.big_numbers%s
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D system.ads		20210510020128 32a08138 system%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+G a e
+X 1 ada.ads
+16K9*Ada 20e8 3|19r9 25r5
+X 2 a-numeri.ads
+16K13*Numerics 1|16k9 2|32e17 3|19r13 25r9
+X 3 a-nubinu.ads
+19K22*Big_Numbers 2|16k13 3|25l18 25e29
+23I12*Field{integer}
+24I12*Number_Base{integer}
+

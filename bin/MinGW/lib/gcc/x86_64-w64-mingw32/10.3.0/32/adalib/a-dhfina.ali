@@ -1,0 +1,165 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -m32
+A -mtune=generic
+A -march=x86-64
+P SS ZX
+
+RN
+RV NO_EXCEPTIONS
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U ada.directories.hierarchical_file_names%b  a-dhfina.adb  ed75fa81 NE OL PK
+W ada%s			ada.ads			ada.ali
+W ada.characters%s	a-charac.ads		a-charac.ali
+W ada.characters.handling%s  a-chahan.adb	a-chahan.ali
+W ada.directories%s	a-direct.adb		a-direct.ali
+W ada.directories.validity%s  a-dirval.adb	a-dirval.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.fixed%s	a-strfix.adb		a-strfix.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W system%s		system.ads		system.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+
+U ada.directories.hierarchical_file_names%s  a-dhfina.ads  752941c9 NE OL PK
+W ada.directories%s	a-direct.adb		a-direct.ali
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-calend.ads		20210510020126 474d9720 ada.calendar%s
+D a-charac.ads		20210408115628 2d3ec45b ada.characters%s
+D a-chahan.ads		20210510020126 1601a50f ada.characters.handling%s
+D a-chlat1.ads		20210408115628 66457d31 ada.characters.latin_1%s
+D a-direct.ads		20210510020126 078228da ada.directories%s
+D a-dhfina.ads		20210510020126 72ab6913 ada.directories.hierarchical_file_names%s
+D a-dhfina.adb		20210510020126 73a0308b ada.directories.hierarchical_file_names%b
+D a-dirval.ads		20210510020126 4e093b0f ada.directories.validity%s
+D a-except.ads		20210510020126 a7106115 ada.exceptions%s
+D a-finali.ads		20210510020126 bf4f806b ada.finalization%s
+D a-ioexce.ads		20210408115628 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20210510020126 119b8fb3 ada.streams%s
+D a-string.ads		20210408115628 90ac6797 ada.strings%s
+D a-strfix.ads		20210510020126 86d6bc21 ada.strings.fixed%s
+D a-strmap.ads		20210510020126 e8bb714a ada.strings.maps%s
+D a-strunb.ads		20210510020126 1656705b ada.strings.unbounded%s
+D a-tags.ads		20210510020126 491b781d ada.tags%s
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D system.ads		20210510020128 32a08138 system%s
+D s-atocou.ads		20210510020126 b45c2d8d system.atomic_counters%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-finmas.ads		20210510020126 7811a767 system.finalization_masters%s
+D s-finroo.ads		20210510020126 4ff27390 system.finalization_root%s
+D s-parame.ads		20210510020128 48ec542b system.parameters%s
+D s-secsta.ads		20210510020128 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20210510020128 a7318a92 system.soft_links%s
+D s-stache.ads		20210510020128 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+D s-stoele.ads		20210510020128 2dc34a04 system.storage_elements%s
+D s-stopoo.ads		20210510020128 b16154c2 system.storage_pools%s
+D s-stposu.ads		20210510020128 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20210510020128 aedef97e system.stream_attributes%s
+D s-traent.ads		20210510020128 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20210510020128 34867c83 system.unsigned_types%s
+G a e
+G c Z s b [is_simple_name ada__directories__hierarchical_file_names 34 13 none]
+G c Z s b [is_root_directory_name ada__directories__hierarchical_file_names 37 13 none]
+G c Z s b [is_parent_directory_name ada__directories__hierarchical_file_names 41 13 none]
+G c Z s b [is_current_directory_name ada__directories__hierarchical_file_names 45 13 none]
+G c Z s b [is_full_name ada__directories__hierarchical_file_names 49 13 none]
+G c Z s b [is_relative_name ada__directories__hierarchical_file_names 53 13 none]
+G c Z s b [initial_directory ada__directories__hierarchical_file_names 75 13 none]
+G c Z s b [relative_name ada__directories__hierarchical_file_names 83 13 none]
+G c Z s b [compose ada__directories__hierarchical_file_names 91 13 none]
+G c Z b b [equivalent_file_names ada__directories__hierarchical_file_names 47 13 none]
+G c Z b b [is_absolute_path ada__directories__hierarchical_file_names 53 13 none]
+X 1 ada.ads
+16K9*Ada 20e8 7|32r9 59r14 66r14 106r5 8|32r6 32r36 33r6 33r36 34r6 34r36
+. 37r14 332r5
+X 3 a-charac.ads
+16K13*Characters 18e19 8|32r10 32r40
+X 4 a-chahan.ads
+36K24*Handling 159e28 8|32w21 32r51
+70V13*To_Lower{string} 8|103s17 103s42
+X 6 a-direct.ads
+76K13*Directories 1|16k9 6|502e20 7|32r13 59r18 66r18 106r9 8|33r10 33r40
+. 37r18 332r9
+239V13*Full_Name{string} 8|200s37
+245V13*Simple_Name{string} 7|59r30
+251V13*Containing_Directory{string} 7|66r30
+470X4*Name_Error 8|223r16 257r16 265r16 303r16 312r16 322r16
+X 7 a-dhfina.ads
+32K25*Hierarchical_File_Names 6|76k13 7|106l21 106e44 8|37b30 332l21 332t44
+34V13*Is_Simple_Name{boolean} 34>29 8|124b13 145l8 145t22 262s10
+34a29 Name{string} 8|124b29 128r34 129r41 136r36 137r44 144r50 144r57
+37V13*Is_Root_Directory_Name{boolean} 37>37 8|81s28 89s28 129s17 151b13 174l8
+. 174t30 229s10 237s10 263s17
+37a37 Name{string} 8|151b37 156r14 160r23 162r27 163r37 163r43 164r37 164r43
+. 165r38 165r44 167r41 167r47 169r27 170r37 170r43 171r38 171r44 173r41 173r47
+41V13*Is_Parent_Directory_Name{boolean} 41>39 8|136s10 180b13 183l8 183t32
+41a39 Name{string} 8|180b39 182r14
+45V13*Is_Current_Directory_Name{boolean} 45>40 8|137s17 189b13 192l8 192t33
+45a40 Name{string} 8|189b40 191r14
+49V13*Is_Full_Name{boolean} 49>27 8|198b13 201l8 201t20
+49a27 Name{string} 8|198b27 200r48 200r55
+53V13*Is_Relative_Name{boolean} 53>31 8|207b13 211l8 211t24 254s14 302s14
+53a31 Name{string} 8|207b31 209r36 210r45
+58V13*Simple_Name=59:30{string} 8|144s37
+58a26 Name{string}
+65V13*Containing_Directory=66:30{string}
+65a35 Name{string}
+75V13*Initial_Directory{string} 75>32 8|217b13 244l8 244t25 274s40
+75a32 Name{string} 8|217b32 218r42 222r34 223r57 229r34 230r17 237r34 237r40
+. 238r17 238r23 243r14 243r20
+83V13*Relative_Name{string} 83>28 8|250b13 282l8 282t21
+83a28 Name{string} 8|250b28 254r32 255r42 257r66 262r26 263r41 266r38 274r59
+. 277r20 277r26 277r58 280r17 280r23 280r59
+91V13*Compose{string} 92>7 93>7 94>7 8|288b13 330l8 330t15
+92a7 Directory{string} 8|289b7 296r16 297r16 297r27 297r64 298r16
+93a7 Relative_Name{string} 8|290b7 302r32 304r46 310r59 313r60 320r41 324r32
+. 329r30
+94a7 Extension{string} 8|291b7 318r10 320r57 324r48 329r46
+X 8 a-dhfina.adb
+39e4 Dir_Separator{character} 40m22 40r22 80r29 88r30 218r48 276r40 297r45
+. 298r28
+47V13 Equivalent_File_Names{boolean} 48>7 49>7 61b13 105l8 105t29 144s14
+. 200s14
+48a7 Left{string} 62b7 69r34 80r23 80r69 81r52 83r16 83r22 83r36 85r16
+49a7 Right{string} 63b7 70r41 88r23 88r70 89r52 91r16 91r23 91r38 93r16
+53V13 Is_Absolute_Path{boolean} 53>31 111b13 118l8 118t24 209s18
+53a31 Name{string} 111b31 117r32 117r46
+79a10 Normal_Left{string} 98r20 103r27
+87a10 Normal_Right{string} 98r34 103r52
+112V16*Is_Absolute_Path{integer} 113>10 114>10 115b<c,__gnat_is_absolute_path>25
+. 117s14
+113m10 Name{20|67M9}
+114i10 Length{integer}
+218i7 Start{integer} 229r48 237r54 238r37 243r34
+274a10 Init_Dir{string} 276r13 276r23 277r39 280r36
+295a7 Separated_Dir{string} 309r10 310r43 313r44 320r25 324r16 329r14
+X 9 a-dirval.ads
+35K33*Validity 8|33w22 33r52 9|49e29
+40V13*Is_Valid_Path_Name{boolean} 8|69s14 70s21 128s14 210s25 222s14 255s22
+. 310s23 319s22
+46V13*Windows{boolean} 8|97s17 158s19
+X 14 a-string.ads
+16K13*Strings 8|34r10 34r40 80r49 88r50 14|35e16
+32n33*Backward{32E9} 8|80r57 88r58
+X 15 a-strfix.ads
+43K21*Fixed 8|34w18 34r48 15|596e22
+143V13*Index{natural} 8|80s16 88s16 218s35
+X 20 system.ads
+37K9*System 8|35w6 35r36 20|200e11
+67M9*Address 8|113r19
+

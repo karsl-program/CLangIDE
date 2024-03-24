@@ -1,0 +1,130 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_EXCEPTIONS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U system.atomic_operations.exchange%b  s-atopex.adb  2d732088 NE OL PK GE
+W interfaces%s		interfac.ads		interfac.ali
+W interfaces.c%s	i-c.adb			i-c.ali
+W system%s		system.ads		system.ali
+W system.atomic_operations%s  s-atoope.ads	s-atoope.ali
+W system.atomic_primitives%s  s-atopri.adb	s-atopri.ali
+
+U system.atomic_operations.exchange%s  s-atopex.ads  544f75b0 BN NE OL PU PK GE
+W system.atomic_operations%s  s-atoope.ads	s-atoope.ali
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20210510020126 5ab55268 interfaces%s
+D i-c.ads		20210510020126 5421119b interfaces.c%s
+D system.ads		20210510020128 32a08138 system%s
+D s-atoope.ads		20210510020126 c7637a25 system.atomic_operations%s
+D s-atopex.ads		20210510020126 932c0f95 system.atomic_operations.exchange%s
+D s-atopex.adb		20210510020126 f94277b4 system.atomic_operations.exchange%b
+D s-atopri.ads		20210510020126 133c4932 system.atomic_primitives%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-parame.ads		20210510020128 48ec542b system.parameters%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+G a e
+G c Z s b [exchange system__atomic_operations 36 34 none]
+X 3 interfac.ads
+38K9*Interfaces 184e15 8|33r6 154r16
+X 4 i-c.ads
+18K20*C 230e17 8|33w17 154r27
+60M9*size_t 8|154r29
+X 5 system.ads
+37K9*System 200e11 7|36r9 56r5 8|32r6 32r36 35r14 47r18 52r18 57r18 62r18
+. 89r26 90r26 98r26 99r26 107r26 108r26 116r26 117r26 159r5
+67M9*Address 8|47r25 52r25 57r25 62r25 89r33 90r33 98r33 99r33 107r33 108r33
+. 116r33 117r33
+X 6 s-atoope.ads
+32K16*Atomic_Operations 5|37k9 6|35e29 7|36r16 56r12 8|35r21 159r12
+X 7 s-atopex.ads
+35+9 Atomic_Type 41r30 42r15 42r35 45r32 46r32 47r17 50r22 8|42r30 43r15
+. 43r35 48r18 49r47 53r18 54r47 58r18 59r47 63r18 64r47 83r32 84r32 85r17
+. 91r26 100r26 109r26 118r26 153r42
+36k34*Exchange 6|32k16 7|35z9 56l30 56e38 8|35b39 159l30 159t38
+40V13*Atomic_Exchange{35+9} 41=7 42>7 53r26 8|41b13 76l8 76t23
+41*7 Item{35+9} 8|42b7 69r12 70m51 70r51 71m51 71r51 72m51 72r51 73m51 73r51
+42*7 Value{35+9} 8|43b7 70r65 71r65 72r65 73r65
+44V13*Atomic_Compare_And_Exchange{boolean} 45=7 46=7 47>7 54r26 8|82b13 147l8
+. 147t35
+45*7 Item{35+9} 8|83b7 127r12 131m18 131r18 135m18 135r18 139m18 139r18 143m18
+. 143r18
+46*7 Prior{35+9} 8|84b7 131m32 131r32 135m32 135r32 139m32 139r32 143m32
+. 143r32
+47*7 Desired{35+9} 8|85b7 131r47 135r47 139r47 143r47
+49V13*Is_Lock_Free{boolean} 50>7 55r26 8|153b13 157l8 157t20
+50*7 Item{35+9} 8|153b27 156r48
+X 8 s-atopex.adb
+46V16*Atomic_Exchange_1{7|35+9} 47>10 48>10 49>10 50b33 70s32
+47m10 Ptr{5|67M9}
+48*10 Val{7|35+9}
+49i10 Model{9|63I12}
+51V16*Atomic_Exchange_2{7|35+9} 52>10 53>10 54>10 55b33 71s32
+52m10 Ptr{5|67M9}
+53*10 Val{7|35+9}
+54i10 Model{9|63I12}
+56V16*Atomic_Exchange_4{7|35+9} 57>10 58>10 59>10 60b33 72s32
+57m10 Ptr{5|67M9}
+58*10 Val{7|35+9}
+59i10 Model{9|63I12}
+61V16*Atomic_Exchange_8{7|35+9} 62>10 63>10 64>10 65b33 73s32
+62m10 Ptr{5|67M9}
+63*10 Val{7|35+9}
+64i10 Model{9|63I12}
+88V16*Atomic_Compare_Exchange_1{9|65E9} 89>10 90>10 91>10 92>10 93>10 94>10
+. 96b21 130s16
+89m10 Ptr{5|67M9}
+90m10 Expected{5|67M9}
+91*10 Desired{7|35+9}
+92b10 Weak{9|65E9}
+93i10 Success_Model{9|63I12}
+94i10 Failure_Model{9|63I12}
+97V16*Atomic_Compare_Exchange_2{9|65E9} 98>10 99>10 100>10 101>10 102>10
+. 103>10 105b21 134s16
+98m10 Ptr{5|67M9}
+99m10 Expected{5|67M9}
+100*10 Desired{7|35+9}
+101b10 Weak{9|65E9}
+102i10 Success_Model{9|63I12}
+103i10 Failure_Model{9|63I12}
+106V16*Atomic_Compare_Exchange_4{9|65E9} 107>10 108>10 109>10 110>10 111>10
+. 112>10 114b21 138s16
+107m10 Ptr{5|67M9}
+108m10 Expected{5|67M9}
+109*10 Desired{7|35+9}
+110b10 Weak{9|65E9}
+111i10 Success_Model{9|63I12}
+112i10 Failure_Model{9|63I12}
+115V16*Atomic_Compare_Exchange_8{9|65E9} 116>10 117>10 118>10 119>10 120>10
+. 121>10 123b21 142s16
+116m10 Ptr{5|67M9}
+117m10 Expected{5|67M9}
+118*10 Desired{7|35+9}
+119b10 Weak{9|65E9}
+120i10 Success_Model{9|63I12}
+121i10 Failure_Model{9|63I12}
+X 9 s-atopri.ads
+38K16*Atomic_Primitives 8|32w13 32r43 9|203e29
+60N4*Seq_Cst 8|49r31 54r31 59r31 64r31 93r39 94r39 102r39 103r39 111r39 112r39
+. 120r39 121r39
+63I12*Mem_Model{integer} 8|49r18 54r18 59r18 64r18 93r26 94r26 102r26 103r26
+. 111r26 112r26 120r26 121r26
+65B9*bool<boolean> 8|92r26 94r55 101r26 103r55 110r26 112r55 119r26 121r55
+148V13*Atomic_Always_Lock_Free{65E9} 8|156s23
+

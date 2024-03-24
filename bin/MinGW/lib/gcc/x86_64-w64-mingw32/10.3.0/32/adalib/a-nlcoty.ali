@@ -1,0 +1,123 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -m32
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U ada.numerics.long_complex_types%b  a-nlcoty.ads  b2189f0d NE OL PU PK
+W ada%s			ada.ads			ada.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+Z ada.numerics.aux%s	a-numaux.adb		a-numaux.ali
+W ada.numerics.generic_complex_types%s
+Z system.exn_llf%s	s-exnllf.adb		s-exnllf.ali
+Z system.fat_lflt%s	s-fatlfl.ads		s-fatlfl.ali
+
+U ada.numerics.long_complex_types%s  a-nlcoty.ads  eecd0487 EB NE OL PU PK
+W ada%s			ada.ads			ada.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.generic_complex_types%s
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-except.ads		20210510020126 a7106115 ada.exceptions%s
+D a-numeri.ads		20210510020126 bb51c45a ada.numerics%s
+D a-numaux.ads		20210510020126 243fe0b7 ada.numerics.aux%s
+D a-ngcoty.ads		20210510020126 e7845fd0 ada.numerics.generic_complex_types%s
+D a-ngcoty.adb		20210510020126 c98acde0 ada.numerics.generic_complex_types%b
+D a-nlcoty.ads		20210408115628 b2189f0d ada.numerics.long_complex_types%s
+D a-nlcoty.ads		20210408115628 b2189f0d ada.numerics.long_complex_types%b
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D system.ads		20210510020128 32a08138 system%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-exnllf.ads		20210510020126 bc7ebbdc system.exn_llf%s
+D s-fatgen.ads		20210510020126 49cbaf86 system.fat_gen%s
+D s-fatlfl.ads		20210510020126 378cba9f system.fat_lflt%s
+D s-parame.ads		20210510020128 48ec542b system.parameters%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+D s-traent.ads		20210510020128 005bf670 system.traceback_entries%s
+G a e
+G c Z s s [re ada__numerics__long_complex_types 54 13 18_1]
+G c Z s s [im ada__numerics__long_complex_types 55 13 18_1]
+G c Z s s [im ada__numerics__long_complex_types 56 13 18_1]
+G c Z s s [set_re ada__numerics__long_complex_types 58 14 18_1]
+G c Z s s [set_im ada__numerics__long_complex_types 59 14 18_1]
+G c Z s s [set_im ada__numerics__long_complex_types 60 14 18_1]
+G c Z s s [compose_from_cartesian ada__numerics__long_complex_types 62 13 18_1]
+G c Z s s [compose_from_cartesian ada__numerics__long_complex_types 63 13 18_1]
+G c Z s s [compose_from_cartesian ada__numerics__long_complex_types 64 13 18_1]
+G c Z s s [modulus ada__numerics__long_complex_types 66 13 18_1]
+G c Z s s [argument ada__numerics__long_complex_types 69 13 18_1]
+G c Z s s [argument ada__numerics__long_complex_types 70 13 18_1]
+G c Z s s [compose_from_polar ada__numerics__long_complex_types 72 13 18_1]
+G c Z s s [compose_from_polar ada__numerics__long_complex_types 76 13 18_1]
+G c Z s s [Oadd ada__numerics__long_complex_types 80 13 18_1]
+G c Z s s [Osubtract ada__numerics__long_complex_types 81 13 18_1]
+G c Z s s [conjugate ada__numerics__long_complex_types 82 13 18_1]
+G c Z s s [Oadd ada__numerics__long_complex_types 84 13 18_1]
+G c Z s s [Osubtract ada__numerics__long_complex_types 85 13 18_1]
+G c Z s s [Omultiply ada__numerics__long_complex_types 86 13 18_1]
+G c Z s s [Odivide ada__numerics__long_complex_types 87 13 18_1]
+G c Z s s [Oexpon ada__numerics__long_complex_types 89 13 18_1]
+G c Z s s [Oadd ada__numerics__long_complex_types 91 13 18_1]
+G c Z s s [Osubtract ada__numerics__long_complex_types 92 13 18_1]
+G c Z s s [Oabs ada__numerics__long_complex_types 94 13 18_1]
+G c Z s s [Oadd ada__numerics__long_complex_types 96 13 18_1]
+G c Z s s [Osubtract ada__numerics__long_complex_types 97 13 18_1]
+G c Z s s [Omultiply ada__numerics__long_complex_types 98 13 18_1]
+G c Z s s [Odivide ada__numerics__long_complex_types 99 13 18_1]
+G c Z s s [Oexpon ada__numerics__long_complex_types 101 13 18_1]
+G c Z s s [Olt ada__numerics__long_complex_types 103 13 18_1]
+G c Z s s [Ole ada__numerics__long_complex_types 104 13 18_1]
+G c Z s s [Ogt ada__numerics__long_complex_types 105 13 18_1]
+G c Z s s [Oge ada__numerics__long_complex_types 106 13 18_1]
+G c Z s s [Oadd ada__numerics__long_complex_types 108 13 18_1]
+G c Z s s [Oadd ada__numerics__long_complex_types 109 13 18_1]
+G c Z s s [Osubtract ada__numerics__long_complex_types 110 13 18_1]
+G c Z s s [Osubtract ada__numerics__long_complex_types 111 13 18_1]
+G c Z s s [Omultiply ada__numerics__long_complex_types 112 13 18_1]
+G c Z s s [Omultiply ada__numerics__long_complex_types 113 13 18_1]
+G c Z s s [Odivide ada__numerics__long_complex_types 114 13 18_1]
+G c Z s s [Odivide ada__numerics__long_complex_types 115 13 18_1]
+G c Z s s [Oadd ada__numerics__long_complex_types 117 13 18_1]
+G c Z s s [Oadd ada__numerics__long_complex_types 118 13 18_1]
+G c Z s s [Osubtract ada__numerics__long_complex_types 119 13 18_1]
+G c Z s s [Osubtract ada__numerics__long_complex_types 120 13 18_1]
+G c Z s s [Omultiply ada__numerics__long_complex_types 121 13 18_1]
+G c Z s s [Omultiply ada__numerics__long_complex_types 122 13 18_1]
+G c Z s s [Odivide ada__numerics__long_complex_types 123 13 18_1]
+G c Z s s [Odivide ada__numerics__long_complex_types 124 13 18_1]
+G c Z s s [Oadd ada__numerics__long_complex_types 126 13 18_1]
+G c Z s s [Oadd ada__numerics__long_complex_types 127 13 18_1]
+G c Z s s [Osubtract ada__numerics__long_complex_types 128 13 18_1]
+G c Z s s [Osubtract ada__numerics__long_complex_types 129 13 18_1]
+G c Z s s [Omultiply ada__numerics__long_complex_types 131 13 18_1]
+G c Z s s [Omultiply ada__numerics__long_complex_types 132 13 18_1]
+G c Z s s [Odivide ada__numerics__long_complex_types 133 13 18_1]
+G c Z s s [Odivide ada__numerics__long_complex_types 134 13 18_1]
+G c Z s s [complexIP ada__numerics__long_complex_types 42 9 18_1]
+X 1 ada.ads
+16K9*Ada 20e8 8|16r6 18r9 19r8
+X 3 a-numeri.ads
+16K13*Numerics 1|16k9 3|32e17 8|16r10 18r13 19r12
+X 5 a-ngcoty.ads
+39k22*Generic_Complex_Types 157e39 8|16w19 19r21
+X 8 a-nlcoty.ads
+18K22*Long_Complex_Types[5|39] 3|16k13 8|21r14
+

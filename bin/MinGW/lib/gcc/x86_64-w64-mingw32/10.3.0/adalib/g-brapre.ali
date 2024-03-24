@@ -1,0 +1,42 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+
+U gnat.branch_prediction%s  g-brapre.ads	57214081 NE OL PU PK
+W gnat%s		gnat.ads		gnat.ali
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D gnat.ads		20210510020126 b5988c27 gnat%s
+D g-brapre.ads		20210510020126 e2b9cca6 gnat.branch_prediction%s
+D system.ads		20210510020128 32a08138 system%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+G a e
+G c Z s s [expect gnat__branch_prediction 51 13 none]
+G c Z s s [likely gnat__branch_prediction 56 13 none]
+G c Z s s [unlikely gnat__branch_prediction 62 13 none]
+X 3 gnat.ads
+34K9*GNAT 57e9 4|48r9 68r5
+X 4 g-brapre.ads
+48K14*Branch_Prediction 3|34k9 4|68l10 68e27
+51V13*Expect{boolean} 51>21 51>42 52b30
+51b21 Condition{boolean}
+51b42 Outcome{boolean}
+56V13*Likely{boolean} 56>21 57b30
+56b21 Condition{boolean}
+62V13*Unlikely{boolean} 62>23 63b30
+62b23 Condition{boolean}
+

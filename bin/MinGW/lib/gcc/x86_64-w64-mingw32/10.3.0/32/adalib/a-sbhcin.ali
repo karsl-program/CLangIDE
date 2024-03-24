@@ -1,0 +1,66 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -m32
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV SPARK_05
+
+U ada.strings.bounded.hash_case_insensitive%b  a-sbhcin.adb  934953f6 NE OL SU GE
+W ada%s			ada.ads			ada.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.bounded%s	a-strbou.adb		a-strbou.ali
+W ada.strings.hash_case_insensitive%s  a-shcain.adb  a-shcain.ali
+
+U ada.strings.bounded.hash_case_insensitive%s  a-sbhcin.ads  b23f6fa0 BN NE OL PR GE
+W ada%s			ada.ads			ada.ali
+W ada.containers%s	a-contai.ads		a-contai.ali
+W ada.strings.bounded%s	a-strbou.adb		a-strbou.ali
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-charac.ads		20210408115628 2d3ec45b ada.characters%s
+D a-chlat1.ads		20210408115628 66457d31 ada.characters.latin_1%s
+D a-contai.ads		20210408115628 61e5e089 ada.containers%s
+D a-string.ads		20210408115628 90ac6797 ada.strings%s
+D a-strbou.ads		20210510020126 84c37afd ada.strings.bounded%s
+D a-sbhcin.ads		20210510020126 5719f5d4 ada.strings.bounded.hash_case_insensitive%s
+D a-sbhcin.adb		20210510020126 ccfff4fd ada.strings.bounded.hash_case_insensitive%b
+D a-shcain.ads		20210510020126 08af52df ada.strings.hash_case_insensitive%s
+D a-strmap.ads		20210510020126 e8bb714a ada.strings.maps%s
+D a-strsup.ads		20210510020126 a27dcb33 ada.strings.superbounded%s
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D system.ads		20210510020128 32a08138 system%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+D s-unstyp.ads		20210510020128 34867c83 system.unsigned_types%s
+G a e
+G c Z s b [hash_case_insensitive ada__strings__bounded 40 30 none]
+X 1 ada.ads
+16K9*Ada 20e8 7|34r6 38r10 40r10 44r22 8|30r6 32r10 37r11 38r5
+X 4 a-contai.ads
+16K13*Containers 28e19 7|34w10 42r10 8|34r10
+19M9*Hash_Type 7|42r21 8|34r21
+X 5 a-string.ads
+16K13*Strings 35e16 7|38r14 40r14 44r26 8|30r10 32r14 37r15 38r9
+X 6 a-strbou.ads
+45K21*Bounded 1281e24 7|38r22 40r22 44r34 8|32r22 38r17
+52k12*Generic_Bounded_Length 1279e30 7|38r30
+58R12 Bounded_String<11|47R9> 7|41r18[37] 8|33r18[7|37]
+82V16 To_String{string} 8|37s54[7|37]
+X 7 a-sbhcin.ads
+37K17 Bounded[6|52] 41r10 8|33r10 37r46
+40v30*Hash_Case_Insensitive 6|45k21 7|41>4 44r42 8|32b30 38l25 38t46
+41r4 Key{6|58R12[37]} 8|33b4 37r65
+X 9 a-shcain.ads
+32V22*Hash_Case_Insensitive{4|19M9} 8|30w18 37s23
+

@@ -1,0 +1,56 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -m32
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IO
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U direct_io%s		directio.ads		708fca39 NE OL
+W ada%s			ada.ads			ada.ali
+W ada.direct_io%s
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-direio.ads		20210510020126 a93c9b31 ada.direct_io%s
+D a-direio.adb		20210510020126 dc70efaa ada.direct_io%b
+D a-except.ads		20210510020126 a7106115 ada.exceptions%s
+D a-ioexce.ads		20210408115628 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20210510020126 119b8fb3 ada.streams%s
+D a-tags.ads		20210510020126 491b781d ada.tags%s
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D directio.ads		20210408115628 d9b35108 direct_io%s
+D interfac.ads		20210510020126 5ab55268 interfaces%s
+D i-cstrea.ads		20210510020126 e53d8b8e interfaces.c_streams%s
+D system.ads		20210510020128 32a08138 system%s
+D s-crtl.ads		20210510020126 0ebbdb71 system.crtl%s
+D s-direio.ads		20210510020126 7c86ede3 system.direct_io%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-ficobl.ads		20210510020126 078245e4 system.file_control_block%s
+D s-fileio.ads		20210510020126 45ce2f0f system.file_io%s
+D s-parame.ads		20210510020128 48ec542b system.parameters%s
+D s-secsta.ads		20210510020128 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20210510020128 a7318a92 system.soft_links%s
+D s-stache.ads		20210510020128 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+D s-stoele.ads		20210510020128 2dc34a04 system.storage_elements%s
+D s-traent.ads		20210510020128 005bf670 system.traceback_entries%s
+G a e
+X 1 ada.ads
+16K9*Ada 20e8 9|22r6 24r35
+X 2 a-direio.ads
+43k13*Direct_IO 193e18 9|22w10 24r39
+X 9 directio.ads
+24k17*Direct_IO
+

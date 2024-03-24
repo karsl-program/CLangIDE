@@ -1,0 +1,123 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_FLOATING_POINT
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U gnat.sets%b		g-sets.adb		6fec6580 NE OL PK
+W gnat%s		gnat.ads		gnat.ali
+
+U gnat.sets%s		g-sets.ads		d4fca1b1 BN EE NE OL PK
+W gnat%s		gnat.ads		gnat.ali
+W gnat.dynamic_htables%s  g-dynhta.adb		g-dynhta.ali
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D a-uncdea.ads		20210408115628 eff36322 ada.unchecked_deallocation%s
+D gnat.ads		20210510020126 b5988c27 gnat%s
+D g-dynhta.ads		20210510020126 b061de91 gnat.dynamic_htables%s
+D g-dynhta.adb		20210510020126 7fd61abe gnat.dynamic_htables%b
+D g-sets.ads		20210510020126 d105f307 gnat.sets%s
+D g-sets.adb		20210510020126 bee99687 gnat.sets%b
+D system.ads		20210510020128 32a08138 system%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+G a e
+X 4 gnat.ads
+34K9*GNAT 57e9 7|34r6 34r32 36r9 179r5 8|32r14 169r5
+40M9*Bucket_Range_Type 7|65r54
+X 5 g-dynhta.ads
+51K14*Dynamic_HTables 517e25 7|34w11 34r37
+300F12*Threshold_Type{long_float}
+303+12 Key_Type 7|162r10
+304+12 Value_Type 7|163r10
+307*7 No_Value{304+12} 7|164r10
+310f7 Expansion_Threshold{300F12} 7|165r10
+311m7 Expansion_Factor{295M12} 7|166r10
+321f7 Compression_Threshold{300F12} 7|167r10
+322m7 Compression_Factor{295M12} 7|168r10
+332V22 "="{boolean} 7|169r11
+336U22 Destroy_Value 7|170r10
+339V21 Hash{4|40M9} 7|171r10
+342k12*Dynamic_Hash_Tables 515e27 7|161r33
+351P12 Dynamic_Hash_Table 7|173r45[161] 8|49r49[7|161] 67r40[7|161] 86r41[7|161]
+. 107r37[7|161] 116r49[7|161] 126r53[7|161] 147r48[7|161] 156r39[7|161] 165r45[7|161]
+352p7 Nil{351P12[7|161]} 7|174r67[161]
+354V16 Contains{boolean} 8|49s28[7|161]
+359V16 Create{351P12[7|161]} 8|58s44[7|161]
+363U17 Delete 8|67s21[7|161]
+372U17 Destroy 8|86s21[7|161]
+384V16 Is_Empty{boolean} 8|116s28[7|161]
+387V16 Present{boolean} 8|147s28[7|161]
+390U17 Put 8|107s21[7|161]
+401U17 Reset 8|156s21[7|161]
+406V16 Size{natural} 8|165s28[7|161]
+426R12 Iterator 7|176r39[161] 8|95r49[7|161] 138r38[7|161]
+428V16 Has_Next{boolean} 8|95s28[7|161]
+433V16 Iterate{426R12[7|161]} 8|126s33[7|161]
+437U17 Next 8|138s21[7|161]
+X 7 g-sets.ads
+36K14*Sets 4|34k9 7|179l10 179e14 8|32b19 169l10 169t14
+59+12 Element_Type 62r23 63r23 65r33 82r17 91r17 104r17 150r58 162r35 8|46r17
+. 65r52 104r17 135r21
+61V22 "="{boolean} 62>15 63>15 169r36
+62*15 Left{59+12}
+63*15 Right{59+12}
+65V21 Hash{4|40M9} 65>27 171r35
+65*27 Key{59+12}
+68k12*Membership_Sets 59z12 61z22 65z21 158E17 177l8 177e23 8|38b17 167l8
+. 167t23
+77P12*Membership_Set<5|351P12[161]> 78r22 81r17 85r56 90r17 96r37 103r17
+. 109r30 112r29 115r28 120r26 141r29 173c12 174r22 174r40 8|45r17 56r56 58r17
+. 65r29 84r37 103r17 114r30 123r29 145r29 154r28 163r26
+78p7*Nil{77P12} 174c7
+80V16*Contains{boolean}<5|354p16> 81>10 82>10 8|44b16 50l11 50t19
+81p10 S{77P12} 8|45b10 49r69
+82*10 Elem{59+12} 8|46b10 49r73
+85V16*Create{77P12}<5|359p16> 85>24 8|56b16 59l11 59t17
+85i24 Initial_Size{positive} 8|56b24 58r52
+89U17*Delete<5|363p17> 90>10 91>10 8|65b17 68l11 68t17
+90p10 S{77P12} 8|65b25 67r60
+91*10 Elem{59+12} 8|65b45 67r64
+96U17*Destroy<5|372p17> 96=26 8|84b17 87l11 87t18
+96p26 S{77P12} 8|84b26 86m61 86r61
+102U17*Insert 103>10 104>10 8|102b17 108l11 108t17
+103p10 S{77P12} 8|103b10 107r57
+104*10 Elem{59+12} 8|104b10 107r61
+109V16*Is_Empty{boolean}<5|384p16> 109>26 8|114b16 117l11 117t19
+109p26 S{77P12} 8|114b26 116r69
+112V16*Present{boolean}<5|387p16> 112>25 8|145b16 148l11 148t18
+112p25 S{77P12} 8|145b25 147r68
+115U17*Reset<5|401p17> 115>24 8|154b17 157l11 157t16
+115p24 S{77P12} 8|154b24 156r59
+120V16*Size{natural}<5|406p16> 120>22 8|163b16 166l11 166t15
+120p22 S{77P12} 8|163b22 165r65
+139R12*Iterator<5|426R12[161]> 141r52 145r33 150r37 176c12 8|93r33 123r52
+. 126r12 134r24
+141V16*Iterate{139R12} 141>25 8|123b16 127l11 127t18
+141p25 S{77P12} 8|123b25 126r73
+145V16*Has_Next{boolean}<5|428p16> 145>26 8|93b16 96l11 96t19
+145r26 Iter{139R12} 8|93b26 95r59
+150U17*Next<5|437p17> 150=23 150<47 8|133b17 139l11 139t15
+150r23 Iter{139R12} 8|134b10 138m48 138r48
+150*47 Elem{59+12} 8|135b10 138m55
+158U17 Destroy 158=26 170r35 8|74b17 78l11 78t18
+158b26 B{boolean} 8|74b26 75r31
+161K15 Hashed_Set[5|342] 173r34 174r56 176r28 8|49r17 49r38 58r33 67r10 67r29
+. 86r10 86r30 95r17 95r38 107r10 107r26 116r17 116r38 126r22 126r42 138r10
+. 138r27 147r17 147r37 156r10 156r28 165r17 165r34
+

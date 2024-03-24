@@ -1,0 +1,313 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -mtune=generic
+A -march=x86-64
+P SS ZX
+
+RN
+RV NO_DISPATCHING_CALLS
+RV NO_EXCEPTIONS
+RV NO_FIXED_POINT
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV NO_OBSOLESCENT_FEATURES
+RV SPARK_05
+
+U gnat.serial_communications%b  g-sercom.adb	810c12ad NE OL PK
+W ada%s			ada.ads			ada.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+W ada.streams%s		a-stream.adb		a-stream.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W gnat%s		gnat.ads		gnat.ali
+W gnat.os_lib%s		g-os_lib.ads		g-os_lib.ali
+W system%s		system.ads		system.ali
+W system.communication%s  s-commun.adb		s-commun.ali
+W system.crtl%s		s-crtl.ads		s-crtl.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.win32%s	s-win32.ads		s-win32.ali
+W system.win32.ext%s	s-winext.ads		s-winext.ali
+
+U gnat.serial_communications%s  g-sercom.ads	dd2a3981 BN EE OL PF PK
+W ada%s			ada.ads			ada.ali
+W ada.streams%s		a-stream.adb		a-stream.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W gnat%s		gnat.ads		gnat.ali
+W interfaces%s		interfac.ads		interfac.ali
+W interfaces.c%s	i-c.adb			i-c.ali
+W system%s		system.ads		system.ali
+Z system.exception_table%s  s-exctab.adb	s-exctab.ali
+W system.os_constants%s	s-oscons.ads		s-oscons.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-except.ads		20210510020126 a7106115 ada.exceptions%s
+D a-stream.ads		20210510020126 119b8fb3 ada.streams%s
+D a-tags.ads		20210510020126 491b781d ada.tags%s
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D a-uncdea.ads		20210408115628 eff36322 ada.unchecked_deallocation%s
+D gnat.ads		20210510020126 b5988c27 gnat%s
+D g-os_lib.ads		20210510020126 0db74523 gnat.os_lib%s
+D g-sercom.ads		20210510020126 e7c39e16 gnat.serial_communications%s
+D g-sercom.adb		20210510020126 f87c6bd6 gnat.serial_communications%b
+D interfac.ads		20210510020126 5ab55268 interfaces%s
+D i-c.ads		20210510020126 5421119b interfaces.c%s
+D system.ads		20210510020128 32a08138 system%s
+D s-commun.ads		20210510020126 06400110 system.communication%s
+D s-crtl.ads		20210510020126 0ebbdb71 system.crtl%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-imgint.ads		20210510020128 02dbe0c2 system.img_int%s
+D s-oscons.ads		20210517175006 cacbb598 system.os_constants%s
+D s-os_lib.ads		20210510020128 5797958e system.os_lib%s
+D s-parame.ads		20210510020128 48ec542b system.parameters%s
+D s-secsta.ads		20210510020128 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20210510020128 a7318a92 system.soft_links%s
+D s-stache.ads		20210510020128 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+D s-stoele.ads		20210510020128 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20210510020128 ed88f8fb system.storage_elements%b
+D s-string.ads		20210510020128 8fe54fb7 system.strings%s
+D s-traent.ads		20210510020128 005bf670 system.traceback_entries%s
+D s-win32.ads		20210510020128 15ac53fb system.win32%s
+D s-winext.ads		20210510020128 ad68255f system.win32.ext%s
+G a e
+G c Z s b [name gnat__serial_communications 96 13 none]
+G c Z s b [open gnat__serial_communications 132 14 none]
+G c Z s b [set gnat__serial_communications 138 14 none]
+G c Z s b [read gnat__serial_communications 160 25 none]
+G c Z s b [write gnat__serial_communications 169 25 none]
+G c Z s b [close gnat__serial_communications 174 14 none]
+G c Z s b [to_ada gnat__serial_communications 177 14 none]
+G c Z s s [to_c gnat__serial_communications 182 13 none]
+G c Z s s [serial_portDF gnat__serial_communications 190 9 none]
+G c Z s s [serial_portIP gnat__serial_communications 190 9 none]
+G c Z b b [raise_error gnat__serial_communications 60 14 none]
+X 1 ada.ads
+16K9*Ada 20e8 9|34r6 125r28 162r20 163r20 171r16 190r28 10|34r6 34r32 34r45
+X 3 a-stream.ads
+36K13*Streams 87e16 9|34w10 125r32 162r24 163r24 171r20 190r32 10|34w10 34r36
+39H9*Root_Stream_Type 70e64 9|125r40 190r40
+42M9*Stream_Element
+44I9*Stream_Element_Offset<long_long_integer> 9|163r32 10|148r20 309r17
+54A9*Stream_Element_Array(42M9)<44I9> 9|162r32 171r28 10|147r20 290r16
+X 7 gnat.ads
+34K9*GNAT 57e9 9|38r9 225r5 10|42r6 44r14 137r24 315r5
+X 8 g-os_lib.ads
+51K14*OS_Lib=51:36 10|42w11 137r29
+X 9 g-sercom.ads
+38K14*Serial_Communications 7|34k9 9|190E9 225l10 225e31 10|44b19 315l10
+. 315t31
+90X4*Serial_Error 10|135r13
+93A9*Port_Name<string>(character)<integer> 96r45 134r14 10|84r45 89r12 92r12
+. 102r14
+96V13*Name{93A9} 96>19 10|84b13 94l8 94t12
+96i19 Number{positive} 10|84b19 85r50 87r10
+103E9*Data_Rate 110e26 140r19 194r38 10|179r19
+104n7*B75{103E9} 195r25
+104n12*B110{103E9} 196r25
+104n18*B150{103E9} 197r25
+104n24*B300{103E9} 198r25
+104n30*B600{103E9} 199r25
+104n36*B1200{103E9} 200r25
+105n7*B2400{103E9} 201r25
+105n14*B4800{103E9} 202r25
+105n21*B9600{103E9} 140r39 203r25 10|179r39
+106n7*B19200{103E9} 204r25
+106n15*B38400{103E9} 205r25
+106n23*B57600{103E9} 206r25
+106n31*B115200{103E9} 207r25
+107n7*B230400{103E9} 208r25
+107n16*B460800{103E9} 209r25
+107n25*B500000{103E9} 210r25
+107n34*B576000{103E9} 211r25
+107n43*B921600{103E9} 212r25
+108n7*B1000000{103E9} 213r25
+108n17*B1152000{103E9} 214r25
+108n27*B1500000{103E9} 215r25
+109n7*B2000000{103E9} 216r25
+109n17*B2500000{103E9} 217r25
+109n27*B3000000{103E9} 218r25
+110n7*B3500000{103E9} 219r25
+110n17*B4000000{103E9} 220r25
+113E9*Data_Bits 113e32 141r19 10|50r34 180r19
+113n23*CS8{113E9} 141r39 10|180r39
+113n28*CS7{113E9}
+116E9*Stop_Bits_Number 116e39 142r19 10|53r34 181r19
+116n30*One{116E9} 142r39 10|54r21 181r39
+116n35*Two{116E9} 10|54r40
+119E9*Parity_Check 119e42 143r19 10|51r34 182r19
+119n26*None{119E9} 143r39 10|52r21 182r39
+119n32*Even{119E9} 10|52r57
+119n38*Odd{119E9} 10|52r39
+122E9*Flow_Control 122e50 146r19 10|185r19
+122n26*None{122E9} 146r39 10|185r39 216r15
+122n32*RTS_CTS{122E9} 10|220r15
+122n41*Xon_Xoff{122E9} 10|224r15
+125R9*Serial_Port<3|39R9> 132p14 133r18 138p14 139r19 160P25 161r23 169P25
+. 170r23 174p14 174r35 177p14 177r33 182p13 183r14 190c9 192e14 222r26 10|67r35
+. 101r18 146r23 178r19 279r33 289r23
+128I9*Serial_Port_Descriptor<29|55I9> 177r51 183r34 191r11 222r46 10|124r19
+. 279r51
+132U14*Open 133<7 134>7 10|100b14 127l8 127t12
+133r7 Port{125R9} 10|101b7 109r10 110r42 113m7 124r10
+134a7 Name{93A9} 10|102b7 104r44
+138U14*Set 139>7 140>7 141>7 142>7 143>7 144>7 145>7 146>7 147>7 10|177b14
+. 273l8 273t11
+139r7 Port{125R9} 10|178b7 195r10 199r40 202r42 234r40 237r42 267r38
+140e7 Rate{103E9} 10|179b7 206r63
+141e7 Bits{113E9} 10|180b7 230r51
+142e7 Stop_Bits{116E9} 10|181b7 232r56
+143e7 Parity{119E9} 10|182b7 231r53
+144b7 Block{boolean} 10|183b7 246r10
+145b7 Local{boolean} 10|184b7 188r28
+146e7 Flow{122E9} 10|185b7 215r12
+147o7 Timeout{duration} 10|186b7 252r13 261r55
+160U25*Read<3|57p14> 161=7 162<7 163<7 10|145b25 171l8 171t12
+161r7 Port{125R9} 10|146b7 154r10 160r44
+162a7 Buffer{3|54A9} 10|147b7 161m36 161r36 161r44 162r43 170r27
+163i7 Last{3|44I9} 10|148b7 170m7
+169U25*Write<3|63p14> 170=7 171>7 10|288b25 313l8 313t13
+170r7 Port{125R9} 10|289b7 296r10 302r46
+171a7 Buffer{3|54A9} 10|290b7 303r38 304r45 309r54
+174U14*Close 174=21 10|67b14 78l8 78t13
+174r21 Port{125R9} 10|67b21 71r10 72r42
+177U14*To_Ada 177<22 177>46 10|279b14 282l8 282t14
+177r22 Port{125R9} 10|279b22 281m7
+177i46 Fd{128I9} 10|279b46 281r17
+182V13*To_C{128I9} 183>7 222b13
+183r7 Port{125R9} 223r8
+191i7 H{128I9} 223r13 10|71r15 72r47 109r15 110r47 113m12 124r15 154r15 160r49
+. 195r15 199r45 202r47 234r45 237r47 267r43 281m12 296r15 302r51
+194a4 Data_Rate_Value(12|43M9) 10|206r46
+X 10 g-sercom.adb
+46K12 OSC=46:31 211r39 213r39
+50a4 C_Bits(12|43M9) 230r43
+51a4 C_Parity(12|43M9) 231r43
+53a4 C_Stop_Bits(12|43M9) 232r43
+60U14 Raise_Error 60>27 60>45 61r22 75s13 125s10 133b14 139l8 139t19 155s10
+. 167s10 196s10 203s10 238s10 271s10 297s10 311s10
+60a27 Message{string} 133b27 135r31
+60m45 Error{29|61M9} 133b45 136r15 137r67
+68i7 Success{29|69I9} 72m10 74r13
+85a7 N_Img{string} 89r35 89r42 89r61 92r31 92r38 92r57
+104a7 C_Name=104:50{string} 114r35 114r43
+105i7 Success{29|69I9} 106r28 110m10
+150i7 Success{29|69I9} 158m7 166r10
+151m7 Read_Last{29|61M9} 163m36 163r36 170r54
+190i7 Success{29|69I9} 199m7 201r10 202m10 234m7 236r10 237m10 265m7 270r10
+191r7 Com_Time_Out{30|106R9} 247m10 253m10 260m10 268m30 268r30
+192r7 Com_Settings{30|73R9} 199m49 199r49 206m7 207m7 208m7 209m7 210m7 211m7
+. 212m7 213m7 217m13 218m13 221m13 222m13 225m13 226m13 229m7 230m7 231m7
+. 232m7 234m49 234r49
+292i7 Success{29|69I9} 300m7 308r10
+293m7 Temp_Last{29|61M9} 305m38 305r38 309r40
+X 11 interfac.ads
+38K9*Interfaces 9|35r6 194r52 10|50r48 51r51 53r55 11|184e15
+X 12 i-c.ads
+18K20*C 9|35w17 194r63 10|50r59 51r62 53r66 12|230e17
+35I9*int<integer>
+43M9*unsigned 9|194r65 10|50r61 51r64 53r68
+45M9*unsigned_long
+47M9*unsigned_char
+56I9*ptrdiff_t<long_long_integer>
+X 13 system.ads
+37K9*System 9|36r6 129r10 10|36w6 36r32 37r6 37r32 38r6 38r32 39r6 39r32
+. 40r6 40r32 46r24 208r46 13|200e11
+67M9*Address
+X 14 s-commun.ads
+37K16*Communication 10|37w13 37r39 14|50e25
+40V13*Last_Index{3|44I9} 10|170s15
+X 15 s-crtl.ads
+38K16*CRTL 10|38w13 38r39 170r41 15|241e16
+60M9*size_t 10|170r46
+X 18 s-oscons.ads
+45K16*OS_Constants 9|36w13 129r17 10|46r31 18|389e24
+62I12*Serial_Port_Descriptor{29|55I9} 9|129r30
+159N4*DTR_CONTROL_ENABLE 10|211r43
+160N4*RTS_CONTROL_ENABLE 10|213r43
+X 19 s-os_lib.ads
+1031V13*Errno_Message{string} 10|137s36
+1032i7 Err{integer} 10|137r51
+X 29 s-win32.ads
+39K16*Win32 10|39w13 39r39 40r13 40r39 74r23 166r20 201r20 208r53 236r20
+. 270r20 308r20 29|349e17
+55I9*HANDLE<12|56I9> 10|72r34 110r34 160r36 199r32 202r34 234r32 237r34 267r30
+. 302r38
+57i4*INVALID_HANDLE_VALUE{55I9} 10|122r22 124r43
+61M9*DWORD<12|45M9> 10|60r53 133r53 151r27 162r36 206r39 254r36 261r41 293r27
+. 304r38
+63M9*BYTE<12|47M9> 10|230r37 231r37 232r37
+69I9*BOOL<12|35I9> 10|68r17 105r17 150r19 190r22 292r19
+72I9*Bits1<short_short_integer> 10|208r39
+73I9*Bits2<short_short_integer>
+83N4*FALSE 10|74r29 166r26 201r26 236r26 270r26 308r26
+84N4*TRUE 10|208r59
+87V13*GetLastError{61M9} 10|60s62 133s62
+97N4*GENERIC_READ 10|115r35
+98N4*GENERIC_WRITE 10|115r51
+102N4*OPEN_EXISTING 10|118r35
+178V13*CreateFileA{55I9} 10|113s17
+179m7 lpFileName{13|67M9} 10|114r10
+180m7 dwDesiredAccess{61M9} 10|115r10
+181m7 dwShareMode{61M9} 10|116r10
+182p7 lpSecurityAttributes(171R9) 10|117r10
+183m7 dwCreationDisposition{61M9} 10|118r10
+184m7 dwFlagsAndAttributes{61M9} 10|119r10
+185i7 hTemplateFile<55I9> 10|120r10
+210V13*WriteFile{69I9} 10|301s9
+211i7 hFile{55I9} 10|302r12
+212m7 lpBuffer{13|67M9} 10|303r12
+213m7 nNumberOfBytesToWrite{61M9} 10|304r12
+214p7 lpNumberOfBytesWritten(61M9) 10|305r12
+215p7 lpOverlapped(162R9) 10|306r12
+218V13*ReadFile{69I9} 10|159s9
+219i7 hFile{55I9} 10|160r12
+220m7 lpBuffer{13|67M9} 10|161r12
+221m7 nNumberOfBytesToRead{61M9} 10|162r12
+222p7 lpNumberOfBytesRead(61M9) 10|163r12
+223p7 lpOverlapped(162R9) 10|164r12
+226V13*CloseHandle{69I9} 10|72s21 110s21 202s21 237s21
+X 30 s-winext.ads
+35K22*Ext 10|40w19 40r45 30|130e21
+67N4*NOPARITY 10|52r29
+68N4*ODDPARITY 10|52r46
+69N4*EVENPARITY 10|52r65
+70N4*ONESTOPBIT 10|54r28
+71N4*TWOSTOPBITS 10|54r47
+73R9*DCB 10|192r30 30|102e14
+75m7*BaudRate{29|61M9} 10|206m20
+76i7*fBinary{29|72I9} 10|208m20
+77i7*fParity{29|72I9} 10|207m20
+78i7*fOutxCtsFlow{29|72I9} 10|218m26 222m26 226m26
+79i7*fOutxDsrFlow{29|72I9} 10|209m20
+80i7*fDtrControl{29|73I9} 10|211m20
+81i7*fDsrSensitivity{29|72I9} 10|210m20
+83i7*fOutX{29|72I9} 10|217m26 221m26 225m26
+84i7*fInX{29|72I9} 10|212m20
+87i7*fRtsControl{29|73I9} 10|213m20
+88i7*fAbortOnError{29|72I9} 10|229m20
+93m7*ByteSize{29|63M9} 10|230m20
+94m7*Parity{29|63M9} 10|231m20
+95m7*StopBits{29|63M9} 10|232m20
+106R9*COMMTIMEOUTS 10|191r30 30|112e14
+107m7*ReadIntervalTimeout{29|61M9} 10|254m13
+109m7*ReadTotalTimeoutConstant{29|61M9} 10|261m13
+115V13*GetCommState{29|69I9} 10|199s18
+120V13*SetCommState{29|69I9} 10|234s18
+125V13*SetCommTimeouts{29|69I9} 10|266s9
+126i7 hFile{29|55I9} 10|267r12
+127p7 lpCommTimeouts(106R9) 10|268r12
+

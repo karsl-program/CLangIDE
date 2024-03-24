@@ -1,0 +1,48 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_FLOATING_POINT
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U gnat.sse.vector_types%s  g-ssvety.ads		edda3278 NE OL PK
+W gnat.sse%s		g-sse.ads		g-sse.ali
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D gnat.ads		20210510020126 b5988c27 gnat%s
+D g-sse.ads		20210510020126 0ede30f7 gnat.sse%s
+D g-ssvety.ads		20210510020126 e304028f gnat.sse.vector_types%s
+D system.ads		20210510020128 32a08138 system%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+G a e
+G c Z s s [Tm128BIP gnat__sse__vector_types 77 4 none]
+G c Z s s [Tm128dBIP gnat__sse__vector_types 88 4 none]
+G c Z s s [Tm128iBIP gnat__sse__vector_types 100 4 none]
+X 3 gnat.ads
+34K9*GNAT 57e9 5|37r9 105r5
+X 4 g-sse.ads
+112K14*SSE 3|34k9 4|139e13 5|37r14 105r10
+121N4*VECTOR_ALIGN 5|78r27 89r28 101r28
+135F9*Float32<float> 5|77r35
+136F9*Float64<long_float> 5|88r36
+137I9*Integer64<long_long_integer> 5|100r36
+X 5 g-ssvety.ads
+37K18*Vector_Types 4|112k14 5|77E9 105l14 105e26
+54A9*m128(4|135F9) 77c9 78r8 79r30 80r30
+55A9*m128d(4|136F9) 88c9 89r8 90r30 91r30
+56A9*m128i(4|137I9) 100c9 101r8 102r30 103r30
+

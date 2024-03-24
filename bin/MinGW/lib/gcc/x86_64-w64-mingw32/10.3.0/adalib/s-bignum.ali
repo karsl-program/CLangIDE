@@ -1,0 +1,202 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTIONS
+RV NO_LOCAL_ALLOCATORS
+RV NO_LONG_LONG_INTEGERS
+RV NO_RECURSION
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_UNCHECKED_CONVERSION
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U system.bignums%b	s-bignum.adb		73883bce NE OL PK
+W ada%s			ada.ads			ada.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+W ada.unchecked_conversion%s
+Z interfaces%s		interfac.ads		interfac.ali
+W system%s		system.ads		system.ali
+W system.generic_bignums%s
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+Z system.storage_elements%s  s-stoele.adb	s-stoele.ali
+
+U system.bignums%s	s-bignum.ads		acd80282 BN NE OL PR PK
+W system%s		system.ads		system.ali
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-except.ads		20210510020126 a7106115 ada.exceptions%s
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20210510020126 5ab55268 interfaces%s
+D system.ads		20210510020128 32a08138 system%s
+D s-bignum.ads		20210510020126 9e7883ba system.bignums%s
+D s-bignum.adb		20210510020126 d5cf115e system.bignums%b
+D s-genbig.ads		20210510020126 36a48e45 system.generic_bignums%s
+D s-genbig.adb		20210510020126 b7025d0c system.generic_bignums%b
+D s-parame.ads		20210510020128 48ec542b system.parameters%s
+D s-secsta.ads		20210510020128 20bbe636 system.secondary_stack%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+D s-stoele.ads		20210510020128 2dc34a04 system.storage_elements%s
+D s-traent.ads		20210510020128 005bf670 system.traceback_entries%s
+G a e
+G c Z s b [big_add system__bignums 44 13 none]
+G c Z s b [big_sub system__bignums 45 13 none]
+G c Z s b [big_mul system__bignums 46 13 none]
+G c Z s b [big_div system__bignums 47 13 none]
+G c Z s b [big_exp system__bignums 48 13 none]
+G c Z s b [big_mod system__bignums 49 13 none]
+G c Z s b [big_rem system__bignums 50 13 none]
+G c Z s b [big_neg system__bignums 51 13 none]
+G c Z s b [big_abs system__bignums 52 13 none]
+G c Z s b [big_eq system__bignums 57 13 none]
+G c Z s b [big_ne system__bignums 58 13 none]
+G c Z s b [big_ge system__bignums 59 13 none]
+G c Z s b [big_le system__bignums 60 13 none]
+G c Z s b [big_gt system__bignums 61 13 none]
+G c Z s b [big_lt system__bignums 62 13 none]
+G c Z s b [bignum_in_lli_range system__bignums 66 13 none]
+G c Z s b [to_bignum system__bignums 70 13 none]
+G c Z s b [from_bignum system__bignums 74 13 none]
+G c Z b b [to_bignum system__bignums__sec_stack_bignums 87 13 37_4]
+G c Z b b [to_address system__bignums__sec_stack_bignums 88 13 37_4]
+G c Z b b [big_add system__bignums__sec_stack_bignums 94 13 37_4]
+G c Z b b [big_sub system__bignums__sec_stack_bignums 95 13 37_4]
+G c Z b b [big_mul system__bignums__sec_stack_bignums 96 13 37_4]
+G c Z b b [big_div system__bignums__sec_stack_bignums 97 13 37_4]
+G c Z b b [big_exp system__bignums__sec_stack_bignums 98 13 37_4]
+G c Z b b [big_mod system__bignums__sec_stack_bignums 99 13 37_4]
+G c Z b b [big_rem system__bignums__sec_stack_bignums 100 13 37_4]
+G c Z b b [big_neg system__bignums__sec_stack_bignums 101 13 37_4]
+G c Z b b [big_abs system__bignums__sec_stack_bignums 102 13 37_4]
+G c Z b b [big_eq system__bignums__sec_stack_bignums 107 13 37_4]
+G c Z b b [big_ne system__bignums__sec_stack_bignums 108 13 37_4]
+G c Z b b [big_ge system__bignums__sec_stack_bignums 109 13 37_4]
+G c Z b b [big_le system__bignums__sec_stack_bignums 110 13 37_4]
+G c Z b b [big_gt system__bignums__sec_stack_bignums 111 13 37_4]
+G c Z b b [big_lt system__bignums__sec_stack_bignums 112 13 37_4]
+G c Z b b [bignum_in_lli_range system__bignums__sec_stack_bignums 116 13 37_4]
+G c Z b b [to_bignum system__bignums__sec_stack_bignums 120 13 37_4]
+G c Z b b [to_bignum system__bignums__sec_stack_bignums 124 13 37_4]
+G c Z b b [from_bignum system__bignums__sec_stack_bignums 128 13 37_4]
+G c Z b b [is_zero system__bignums__sec_stack_bignums 132 13 37_4]
+G c Z b b [digit_vectorIP system__bignums__sec_stack_bignums 62 9 37_4]
+G c Z b b [bignum_dataIP system__bignums__sec_stack_bignums 65 9 37_4]
+G c Z b b [msd system__bignums__sec_stack_bignums 46 13 37_4]
+G c Z b b [lsd system__bignums__sec_stack_bignums 47 13 37_4]
+G c Z b b [Oconcat system__bignums__sec_stack_bignums 50 13 37_4]
+G c Z b b [add system__bignums__sec_stack_bignums 65 13 37_4]
+G c Z b b [allocate_bignum system__bignums__sec_stack_bignums 75 13 37_4]
+G c Z b b [compare system__bignums__sec_stack_bignums 83 13 37_4]
+G c Z b b [div_rem system__bignums__sec_stack_bignums 91 14 37_4]
+G c Z b b [free_bignum system__bignums__sec_stack_bignums 102 14 37_4]
+G c Z b b [normalize system__bignums__sec_stack_bignums 108 13 37_4]
+G c Z b b [Oadd system__bignums 41 13 none]
+G c Z b b [Osubtract system__bignums 44 13 none]
+X 1 ada.ads
+16K9*Ada 20e8 7|33r6 41r24 44r24
+X 3 a-unccon.ads
+20v14*Unchecked_Conversion 7|33w10 41r28 44r28
+X 5 system.ads
+37K9*System 200e11 6|39r9 80r23 101r5 7|32r6 35r14 38r6 96r5
+67M9*Address 6|80r30
+X 6 s-bignum.ads
+39K16*Bignums 5|37k9 6|80E9 101l12 101e19 7|35b21 96l12 96t19
+42M9*Bignum<5|67M9> 44r29 44r44 45r29 45r44 46r29 46r44 47r29 47r44 48r29
+. 48r44 49r29 49r44 50r29 50r44 51r29 51r44 52r29 52r44 57r29 58r29 59r29
+. 60r29 61r29 62r29 66r38 70r54 74r30 80c9 7|42r7 45r33 47r29 47r44 50r29
+. 50r44 53r29 53r44 56r29 56r44 59r29 59r44 62r29 62r44 65r29 65r44 68r29
+. 68r44 71r29 71r44 74r29 76r29 78r29 80r29 82r29 84r29 87r38 90r54 93r30
+44V13*Big_Add{42M9} 44>22 44>25 82r19 7|47b13
+44m22 X{42M9} 7|48r36
+44m25 Y{42M9} 7|48r40
+45V13*Big_Sub{42M9} 45>22 45>25 83r19 7|50b13
+45m22 X{42M9} 7|51r36
+45m25 Y{42M9} 7|51r40
+46V13*Big_Mul{42M9} 46>22 46>25 84r19 7|53b13
+46m22 X{42M9} 7|54r36
+46m25 Y{42M9} 7|54r40
+47V13*Big_Div{42M9} 47>22 47>25 85r19 7|56b13
+47m22 X{42M9} 7|57r36
+47m25 Y{42M9} 7|57r40
+48V13*Big_Exp{42M9} 48>22 48>25 86r19 7|59b13
+48m22 X{42M9} 7|60r36
+48m25 Y{42M9} 7|60r40
+49V13*Big_Mod{42M9} 49>22 49>25 87r19 7|62b13
+49m22 X{42M9} 7|63r36
+49m25 Y{42M9} 7|63r40
+50V13*Big_Rem{42M9} 50>22 50>25 88r19 7|65b13
+50m22 X{42M9} 7|66r36
+50m25 Y{42M9} 7|66r40
+51V13*Big_Neg{42M9} 51>22 89r19 7|68b13
+51m22 X{42M9} 7|69r36
+52V13*Big_Abs{42M9} 52>22 90r19 7|71b13
+52m22 X{42M9} 7|72r36
+57V13*Big_EQ{boolean} 57>22 57>25 91r19 7|74b13
+57m22 X{42M9} 7|75r34
+57m25 Y{42M9} 7|75r38
+58V13*Big_NE{boolean} 58>22 58>25 92r19 7|76b13
+58m22 X{42M9} 7|77r34
+58m25 Y{42M9} 7|77r38
+59V13*Big_GE{boolean} 59>22 59>25 93r19 7|78b13
+59m22 X{42M9} 7|79r34
+59m25 Y{42M9} 7|79r38
+60V13*Big_LE{boolean} 60>22 60>25 94r19 7|80b13
+60m22 X{42M9} 7|81r34
+60m25 Y{42M9} 7|81r38
+61V13*Big_GT{boolean} 61>22 61>25 95r19 7|82b13
+61m22 X{42M9} 7|83r34
+61m25 Y{42M9} 7|83r38
+62V13*Big_LT{boolean} 62>22 62>25 96r19 7|84b13
+62m22 X{42M9} 7|85r34
+62m25 Y{42M9} 7|85r38
+66V13*Bignum_In_LLI_Range{boolean} 66>34 97r19 7|87b13
+66m34 X{42M9} 7|88r47
+70V13*To_Bignum{42M9} 70>24 98r19 7|90b13
+70i24 X{long_long_integer} 7|91r37
+74V13*From_Bignum{long_long_integer} 74>26 99r19 7|93b13
+74m26 X{42M9} 7|94r39
+X 7 s-bignum.adb
+37K12 Sec_Stack_Bignums[8|45] 39r8 42r15 45r7 48r8 51r8 54r8 57r8 60r8 63r8
+. 66r8 69r8 72r8 75r7 77r7 79r7 81r7 83r7 85r7 88r7 91r8 94r7
+41V13 "+"[3|20]{8|80P9[37]} 48s35 48s39 51s35 51s39 54s35 54s39 57s35 57s39
+. 60s35 60s39 63s35 63s39 66s35 66s39 69s35 72s35 75s33 75s37 77s33 77s37
+. 79s33 79s37 81s33 81s37 83s33 83s37 85s33 85s37 88s46 94s38
+44V13 "-"[3|20]{6|42M9} 48s7 51s7 54s7 57s7 60s7 63s7 66s7 69s7 72s7 91s7
+X 8 s-genbig.ads
+44b4 Use_Secondary_Stack{boolean} 7|38r30
+45k16*Generic_Bignums 7|32w13 38r13 8|135e27
+65R9*Bignum_Data
+80P9*Bignum(65R9[7|37]) 7|42r33[37] 45r25[37]
+94V13*Big_Add{80P9[7|37]} 7|48s26[37]
+95V13*Big_Sub{80P9[7|37]} 7|51s26[37]
+96V13*Big_Mul{80P9[7|37]} 7|54s26[37]
+97V13*Big_Div{80P9[7|37]} 7|57s26[37]
+98V13*Big_Exp{80P9[7|37]} 7|60s26[37]
+99V13*Big_Mod{80P9[7|37]} 7|63s26[37]
+100V13*Big_Rem{80P9[7|37]} 7|66s26[37]
+101V13*Big_Neg{80P9[7|37]} 7|69s26[37]
+102V13*Big_Abs{80P9[7|37]} 7|72s26[37]
+107V13*Big_EQ{boolean} 7|75s25[37]
+108V13*Big_NE{boolean} 7|77s25[37]
+109V13*Big_GE{boolean} 7|79s25[37]
+110V13*Big_LE{boolean} 7|81s25[37]
+111V13*Big_GT{boolean} 7|83s25[37]
+112V13*Big_LT{boolean} 7|85s25[37]
+116V13*Bignum_In_LLI_Range{boolean} 7|88s25[37]
+120V13*To_Bignum{80P9[7|37]} 7|91s26[37]
+128V13*From_Bignum{long_long_integer} 7|94s25[37]
+

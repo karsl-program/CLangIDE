@@ -1,0 +1,67 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -m32
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_LONG_LONG_INTEGERS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U system.bitfields%s	s-bitfie.ads		6715d0aa NE OL PK
+Z interfaces%s		interfac.ads		interfac.ali
+W system%s		system.ads		system.ali
+W system.bitfield_utils%s  s-bituti.adb		s-bituti.ali
+
+D interfac.ads		20210510020126 5ab55268 interfaces%s
+D system.ads		20210510020128 32a08138 system%s
+D s-bituti.ads		20210510020126 6a428d3e system.bitfield_utils%s
+D s-bituti.adb		20210510020126 5d53691e system.bitfield_utils%b
+D s-bitfie.ads		20210510020126 3ff7dcac system.bitfields%s
+G a e
+G c Z s s [val_arrayIP system__bitfields__utils 91 12 50_4]
+G c Z s s [copy_bitfield system__bitfields__utils 107 17 50_4]
+G c Z s s [get_val_2 system__bitfields__utils 55 16 50_4]
+G c Z s s [set_val_2 system__bitfields__utils 63 17 50_4]
+G c Z s s [get_bitfield system__bitfields__utils 78 16 50_4]
+G c Z s s [set_bitfield system__bitfields__utils 84 16 50_4]
+G c Z s s [set_bitfield system__bitfields__utils 94 17 50_4]
+G c Z s s [copy_small_bitfield system__bitfields__utils 101 17 50_4]
+G c Z s s [copy_large_bitfield system__bitfields__utils 111 17 50_4]
+X 2 system.ads
+37K9*System 200e11 5|32r6 34r9 44r39 50r25 60r5
+67M9*Address 5|53r22 55r22
+71N4*Storage_Unit 5|44r46
+X 3 s-bituti.ads
+32K16*Bitfield_Utils 132e26 5|32w13 50r32
+78k12*G 130e9 5|50r47
+100I15*Bit_Size{natural} 5|57r28[50]
+101I15*Small_Size{100I15[5|50]}
+103I15*Bit_Offset{101I15[5|50]}
+105I15*Bit_Offset_In_Byte{103I15[5|50]} 5|54r28[50] 56r28[50]
+107U17*Copy_Bitfield 5|58r20[50]
+X 5 s-bitfie.ads
+34K16*Bitfields 2|37k9 5|60l12 60e21
+43N4*Val_Bits 44r28 46r26 48r23
+44N4*Val_Bytes 46r58 48r50
+46M9*Val_2 47r36 50r55
+48M9*Val 50r50
+50K12*Utils[3|78] 54r22 56r22 57r22 58r14
+52U14*Copy_Bitfield=58:20
+53m7 Src_Address{2|67M9}
+54i7 Src_Offset{3|105I15[50]}
+55m7 Dest_Address{2|67M9}
+56i7 Dest_Offset{3|105I15[50]}
+57i7 Size{3|100I15[50]}
+

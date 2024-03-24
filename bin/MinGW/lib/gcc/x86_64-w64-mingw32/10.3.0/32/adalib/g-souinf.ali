@@ -1,0 +1,48 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -m32
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV SPARK_05
+
+U gnat.source_info%s	g-souinf.ads		9c857b76 NE OL PR PK
+W gnat%s		gnat.ads		gnat.ali
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D gnat.ads		20210510020126 b5988c27 gnat%s
+D g-souinf.ads		20210510020126 291df751 gnat.source_info%s
+D system.ads		20210510020128 32a08138 system%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+G a e
+G c Z s s [file gnat__source_info 49 13 none]
+G c Z s s [line gnat__source_info 54 13 none]
+G c Z s s [source_location gnat__source_info 59 13 none]
+G c Z s s [enclosing_entity gnat__source_info 68 13 none]
+G c Z s s [compilation_iso_date gnat__source_info 82 13 none]
+G c Z s s [compilation_date gnat__source_info 86 13 none]
+G c Z s s [compilation_time gnat__source_info 91 13 none]
+X 3 gnat.ads
+34K9*GNAT 57e9 4|39r9 96r5
+X 4 g-souinf.ads
+39K14*Source_Info 3|34k9 4|96l10 96e21
+49V13*File{string}
+54V13*Line{positive}
+59V13*Source_Location{string}
+68V13*Enclosing_Entity{string}
+82V13*Compilation_ISO_Date{string}
+86V13*Compilation_Date{string}
+91V13*Compilation_Time{string}
+

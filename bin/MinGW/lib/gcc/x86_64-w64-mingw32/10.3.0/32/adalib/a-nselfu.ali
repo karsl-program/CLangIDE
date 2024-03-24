@@ -1,0 +1,95 @@
+V "GNAT Lib v10"
+A -gnatwa
+A -nostdinc
+A -O2
+A -Wextra
+A -Wall
+A -fchecking=1
+A -g
+A -gnatp
+A -gnatg
+A -m32
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_STANDARD_STORAGE_POOLS
+RV SPARK_05
+
+U ada.numerics.short_elementary_functions%b  a-nselfu.ads  7d457e41 NE OL PU PK
+W ada%s			ada.ads			ada.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+Z ada.numerics.aux%s	a-numaux.adb		a-numaux.ali
+W ada.numerics.generic_elementary_functions%s
+Z system.exn_llf%s	s-exnllf.adb		s-exnllf.ali
+Z system.fat_sflt%s	s-fatsfl.ads		s-fatsfl.ali
+
+U ada.numerics.short_elementary_functions%s  a-nselfu.ads  9365d822 EB NE OL PU PK
+W ada%s			ada.ads			ada.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.generic_elementary_functions%s
+
+D ada.ads		20210408115628 76789da1 ada%s
+D a-except.ads		20210510020126 a7106115 ada.exceptions%s
+D a-numeri.ads		20210510020126 bb51c45a ada.numerics%s
+D a-numaux.ads		20210510020126 243fe0b7 ada.numerics.aux%s
+D a-ngelfu.ads		20210510020126 55716239 ada.numerics.generic_elementary_functions%s
+D a-ngelfu.adb		20210510020126 a9022048 ada.numerics.generic_elementary_functions%b
+D a-nselfu.ads		20210408115628 7d457e41 ada.numerics.short_elementary_functions%s
+D a-nselfu.ads		20210408115628 7d457e41 ada.numerics.short_elementary_functions%b
+D a-unccon.ads		20210408115628 0e9b276f ada.unchecked_conversion%s
+D system.ads		20210510020128 32a08138 system%s
+D s-exctab.ads		20210510020126 54135002 system.exception_table%s
+D s-exnllf.ads		20210510020126 bc7ebbdc system.exn_llf%s
+D s-fatgen.ads		20210510020126 49cbaf86 system.fat_gen%s
+D s-fatsfl.ads		20210510020126 e2f873d3 system.fat_sflt%s
+D s-parame.ads		20210510020128 48ec542b system.parameters%s
+D s-stalib.ads		20210510020128 09bd3940 system.standard_library%s
+D s-traent.ads		20210510020128 005bf670 system.traceback_entries%s
+G a e
+G c Z s s [sqrt ada__numerics__short_elementary_functions 52 13 18_1]
+G c Z s s [log ada__numerics__short_elementary_functions 75 13 18_1]
+G c Z s s [log ada__numerics__short_elementary_functions 79 13 18_1]
+G c Z s s [exp ada__numerics__short_elementary_functions 83 13 18_1]
+G c Z s s [Oexpon ada__numerics__short_elementary_functions 86 13 18_1]
+G c Z s s [sin ada__numerics__short_elementary_functions 94 13 18_1]
+G c Z s s [sin ada__numerics__short_elementary_functions 98 13 18_1]
+G c Z s s [cos ada__numerics__short_elementary_functions 103 13 18_1]
+G c Z s s [cos ada__numerics__short_elementary_functions 107 13 18_1]
+G c Z s s [tan ada__numerics__short_elementary_functions 112 13 18_1]
+G c Z s s [tan ada__numerics__short_elementary_functions 115 13 18_1]
+G c Z s s [cot ada__numerics__short_elementary_functions 120 13 18_1]
+G c Z s s [cot ada__numerics__short_elementary_functions 123 13 18_1]
+G c Z s s [arcsin ada__numerics__short_elementary_functions 129 13 18_1]
+G c Z s s [arcsin ada__numerics__short_elementary_functions 133 13 18_1]
+G c Z s s [arccos ada__numerics__short_elementary_functions 137 13 18_1]
+G c Z s s [arccos ada__numerics__short_elementary_functions 141 13 18_1]
+G c Z s s [arctan ada__numerics__short_elementary_functions 145 13 18_1]
+G c Z s s [arctan ada__numerics__short_elementary_functions 152 13 18_1]
+G c Z s s [arccot ada__numerics__short_elementary_functions 160 13 18_1]
+G c Z s s [arccot ada__numerics__short_elementary_functions 167 13 18_1]
+G c Z s s [sinh ada__numerics__short_elementary_functions 175 13 18_1]
+G c Z s s [cosh ada__numerics__short_elementary_functions 178 13 18_1]
+G c Z s s [tanh ada__numerics__short_elementary_functions 182 13 18_1]
+G c Z s s [coth ada__numerics__short_elementary_functions 186 13 18_1]
+G c Z s s [arcsinh ada__numerics__short_elementary_functions 190 13 18_1]
+G c Z s s [arccosh ada__numerics__short_elementary_functions 193 13 18_1]
+G c Z s s [arctanh ada__numerics__short_elementary_functions 198 13 18_1]
+G c Z s s [arccoth ada__numerics__short_elementary_functions 202 13 18_1]
+G c Z s s [exp_strict ada__numerics__short_elementary_functions 66 13 18_1]
+G c Z s s [local_atan ada__numerics__short_elementary_functions 70 13 18_1]
+X 1 ada.ads
+16K9*Ada 20e8 8|16r6 18r9 19r7
+X 3 a-numeri.ads
+16K13*Numerics 1|16k9 3|32e17 8|16r10 18r13 19r11
+X 5 a-ngelfu.ads
+39k22*Generic_Elementary_Functions 205e46 8|16w19 19r20
+X 8 a-nselfu.ads
+18K22*Short_Elementary_Functions[5|39] 3|16k13 8|21r14
+
