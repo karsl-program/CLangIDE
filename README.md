@@ -22,6 +22,9 @@ Due to the limitation of GCC compiler's suffix, the editor will recognize the fi
 - [x] Compile setting
 - [x] Error boolean and show
 - [x] Compilable and comes with a native compiler (Can be used without environment configuration)
+- [x] Autosave
+- [x] Switch languages at any time
+- [x] Windows/Linux side encoding switching
 - [ ] Multi-file TAB
 - [ ] More...
 
