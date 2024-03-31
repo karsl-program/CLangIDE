@@ -25,6 +25,7 @@ Due to the limitation of GCC compiler's suffix, the editor will recognize the fi
 - [x] Autosave
 - [x] Switch languages at any time
 - [x] Windows/Linux side encoding switching
+- [x] Sets the default program to open source
 - [ ] Multi-file TAB
 - [ ] More...
 
