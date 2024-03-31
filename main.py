@@ -20,6 +20,7 @@ Copyright (c) CLangIDE 2024
 
 import sys
 import os
+from os import path
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QDesktopWidget, QMessageBox, QAction, QStatusBar, QFileDialog,
                              QInputDialog, QLineEdit, QWidget, QComboBox, QPushButton, QGroupBox, QVBoxLayout,
                              QHBoxLayout, QPlainTextEdit)
@@ -46,6 +47,15 @@ with open('config/font_size.ini', 'r') as f:
     except Exception as e:
         QMessageBox.warning(QWidget(), "Error", f"Return error：\n{e}")
 
+with open('config/encode.ini', 'r') as f:
+    encodes = f.read()
+	
+with open('config/saves.ini', 'r') as f:
+    try:
+        savescode = bool(f.read())
+    except Exception as e:
+        QMessageBox.warning(QWidget(), "Error", f"Return error：\n{e}")
+
 
 # Highlight of C/C++
 class highlight(QsciLexerCPP):
@@ -68,11 +78,17 @@ class CompileSetting(QWidget):
         try:
             self.setWindowTitle('Compile Setting')
             self.setGeometry(100, 100, 500, 500)
-
+            self.configtype_layout = QHBoxLayout()
             self.font_layout = QHBoxLayout()
+            self.savescode_layout = QHBoxLayout()
             self.compile_layout = QHBoxLayout()
+            self.encode_layout = QHBoxLayout()
+            
             self.font_group = QGroupBox("Fonts")
+            self.savescode_group = QGroupBox("Auto Saves")
             self.compile_group = QGroupBox("Compile")
+            self.encode_group = QGroupBox("Encodes")
+            self.configtype = QGroupBox("Code Type")
             self.boxlayout = QVBoxLayout()
 
             self.center()
@@ -89,7 +105,30 @@ class CompileSetting(QWidget):
 
             # Show Fonts family
             self.combo = QComboBox(self)
+            self.encode_type = QComboBox(self)
+            self.configtypec = QComboBox(self)
+            self.autosave = QComboBox(self)
+            self.configtype_layout.addWidget(self.configtypec)
+            self.savescode_layout.addWidget(self.autosave)
+            self.encode_layout.addWidget(self.encode_type)
             self.font_layout.addWidget(self.combo)
+            self.encode_type.addItem("UTF-8")
+            self.encode_type.addItem("UTF-32")
+            self.encode_type.addItem("UTF-16")
+            self.encode_type.addItem("GBK")
+            self.encode_type.addItem("ANSI")
+            self.configtypec.addItem("C Language")
+            self.configtypec.addItem("C++")
+            self.autosave.addItem("True")
+            self.autosave.addItem("False")
+            global encodes, codetype, savescode
+            self.encode_type.setCurrentText(encodes)
+            self.autosave.setCurrentText(str(savescode))
+            if codetype == "c":
+                codestr = "C Language"
+            else:
+                codestr = "C++"
+            self.configtypec.setCurrentText(codestr)
             for font in fonts:
                 self.combo.addItem(font)
             global fontname, fontsize
@@ -108,9 +147,16 @@ class CompileSetting(QWidget):
             # create the central widget
             self.setLayout(self.boxlayout)
             self.font_group.setLayout(self.font_layout)
+            self.encode_group.setLayout(self.encode_layout)
+            self.configtype.setLayout(self.configtype_layout)
             self.compile_group.setLayout(self.compile_layout)
+            self.savescode_group.setLayout(self.savescode_layout)
+            self.boxlayout.addWidget(self.configtype)
+            self.boxlayout.addWidget(self.savescode_group)
             self.boxlayout.addWidget(self.font_group)
+            self.boxlayout.addWidget(self.encode_group)
             self.boxlayout.addWidget(self.compile_group)
+            
             self.boxlayout.addWidget(push_button_ok)
         except Exception as e:
             QMessageBox.warning(self, "Error", f"Return error：\n{e}")
@@ -123,7 +169,7 @@ class CompileSetting(QWidget):
         self.move(WindowLeft, WindowTop)
 
     def push_ok(self):
-        global fontname, compile_add_text, fontsize
+        global fontname, compile_add_text, fontsize, encodes, codetype, savescode
         with open('config/font.ini', 'w') as f:
             fontname = self.combo.currentText()
             f.write(fontname)
@@ -134,12 +180,25 @@ class CompileSetting(QWidget):
             fontsize = self.font_size_edit.text()
             f.write(fontsize)
             fontsize = int(fontsize)
+        with open('config/encode.ini', 'w') as f:
+            encodes = self.encode_type.currentText()
+            f.write(encodes)
+        with open('config/config.ini', 'w') as f:
+            codetype = self.configtypec.currentText()
+            if codetype == "C Language":
+                codetype = "c"
+            else:
+                codetype = "cpp"
+            f.write(codetype)
+        with open('config/saves.ini', 'w') as f:
+            savescode = self.autosave.currentText()
+            f.write(str(savescode))
         self.close()
 
 
 # Class of Main window
 class TextEditor(QMainWindow):
-    def __init__(self):
+    def __init__(self, filename, flag):
         super().__init__()
 
         # Global
@@ -220,10 +279,6 @@ class TextEditor(QMainWindow):
         self.SaveAction.setShortcut("Ctrl+S")
         self.SaveAction.triggered.connect(self.savefile)
         self.FileOperator.addAction(self.SaveAction)
-        self.SavesAction = QAction("另存为", self)
-        self.SavesAction.setStatusTip("另存为源代码文件")
-        self.SavesAction.setShortcut("Ctrl+Shift+S")
-        self.FileOperator.addAction(self.SavesAction)
         self.CloseAction = QAction("退出", self)
         self.CloseAction.setStatusTip("退出进程并关闭窗口")
         self.CloseAction.setShortcut("Ctrl+Q")
@@ -282,17 +337,33 @@ class TextEditor(QMainWindow):
         self.AboutAction.setStatusTip("关于CLangIDE的更多信息")
         self.AboutAction.triggered.connect(self.about)
         self.HelpOperator.addAction(self.AboutAction)
+		
+        if flag:
+            try:
+                global IsSave
+                self.editor.setText("")
+                with open(filename, 'r', encoding=encodes) as obj:
+                    for objs in obj.readlines():
+                        self.editor.setText(self.editor.text() + objs)
+                filename = filename.replace("/", "\\")
+                self.setWindowTitle("CLangIDE - " + filename)
+                IsSave = True
+            except Exception as e:
+                QMessageBox.about(self, "错误", f"发生错误：\n{e}")
 
     def Changed(self):
         global IsSave
         IsSave = False
-        self.setWindowTitle("CLangIDE - " + filename + "*")
+        self.setWindowTitle("CLangIDE - " + "*" + filename)
         # Global Font name changed
         global fontname
         font = QFont()
         font.setFamily(fontname)
         font.setPointSize(fontsize)
         self.lexer.setFont(font)
+        if savescode:
+            self.savefile()
+            IsSave = True
 
     def center(self):
         screen = QDesktopWidget().screenGeometry()
@@ -333,7 +404,7 @@ class TextEditor(QMainWindow):
             global filename, codetype
             self.editor.setText("")
             filename = f"untitled.{codetype}"
-            self.setWindowTitle("CLangIDE - " + filename + "*")
+            self.setWindowTitle("CLangIDE - " + "*" + filename)
         except Exception as e:
             QMessageBox.warning(self, "Error", f"Return error：\n{e}")
 
@@ -347,7 +418,7 @@ class TextEditor(QMainWindow):
                 if filews == QMessageBox.Yes:
                     filename, ok = QInputDialog.getText(self, "重命名", "请输入重命名标题：", QLineEdit.Normal, "title")
                     filename = filename+"."+codetype
-            savefile = open(filename, 'w+', encoding='utf-8')
+            savefile = open(filename, 'w+', encoding=encodes)
             will = self.editor.text()
             savefile.write(will)
             savefile.close()
@@ -369,7 +440,7 @@ class TextEditor(QMainWindow):
                     if filews == QMessageBox.Yes:
                         self.savefile()
                 self.editor.setText("")
-                with open(filename, 'r', encoding='utf-8') as obj:
+                with open(filename, 'r', encoding=encodes) as obj:
                     for objs in obj.readlines():
                         self.editor.setText(self.editor.text() + objs)
                 filename = filename.replace("/", "\\")
@@ -379,7 +450,7 @@ class TextEditor(QMainWindow):
             QMessageBox.about(self, "错误", f"发生错误：\n{e}")
 
     def about(self):
-        ideversion = "1.1.1 2024.2 Release"
+        ideversion = "1.2.0 2024.3 Release"
         QMessageBox.about(self, "关于CLangIDE",
                                     f"Copyright (c) 2024 CLangIDE\n\nC/C++ Core: TDM-GCC 10.3.0\nCLangIDE version: {ideversion}\nCompile Core: GCC\nOpen Source: Github - Program-zoubg/CLangIDE\nOpen Source LICENSE: GPL v3\n\nThank you!")
 
@@ -390,7 +461,12 @@ class TextEditor(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = TextEditor()
+    flag = False
+    if len(sys.argv) > 1:
+        if path.isfile(sys.argv[1]):
+            filename = sys.argv[1]
+            flag = True
+    window = TextEditor(filename, flag)
     window.show()
     sys.exit(app.exec_())
 
