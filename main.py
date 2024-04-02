@@ -34,27 +34,35 @@ with open('config/config.ini', 'r') as f:
         codetype = 'c'
 filename = f"untitled.{codetype}"
 IsSave = False
+venv_mode = False
+try:
+    with open('config/font.ini', 'r') as f:
+        fontname = f.read()
 
-with open('config/font.ini', 'r') as f:
-    fontname = f.read()
+    with open('config/addtext.ini', 'r') as f:
+        compile_add_text = f.read()
 
-with open('config/addtext.ini', 'r') as f:
-    compile_add_text = f.read()
+    with open('config/font_size.ini', 'r') as f:
+        try:
+            fontsize = int(f.read())
+        except Exception as e:
+            QMessageBox.warning(QWidget(), "Error", f"Return error：\n{e}")
 
-with open('config/font_size.ini', 'r') as f:
-    try:
-        fontsize = int(f.read())
-    except Exception as e:
-        QMessageBox.warning(QWidget(), "Error", f"Return error：\n{e}")
+    with open('config/encode.ini', 'r') as f:
+        encodes = f.read()
 
-with open('config/encode.ini', 'r') as f:
-    encodes = f.read()
-	
-with open('config/saves.ini', 'r') as f:
-    try:
-        savescode = bool(f.read())
-    except Exception as e:
-        QMessageBox.warning(QWidget(), "Error", f"Return error：\n{e}")
+    with open('config/saves.ini', 'r') as f:
+        try:
+            savescode = bool(f.read())
+        except Exception as e:
+            QMessageBox.warning(QWidget(), "Error", f"Return error：\n{e}")
+except:
+    venv_mode = True
+    fontname = "Consolas"
+    compile_add_text = "-static"
+    fontsize = 12
+    encodes = "GBK"
+    savescode = True
 
 
 # Highlight of C/C++
@@ -169,30 +177,32 @@ class CompileSetting(QWidget):
         self.move(WindowLeft, WindowTop)
 
     def push_ok(self):
-        global fontname, compile_add_text, fontsize, encodes, codetype, savescode
-        with open('config/font.ini', 'w') as f:
-            fontname = self.combo.currentText()
-            f.write(fontname)
-        with open('config/addtext.ini', 'w') as f:
-            compile_add_text = self.compile_text.toPlainText()
-            f.write(compile_add_text)
-        with open('config/font_size.ini', 'w') as f:
-            fontsize = self.font_size_edit.text()
-            f.write(fontsize)
-            fontsize = int(fontsize)
-        with open('config/encode.ini', 'w') as f:
-            encodes = self.encode_type.currentText()
-            f.write(encodes)
-        with open('config/config.ini', 'w') as f:
-            codetype = self.configtypec.currentText()
-            if codetype == "C Language":
-                codetype = "c"
-            else:
-                codetype = "cpp"
-            f.write(codetype)
-        with open('config/saves.ini', 'w') as f:
-            savescode = self.autosave.currentText()
-            f.write(str(savescode))
+        global fontname, compile_add_text, fontsize, encodes, codetype, savescode, venv_mode
+        fontname = self.combo.currentText()
+        compile_add_text = self.compile_text.toPlainText()
+        fontsize = self.font_size_edit.text()
+        savescode = self.autosave.currentText()
+        encodes = self.encode_type.currentText()
+        codetype = self.configtypec.currentText()
+        if codetype == "C Language":
+            codetype = "c"
+        else:
+            codetype = "cpp"
+
+        if not venv_mode:
+            with open('config/font.ini', 'w') as f:
+                f.write(fontname)
+            with open('config/addtext.ini', 'w') as f:
+                f.write(compile_add_text)
+            with open('config/font_size.ini', 'w') as f:
+                f.write(fontsize)
+            with open('config/encode.ini', 'w') as f:
+                f.write(encodes)
+            with open('config/config.ini', 'w') as f:
+                f.write(codetype)
+            with open('config/saves.ini', 'w') as f:
+                f.write(str(savescode))
+        fontsize = int(fontsize)
         self.close()
 
 
@@ -202,7 +212,11 @@ class TextEditor(QMainWindow):
         super().__init__()
 
         # Global
-        self.setWindowTitle("CLangIDE - " + filename)
+        global venv_mode
+        if venv_mode:
+            self.setWindowTitle("CLangIDE - " + filename + " (venv)")
+        else:
+            self.setWindowTitle("CLangIDE - " + filename)
         self.setGeometry(100, 100, 800, 600)
         self.center()
         icon = QIcon()
@@ -346,7 +360,10 @@ class TextEditor(QMainWindow):
                     for objs in obj.readlines():
                         self.editor.setText(self.editor.text() + objs)
                 filename = filename.replace("/", "\\")
-                self.setWindowTitle("CLangIDE - " + filename)
+                if venv_mode:
+                    self.setWindowTitle("CLangIDE - " + filename + " (venv)")
+                else:
+                    self.setWindowTitle("CLangIDE - " + filename)
                 IsSave = True
             except Exception as e:
                 QMessageBox.about(self, "错误", f"发生错误：\n{e}")
@@ -354,7 +371,11 @@ class TextEditor(QMainWindow):
     def Changed(self):
         global IsSave
         IsSave = False
-        self.setWindowTitle("CLangIDE - " + "*" + filename)
+        global venv_mode
+        if venv_mode:
+            self.setWindowTitle("CLangIDE - *" + filename + " (venv)")
+        else:
+            self.setWindowTitle("CLangIDE - *" + filename)
         # Global Font name changed
         global fontname
         font = QFont()
@@ -404,7 +425,11 @@ class TextEditor(QMainWindow):
             global filename, codetype
             self.editor.setText("")
             filename = f"untitled.{codetype}"
-            self.setWindowTitle("CLangIDE - " + "*" + filename)
+            global venv_mode
+            if venv_mode:
+                self.setWindowTitle("CLangIDE - *" + filename + " (venv)")
+            else:
+                self.setWindowTitle("CLangIDE - *" + filename)
         except Exception as e:
             QMessageBox.warning(self, "Error", f"Return error：\n{e}")
 
@@ -424,7 +449,11 @@ class TextEditor(QMainWindow):
             savefile.close()
             global IsSave
             IsSave = True
-            self.setWindowTitle("CLangIDE - " + filename)
+            global venv_mode
+            if venv_mode:
+                self.setWindowTitle("CLangIDE - " + filename + " (venv)")
+            else:
+                self.setWindowTitle("CLangIDE - " + filename)
         except Exception as e:
             QMessageBox.about(self, "错误", f"发生错误：\n{e}")
 
@@ -444,13 +473,17 @@ class TextEditor(QMainWindow):
                     for objs in obj.readlines():
                         self.editor.setText(self.editor.text() + objs)
                 filename = filename.replace("/", "\\")
-                self.setWindowTitle("CLangIDE - " + filename)
+                global venv_mode
+                if venv_mode:
+                    self.setWindowTitle("CLangIDE - " + filename + " (venv)")
+                else:
+                    self.setWindowTitle("CLangIDE - " + filename)
             IsSave = True
         except Exception as e:
             QMessageBox.about(self, "错误", f"发生错误：\n{e}")
 
     def about(self):
-        ideversion = "1.2.0 2024.3 Release"
+        ideversion = "1.2.1 2024.4 Release"
         QMessageBox.about(self, "关于CLangIDE",
                                     f"Copyright (c) 2024 CLangIDE\n\nC/C++ Core: TDM-GCC 10.3.0\nCLangIDE version: {ideversion}\nCompile Core: GCC\nOpen Source: Github - Program-zoubg/CLangIDE\nOpen Source LICENSE: GPL v3\n\nThank you!")
 
