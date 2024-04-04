@@ -442,7 +442,8 @@ class TextEditor(QMainWindow):
                                                         QMessageBox.Yes)
                 if filews == QMessageBox.Yes:
                     filename, ok = QInputDialog.getText(self, "重命名", "请输入重命名标题：", QLineEdit.Normal, "title")
-                    filename = filename+"."+codetype
+                    dirname = QFileDialog.getExistingDirectory(self, "选取保存文件夹")
+                    filename = dirname+"/"+filename+"."+codetype
             savefile = open(filename, 'w+', encoding=encodes)
             will = self.editor.text()
             savefile.write(will)
@@ -460,7 +461,7 @@ class TextEditor(QMainWindow):
     def OpenFile(self):
         try:
             global filename, IsSave
-            filename, _buff = QFileDialog.getOpenFileName(self, '打开', './', '源代码 (*.*)')
+            filename, _buff = QFileDialog.getOpenFileName(self, '打开')
             if filename:
                 if not IsSave:
                     filews = QMessageBox.question(self, "未保存", "是否保存？",
@@ -483,7 +484,7 @@ class TextEditor(QMainWindow):
             QMessageBox.about(self, "错误", f"发生错误：\n{e}")
 
     def about(self):
-        ideversion = "1.2.1 2024.4 Release"
+        ideversion = "1.2.3 2024.4 Release"
         QMessageBox.about(self, "关于CLangIDE",
                                     f"Copyright (c) 2024 CLangIDE\n\nC/C++ Core: TDM-GCC 10.3.0\nCLangIDE version: {ideversion}\nCompile Core: GCC\nOpen Source: Github - Program-zoubg/CLangIDE\nOpen Source LICENSE: GPL v3\n\nThank you!")
 
